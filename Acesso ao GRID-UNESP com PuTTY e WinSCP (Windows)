@@ -1,0 +1,78 @@
+Acesso ao GRID-UNESP com PuTTY e WinSCP (Windows)
+Este guia apresenta instruções básicas para configurar e acessar o GRID-UNESP utilizando PuTTY (acesso via terminal SSH) e WinSCP (transferência de arquivos) em sistemas Windows.
+
+Requisitos
+Conta de usuário ativa no GRID-UNESP
+
+Nome de usuário (login) e senha fornecidos após o cadastro
+
+Acesso à internet
+
+📥 Instalação
+ PuTTY
+Acesse: https://www.putty.org
+
+Baixe e instale a versão recomendada para Windows
+
+ WinSCP
+Acesse: https://winscp.net/eng/download.php
+
+Baixe e instale a versão completa
+
+🔐 Conectando com o PuTTY
+Abra o PuTTY
+
+Em "Host Name (or IP address)", digite:
+
+pgsql
+Copy
+Edit
+login.grid.unesp.br
+Em "Port", use: 22
+
+Em "Connection type", selecione: SSH
+
+Clique em Open
+
+Na tela preta que aparecer, digite seu login e pressione Enter
+
+Digite sua senha (não será exibida) e pressione Enter
+
+Você estará conectado ao cluster!
+
+ Transferindo arquivos com o WinSCP
+Abra o WinSCP
+
+Em "Protocolo de arquivo", selecione: SCP
+
+Preencha os campos:
+
+Servidor: login.grid.unesp.br
+
+Porta: 22
+
+Nome de usuário: seu login no GRID-UNESP
+
+Senha: sua senha
+
+Clique em Login
+
+Você verá duas janelas:
+
+À esquerda: seus arquivos locais
+
+À direita: seus arquivos no cluster
+
+Arraste arquivos entre os lados para fazer upload/download.
+
+ Dicas
+Use o PuTTY para rodar comandos, enviar jobs e navegar via terminal
+
+Use o WinSCP para transferir scripts, resultados e arquivos de dados
+
+Para segurança, evite salvar senhas nos programas
+
+Para mais informações, consulte:
+ Acessando o cluster – GRID-UNESP
+
+© 2025, Tiago Belintani – Laboratório de Aracnologia de Rio Claro (LARC), UNESP
