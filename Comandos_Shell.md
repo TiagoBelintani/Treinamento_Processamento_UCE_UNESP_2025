@@ -1,11 +1,11 @@
 
-# 💻 Comandos Básicos de Shell para o Treinamento
+#  Comandos Básicos de Shell para o Treinamento
 
 A seguir, uma lista essencial de comandos de terminal para navegar, manipular arquivos e trabalhar eficientemente no ambiente Linux e no cluster do GRID-UNESP.
 
 ---
 
-## 📁 Navegação entre diretórios
+##  Navegação entre diretórios
 
 ```bash
 pwd          # Mostra o caminho atual (diretório onde você está)
@@ -18,7 +18,7 @@ cd -         # Volta para o diretório anterior
 
 ---
 
-## 📄 Manipulação de arquivos e diretórios
+## Manipulação de arquivos e diretórios
 
 ```bash
 mkdir nova_pasta        # Cria uma nova pasta
@@ -30,7 +30,7 @@ mv a.txt pasta/         # Move 'a.txt' para dentro de 'pasta/'
 
 ---
 
-## 🧠 Comandos úteis para bioinfo
+##  Comandos úteis para bioinfo
 
 ```bash
 head arquivo.txt        # Mostra as 10 primeiras linhas
@@ -42,7 +42,7 @@ grep "Rhodnius" dados.txt  # Busca linhas com a palavra "Rhodnius"
 
 ---
 
-## 🧵 Trabalhando com sessões de terminal (screen)
+##  Trabalhando com sessões de terminal (screen)
 
 ```bash
 screen -S nome_sessao   # Cria nova sessão chamada 'nome_sessao'
@@ -53,7 +53,7 @@ Ctrl+A, depois D        # Sai da sessão (sem encerrar)
 
 ---
 
-## ⚠️ Dicas de ouro
+## ⚠ Dicas de ouro
 
 - Use **tab** para autocompletar nomes de arquivos e pastas.
 - Use **setas ↑ ↓** para navegar por comandos anteriores.
