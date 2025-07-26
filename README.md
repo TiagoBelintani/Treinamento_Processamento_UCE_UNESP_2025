@@ -1,5 +1,5 @@
 
-# 🧬 Treinamento em Processamento de Dados de UCE
+# Treinamento em Processamento de Dados de UCE
 
 **Autor:** Tiago Belintani  
 **Ano:** 2025  
@@ -7,7 +7,7 @@
 
 ---
 
-## 📘 Descrição
+##  Descrição
 
 Este repositório reúne os materiais, scripts e instruções utilizados no **Treinamento em Processamento de Dados Genômicos de Elementos Ultraconservados (UCEs)**.  
 O treinamento tem como objetivo introduzir os participantes aos fundamentos da bioinformática aplicada à sistemática molecular, com foco no uso do pipeline **Phyluce**.
@@ -21,7 +21,7 @@ Além disso, o curso contempla o uso de ferramentas fundamentais como:
 
 ---
 
-## 🧪 Conteúdo Programático
+##  Conteúdo Programático
 
 1. Introdução aos UCEs e sua aplicação em sistemática
 2. Organização e preparo dos dados no Linux
@@ -44,7 +44,7 @@ Além disso, o curso contempla o uso de ferramentas fundamentais como:
 
 ---
 
-## 📎 Requisitos
+##  Requisitos
 
 - Conta no GitHub
 - Acesso ao GRID-UNESP
@@ -53,13 +53,13 @@ Além disso, o curso contempla o uso de ferramentas fundamentais como:
 
 ---
 
-## 🤝 Contribuição
+## Contribuição
 
 Este material pode ser adaptado por outros grupos interessados em bioinformática de UCEs. Sugestões e melhorias são bem-vindas via Pull Request ou Issues.
 
 ---
 
-## 📜 Licença
+##  Licença
 
 Distribuído sob licença MIT.
 
