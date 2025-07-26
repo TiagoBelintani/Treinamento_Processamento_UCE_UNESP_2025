@@ -1,11 +1,11 @@
 
-# 💻 Acesso ao GRID-UNESP com PuTTY e WinSCP (Windows)
+#  Acesso ao GRID-UNESP com PuTTY e WinSCP (Windows)
 
 Este guia apresenta instruções básicas para configurar e acessar o GRID-UNESP utilizando **PuTTY** (acesso via terminal SSH) e **WinSCP** (transferência de arquivos) em sistemas Windows.
 
 ---
 
-## 🔧 Requisitos
+##  Requisitos
 
 - Conta de usuário ativa no GRID-UNESP  
 - Nome de usuário (login) e senha fornecidos após o cadastro  
@@ -13,7 +13,7 @@ Este guia apresenta instruções básicas para configurar e acessar o GRID-UNESP
 
 ---
 
-## 📥 Instalação
+##  Instalação
 
 ### 🔹 PuTTY
 1. Acesse: https://www.putty.org  
@@ -25,7 +25,7 @@ Este guia apresenta instruções básicas para configurar e acessar o GRID-UNESP
 
 ---
 
-## 🔐 Conectando com o PuTTY
+##  Conectando com o PuTTY
 
 1. Abra o PuTTY  
 2. Em **Host Name (or IP address)**, digite:
@@ -97,7 +97,7 @@ Arraste arquivos entre os lados para fazer upload/download.
 
 ---
 
-## 🧠 Dicas
+##  Dicas
 
 - Use o **PuTTY** para rodar comandos, enviar jobs e navegar via terminal  
 - Use o **WinSCP** para transferir scripts, resultados e arquivos de dados  
@@ -106,7 +106,7 @@ Arraste arquivos entre os lados para fazer upload/download.
 ---
 
 📖 Para mais informações, consulte:  
-🔗 [Acessando o cluster – GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/manual/01_acessando_o_cluster.html)
+ [Acessando o cluster – GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/manual/01_acessando_o_cluster.html)
 
 ---
 
