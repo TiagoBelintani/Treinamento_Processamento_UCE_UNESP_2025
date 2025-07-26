@@ -1,24 +1,24 @@
 
-# 🧬 Uso do GRID-UNESP no Treinamento de Bioinformática
+#  Uso do GRID-UNESP no Treinamento de Bioinformática
 
 Este repositório acompanha o treinamento de processamento de dados genômicos com foco em Elementos Ultraconservados (UCEs), utilizando a infraestrutura computacional do **GRID-UNESP**.
 
 ---
 
-## ⚙️ O que é o GRID-UNESP?
+## ⚙ O que é o GRID-UNESP?
 
 O **GRID-UNESP** é uma plataforma de computação de alto desempenho voltada a atender as necessidades de processamento intensivo de grupos de pesquisa da Universidade Estadual Paulista (UNESP).  
 Com acesso remoto disponível a partir de qualquer lugar do mundo, o cluster é mantido por uma equipe técnica especializada, garantindo suporte contínuo e uso otimizado dos recursos.
 
-🔗 [Documentação oficial do GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/index.html)
+[Documentação oficial do GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/index.html)
 
 ---
 
-## 👤 Como se cadastrar
+##  Como se cadastrar
 
 Para utilizar o GRID-UNESP, você deve estar vinculado a um projeto de pesquisa já cadastrado. O cadastro de novos usuários pode ser feito online:
 
-📥 [Cadastro de Novos Usuários – GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/cadastro.html#cadastro-de-novos-usuarios)
+ [Cadastro de Novos Usuários – GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/cadastro.html#cadastro-de-novos-usuarios)
 
 Durante o cadastro, será necessário:
 - Informar nome completo, e-mail e login desejado;
@@ -44,7 +44,7 @@ Você pode usar:
 - **Terminal WSL** (Windows Subsystem for Linux)
 
 📖 Instruções detalhadas de acesso:  
-🔗 [Acessando o Cluster – GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/manual/01_acessando_o_cluster.html)
+ [Acessando o Cluster – GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/manual/01_acessando_o_cluster.html)
 
 ---
 
