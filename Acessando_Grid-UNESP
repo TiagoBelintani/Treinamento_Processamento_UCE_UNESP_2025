@@ -1,0 +1,29 @@
+##  Acesso ao Cluster do GRID-UNESP
+
+Após o cadastro aprovado, o acesso ao cluster do GRID-UNESP é feito via conexão SSH a partir de um terminal Linux ou software como **PuTTY** (em sistemas Windows).
+
+### Endereço de conexão:
+ssh [seu_usuário]@login.grid.unesp.br
+
+yaml
+Copy
+Edit
+
+Ao conectar-se pela primeira vez, o sistema solicitará sua senha criada durante o registro.
+
+---
+
+### Requisitos para acesso:
+- Ter cadastro aprovado e ativo;
+- Conexão à internet;
+- Cliente SSH instalado:
+  - **Linux/macOS:** já incluso no terminal;
+  - **Windows:** use [PuTTY](https://www.putty.org) ou o terminal do WSL.
+
+---
+
+Para instruções completas e atualizadas, acesse:
+
+[Acessando o cluster – Documentação Oficial GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/manual/01_acessando_o_cluster.html)
+
+---
