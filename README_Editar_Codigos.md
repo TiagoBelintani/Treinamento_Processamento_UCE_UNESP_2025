@@ -1,11 +1,11 @@
 
-# 📝 Acessando e Editando Códigos com Notepad++ (Windows) e VS Code (Mac)
+#  Acessando e Editando Códigos com Notepad++ (Windows) e VS Code (Mac)
 
 Este guia apresenta formas simples e práticas de **acessar, visualizar e editar arquivos de código** utilizados no treinamento de UCE, usando editores populares.
 
 ---
 
-## 🪟 Para Usuários Windows – Notepad++
+## Para Usuários Windows – Notepad++
 
 1. Baixe o Notepad++:  
    🔗 https://notepad-plus-plus.org/downloads/
@@ -19,7 +19,7 @@ Este guia apresenta formas simples e práticas de **acessar, visualizar e editar
 
 ---
 
-## 🍎 Para Usuários Mac – Visual Studio Code
+##  Para Usuários Mac – Visual Studio Code
 
 1. Baixe o Visual Studio Code:  
    🔗 https://code.visualstudio.com/
@@ -40,7 +40,7 @@ code .
 
 ---
 
-## 📂 Dica: Organização
+##  Dica: Organização
 
 - Crie uma pasta com subpastas por etapa (`scripts`, `dados`, `resultados`)
 - Mantenha arquivos nomeados com clareza: `01_preprocess.sh`, `alinhamento.fasta`, `treefile.tre`
