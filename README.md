@@ -32,7 +32,7 @@ Além disso, o curso contempla o uso de ferramentas fundamentais como:
 
 ---
 
-## 🗂 Estrutura do Repositório
+##  Estrutura do Repositório
 
 ```
 ├── data/                 # Dados de exemplo para prática
