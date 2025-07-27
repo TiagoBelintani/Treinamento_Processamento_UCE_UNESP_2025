@@ -53,7 +53,7 @@ Ctrl+A, depois D        # Sai da sessão (sem encerrar)
 
 ---
 
-## ⚠ Dicas de ouro
+## Dicas de ouro
 
 - Use **tab** para autocompletar nomes de arquivos e pastas.
 - Use **setas ↑ ↓** para navegar por comandos anteriores.
@@ -61,4 +61,5 @@ Ctrl+A, depois D        # Sai da sessão (sem encerrar)
 - Combine comandos com `|` e `>` para manipular saídas.
 
 ---
-Tiago Belintani 2025 
+© 2025, Tiago Belintani – Laboratório de Aracnologia de Rio Claro (LARC), UNESP
+
