@@ -61,5 +61,4 @@ Ctrl+A, depois D        # Sai da sessão (sem encerrar)
 - Combine comandos com `|` e `>` para manipular saídas.
 
 ---
-
-Estes comandos são a espinha dorsal do trabalho em shell — com eles, você já consegue se virar muito bem no GRID-UNESP e em qualquer ambiente Linux.
+Tiago Belintani 2025 
