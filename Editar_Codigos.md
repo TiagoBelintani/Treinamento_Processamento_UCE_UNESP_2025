@@ -46,4 +46,5 @@ code .
 - Mantenha arquivos nomeados com clareza: `01_preprocess.sh`, `alinhamento.fasta`, `treefile.tre`
 
 ---
-Tiago Belintani 2025
+
+© 2025, Tiago Belintani – Laboratório de Aracnologia de Rio Claro (LARC), UNESP
