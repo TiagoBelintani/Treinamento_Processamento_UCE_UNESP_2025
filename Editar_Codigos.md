@@ -46,5 +46,4 @@ code .
 - Mantenha arquivos nomeados com clareza: `01_preprocess.sh`, `alinhamento.fasta`, `treefile.tre`
 
 ---
-
-Esses editores facilitam muito a navegação e organização de códigos no dia a dia da bioinformática.
+Tiago Belintani 2025
