@@ -39,14 +39,14 @@ source ~/.bashrc  # ou ~/.zshrc, dependendo do shell
 
 > O PHYLUCE
 
-``bash
 https://github.com/faircloth-lab/phyluce/releases
-```
 
 ```bash
+
 wget https://raw.githubusercontent.com/faircloth-lab/phyluce/v1.7.3/distrib/phyluce-1.7.3-py36-Linux-conda.yml
 
 conda env create -n phyluce_1.7.3 --file phyluce-1.7.3-py36-Linux-conda.yml
+
 ```
 
 ---
