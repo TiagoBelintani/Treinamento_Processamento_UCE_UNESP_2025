@@ -5,7 +5,7 @@ Este repositório acompanha o treinamento de processamento de dados genômicos c
 
 ---
 
-## ⚙ O que é o GRID-UNESP?
+##  O que é o GRID-UNESP?
 
 O **GRID-UNESP** é uma plataforma de computação de alto desempenho voltada a atender as necessidades de processamento intensivo de grupos de pesquisa da Universidade Estadual Paulista (UNESP).  
 Com acesso remoto disponível a partir de qualquer lugar do mundo, o cluster é mantido por uma equipe técnica especializada, garantindo suporte contínuo e uso otimizado dos recursos.
@@ -28,7 +28,7 @@ Durante o cadastro, será necessário:
 
 ---
 
-## 🔐 Acesso ao Cluster
+##  Acesso ao Cluster
 
 Com o cadastro aprovado, o acesso ao cluster se dá via SSH.
 
@@ -43,12 +43,12 @@ Você pode usar:
 - **PuTTY** (Windows)
 - **Terminal WSL** (Windows Subsystem for Linux)
 
-📖 Instruções detalhadas de acesso:  
+ Instruções detalhadas de acesso:  
  [Acessando o Cluster – GRID-UNESP](https://www.ncc.unesp.br/gridunesp/docs/v2/manual/01_acessando_o_cluster.html)
 
 ---
 
-## 🧾 Política de Citação
+##  Política de Citação
 
 Ao utilizar recursos do GRID-UNESP em publicações, inclua a seguinte citação:
 
@@ -60,7 +60,7 @@ Ao utilizar recursos do GRID-UNESP em publicações, inclua a seguinte citação
 
 > “This research was supported by resources supplied by the Center for Scientific Computing (NCC/GridUNESP) of the São Paulo State University (UNESP).”
 
-📧 Informe a publicação por e-mail: [support.ncc@unesp.br](mailto:support.ncc@unesp.br)
+Informe a publicação por e-mail: [support.ncc@unesp.br](mailto:support.ncc@unesp.br)
 
 ---
 
