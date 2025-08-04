@@ -8,8 +8,8 @@ Este guia descreve o processo para instalar o [Miniconda](https://docs.conda.io/
 ##  Etapa 1 – Instalar o Miniconda
 
 1. Acesse a [página oficial do Miniconda](https://docs.conda.io/en/latest/miniconda.html) e baixe o instalador apropriado para seu sistema.
-2. 
-3. Alternativamente, use o terminal:
+  
+2. Alternativamente, use o terminal:
 
 **Linux:**
 ```bash
@@ -35,9 +35,13 @@ source ~/.bashrc  # ou ~/.zshrc, dependendo do shell
 
 ---
 
-## 🧪 Etapa 2 – Criar o ambiente Conda do PHYLUCE
+##  Etapa 2 – Criar o ambiente Conda do PHYLUCE
 
-> O PHYLUCE depende do Python 2.7 — mantenha esse ambiente isolado.
+> O PHYLUCE
+
+``bash
+https://github.com/faircloth-lab/phyluce/releases
+```
 
 ```bash
 wget https://raw.githubusercontent.com/faircloth-lab/phyluce/v1.7.3/distrib/phyluce-1.7.3-py36-Linux-conda.yml
