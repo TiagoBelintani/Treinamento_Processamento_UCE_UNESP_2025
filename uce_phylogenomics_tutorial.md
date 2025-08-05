@@ -195,8 +195,8 @@ Salve como `spades_job.sh`:
 ```bash
 #!/bin/bash
 #SBATCH -t 30:00:00
-#SBATCH -c 8
-#SBATCH --mem=12
+#SBATCH -c 12
+#SBATCH --mem=64
 
 module load miniconda/3-2023-09
 
@@ -205,8 +205,8 @@ source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
 
 phyluce_assembly_assemblo_spades \
   --output assembly \
-  --cores 8 \
-  --memory 12 \
+  --cores 12 \
+  --memory 64 \
   --log-path log \
   --config assembly.conf
 ```
@@ -225,6 +225,4 @@ squeue -u tiagobelintani
 
 ---
 
-## Conclusão
 
-Este protocolo oferece uma base sólida para o processamento inicial de dados UCE em aranhas Mygalomorphae. Os passos subsequentes — como a identificação de loci, alinhamento, seleção de partições e inferência filogenética — devem seguir os módulos subsequentes do `PHYLUCE`.
