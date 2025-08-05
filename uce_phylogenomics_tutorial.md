@@ -50,7 +50,8 @@ cd uce-treinamento/raw-fastq
 Transfira os dados de leitura emparelhada (`*_R1.fastq.gz` e `*_R2.fastq.gz`) do seguinte repositório:
 
 **Link:** [https://drive.google.com/drive/folders/10BTIOdb93iEyvOi_YnrTJFKo2wRVNGtS](https://drive.google.com/drive/folders/10BTIOdb93iEyvOi_YnrTJFKo2wRVNGtS)
-**Link:** [https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025.git](git clone https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025.git)
+
+**Link:** [git clone https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025.git](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025.git)
 ---
 
 ## Verificação de Integridade e Quantificação
