@@ -33,11 +33,11 @@ Este guia apresenta instruções básicas para configurar e acessar o GRID-UNESP
 ```bash
 [login].grid.unesp.br
 ```
-ou
+1. [login]
 ```bash
 access.grid.unesp.br
 ```
-ou
+2. [login]
 ```bash
 access2.grid.unesp.br
 ```
