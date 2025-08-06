@@ -31,7 +31,15 @@ Este guia apresenta instruções básicas para configurar e acessar o GRID-UNESP
 2. Em **Host Name (or IP address)**, digite:
 
 ```bash
-login.grid.unesp.br
+[login].grid.unesp.br
+```
+ou
+```bash
+access.grid.unesp.br
+```
+ou
+```bash
+access2.grid.unesp.br
 ```
 
 3. Em **Port**, use:
