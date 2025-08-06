@@ -80,10 +80,6 @@ SCP
 *login*.grid.unesp.br *login = access.grid.unesp.br ou access2.grid.unesp.br
 ```
 
-```bash
-scp C:\Users\Seu_usuario\Downloads\dados.fasta [seu_usuario]@access.grid.unesp.br:/home/...
-```
-
    - **Porta:**
 ```bash
 22
@@ -108,6 +104,45 @@ Você verá duas janelas:
 Arraste arquivos entre os lados para fazer upload/download.
 
 ---
+
+## Transferência de arquivos (Linux/macOS e Windows)
+
+Você pode transferir arquivos entre seu computador e o GRID-UNESP com o comando `scp`, que funciona no terminal tanto no macOS/Linux quanto no PowerShell do Windows:
+
+### Enviando do seu computador para o servidor:
+
+```bash
+scp caminho/do/arquivo.txt tiago@access.grid.unesp.br:/home/tiago/
+```
+
+### Exemplo no macOS:
+
+```bash
+scp ~/Downloads/dados.fasta tiago@access.grid.unesp.br:/home/tiago/
+```
+
+### Exemplo no Windows (PowerShell):
+
+```bash
+scp C:\Users\Tiago\Downloads\dados.fasta tiago@access.grid.unesp.br:/home/tiago/
+```
+
+### Baixando do servidor para seu computador:
+
+```bash
+scp tiago@access.grid.unesp.br:/home/tiago/resultado.txt caminho/local/
+```
+
+No Windows:
+
+```bash
+scp tiago@access.grid.unesp.br:/home/tiago/resultado.txt C:\Users\Tiago\Documents\
+```
+
+Se preferir uma alternativa gráfica no Windows, programas como **WinSCP** ou **MobaXterm** permitem transferências por arrastar-e-soltar.
+
+---
+
 
 ##  Dicas
 
