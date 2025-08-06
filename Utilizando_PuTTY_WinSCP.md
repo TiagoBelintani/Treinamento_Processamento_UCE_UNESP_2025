@@ -80,6 +80,10 @@ SCP
 *login*.grid.unesp.br *login = access.grid.unesp.br ou access2.grid.unesp.br
 ```
 
+```bash
+scp C:\Users\Seu_usuario\Downloads\dados.fasta [seu_usuario]@access.grid.unesp.br:/home/...
+```
+
    - **Porta:**
 ```bash
 22
