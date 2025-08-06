@@ -9,5 +9,6 @@
 
 ## [Controle de Qualidade de Dados de NGS com FastQC e Trimmomatic](https://medium.com/omixdata/controle-de-qualidade-de-dados-de-ngs-com-fastqc-e-trimmomatic-146af812ed7)
 
-**Autores:** Frederico Schmitt Kremer 
-**Link direto:**  https://medium.com/omixdata/controle-de-qualidade-de-dados-de-ngs-com-fastqc-e-trimmomatic-146af812ed7
+**Autores:** Frederico Schmitt Kremer   
+**Publicado em:** Nature Ecology & Evolution, 2017  
+**Link direto:** (https://medium.com/omixdata/controle-de-qualidade-de-dados-de-ngs-com-fastqc-e-trimmomatic-146af812ed7) 
