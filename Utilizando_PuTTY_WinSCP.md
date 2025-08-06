@@ -130,13 +130,13 @@ scp C:\Users\Tiago\Downloads\dados.fasta tiago@access.grid.unesp.br:/home/tiago/
 ### Baixando do servidor para seu computador:
 
 ```bash
-scp tiago@access.grid.unesp.br:/home/tiago/resultado.txt caminho/local/
+scp [seu_usuário]@access.grid.unesp.br:/home/[seu_usuário]/resultado.txt caminho/local/
 ```
 
 No Windows:
 
 ```bash
-scp tiago@access.grid.unesp.br:/home/tiago/resultado.txt C:\Users\Tiago\Documents\
+scp [seu_usuário]@access.grid.unesp.br:/home/tiago/resultado.txt C:\Users\[seu_usuário]\Documents\
 ```
 
 Se preferir uma alternativa gráfica no Windows, programas como **WinSCP** ou **MobaXterm** permitem transferências por arrastar-e-soltar.
