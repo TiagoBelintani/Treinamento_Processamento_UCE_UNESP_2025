@@ -35,7 +35,13 @@ Com o cadastro aprovado, o acesso ao cluster se dá via SSH.
 ### Endereço para conexão:
 
 ```
-ssh [seu_usuário]@login.grid.unesp.br
+ssh [seu_usuário]@l*].grid.unesp.br
+```
+```
+*@access.grid.unesp.br
+```
+```
+*@access2.grid.unesp.br
 ```
 
 Você pode usar:
