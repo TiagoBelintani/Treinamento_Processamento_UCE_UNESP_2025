@@ -69,7 +69,7 @@ SCP
 3. Preencha os campos:
    - **Servidor:**
 ```bash
-login.grid.unesp.br
+*login*.grid.unesp.br [ *login = access.grid.unesp.br ou access2.grid.unesp.br]
 ```
 
    - **Porta:**
