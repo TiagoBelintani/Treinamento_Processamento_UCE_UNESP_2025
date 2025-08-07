@@ -34,8 +34,8 @@ for r1 in "$BASE_DIR"/*_R1.fastq.gz; do
             --output_dir "$output_dir" \
             --gzip
     else
-        echo "⚠️ Arquivo R2 não encontrado para $sample — pulando."
+        echo "Arquivo R2 não encontrado para $sample — pulando."
     fi
 done
 
-echo "✅ Trim Galore finalizado com sucesso."
+echo "Trim Galore finalizado com sucesso."
