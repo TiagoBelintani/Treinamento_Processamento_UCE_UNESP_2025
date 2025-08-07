@@ -190,6 +190,37 @@ Remova espaços desnecessários com `sed`:
 sed -E 's/[[:space:]]*:[[:space:]]*/:/g' tabela.txt > assembly.conf
 ```
 
+Assembly.conf model
+
+```bash
+[samples]
+Arbanitis_rapax:/home/tiagobelintani/uce-treinamento/clean-fastq/Arbanitis_rapax/split-adapter-quality-trimmed
+Cteniza_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Cteniza_sp./split-adapter-quality-trimmed
+Ctenolophus_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Ctenolophus_sp./split-adapter-quality-trimmed
+Galeosoma_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Galeosoma_sp./split-adapter-quality-trimmed
+Gorgyrella_namaquensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Gorgyrella_namaquensis/split-adapter-quality-trimm$
+Heligmomerus_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Heligmomerus_sp./split-adapter-quality-trimmed
+Idiops_camelus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_camelus/split-adapter-quality-trimmed
+Idiops_carajas:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_carajas/split-adapter-quality-trimmed
+Idiops_clarus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_clarus/split-adapter-quality-trimmed
+Idiops_fryi:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_fryi/split-adapter-quality-trimmed
+Idiops_germaini:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_germaini/split-adapter-quality-trimmed
+Idiops_guri:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_guri/split-adapter-quality-trimmed
+Idiops_kanonganus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_kanonganus/split-adapter-quality-trimmed
+Idiops_petiti:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_petiti/split-adapter-quality-trimmed
+Idiops_pirassununguensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_pirassununguensis/split-adapter-quality-t$
+Idiops_pretoriae:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_pretoriae/split-adapter-quality-trimmed
+Idiops_rastratus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_rastratus/split-adapter-quality-trimmed
+Idiops_rohdei:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_rohdei/split-adapter-quality-trimmed
+Idiops_sp2_RF2025:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_sp2_RF2025/split-adapter-quality-trimmed
+Idiops_sp3_RF2025:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_sp3_RF2025/split-adapter-quality-trimmed
+Moggridgea_crudeni:/home/tiagobelintani/uce-treinamento/clean-fastq/Moggridgea_crudeni/split-adapter-quality-trimmed
+Neocteniza_toba:/home/tiagobelintani/uce-treinamento/clean-fastq/Neocteniza_toba/split-adapter-quality-trimmed
+Segregara_transvaalensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Segregara_transvaalensis/split-adapter-quality-t$
+Titanidiops_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Titanidiops_sp./split-adapter-quality-trimmed
+```
+
+
 ### 2. Script de Montagem
 
 Salve como `spades_job.sh`:
@@ -198,12 +229,12 @@ Salve como `spades_job.sh`:
 #!/bin/bash
 #SBATCH -t 30:00:00
 #SBATCH -c 12
-#SBATCH --mem=64
+#SBATCH --mem=128
 
 module load miniconda/3-2023-09
 
 source $(conda info --base)/etc/profile.d/conda.sh
-source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
+source activate /home/seu_nome/miniconda3/envs/phyluce-1.7.3 #alterar o caminho para seu ambiente
 
 phyluce_assembly_assemblo_spades \
   --output assembly \
