@@ -112,16 +112,6 @@ python /home/tiago/projeto/scripts/analise.py     --input /home/tiago/projeto/da
 
 > Moral: **não confie no `pwd` inicial**. Use caminhos absolutos para arquivos importantes.
 
----
-
-## 8. Moral da História
-
-O uso de caminhos absolutos:
-- Evita erros misteriosos no cluster.
-- Facilita a reprodutibilidade.
-- Poupa tempo na depuração.
-- É um hábito saudável e profissional.
-
-> *No HPC, cada nó é um país diferente. Caminho absoluto é seu passaporte.*
 
 ---
+***Tiago Belintani***
