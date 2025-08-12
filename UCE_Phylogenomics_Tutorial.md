@@ -627,22 +627,76 @@ ls uce-resultados-busca >> taxa.txt
 ```
 
 ```bash
-sed 's/\.lastz$//' taxa.txt > taxa.prep
+sed 's/\.lastz$//' taxa.txt > taxa.conf
 ```
 
+Agora é precisamos retirar a linha *probe.matches.sqlite*
+
 ```bash
-sed 's/\.contigs$//' taxa.prep > taxa.conf
+[all]
+Cteniza_sp
+Ctenolophus_sp
+Gorgyrella_namaquensis
+Heligmomerus_sp
+Idiops_camelus
+Idiops_carajas
+Idiops_clarus
+Idiops_fryi
+Idiops_germaini
+Idiops_guri
+Idiops_kanonganus
+Idiops_petiti
+Idiops_pirassununguensis
+Idiops_pretoriae
+Idiops_rastratus
+Idiops_rohdei
+Idiops_sp2_RF2025
+Idiops_sp3_RF2025
+Moggridgea_crudeni
+Neocteniza_toba
+probe.matches.sqlite
+Segregara_transvaalensis
+Titanidiops_sp
 ```
 
 excluir execendentes 
+
 ```bash
-rm -r taxa.prep taxa.txt
+rm -r  taxa.txt
+```
+Verificar taxa.conf
+
+```bash
+more taxa.conf
 ```
 
 ```bash
-editar no final com nano
-
+[all]
+Cteniza_sp
+Ctenolophus_sp
+Gorgyrella_namaquensis
+Heligmomerus_sp
+Idiops_camelus
+Idiops_carajas
+Idiops_clarus
+Idiops_fryi
+Idiops_germaini
+Idiops_guri
+Idiops_kanonganus
+Idiops_petiti
+Idiops_pirassununguensis
+Idiops_pretoriae
+Idiops_rastratus
+Idiops_rohdei
+Idiops_sp2_RF2025
+Idiops_sp3_RF2025
+Moggridgea_crudeni
+Neocteniza_toba
+probe.matches.sqlite
+Segregara_transvaalensis
+Titanidiops_sp
 ```
+
 
 #Agora criarmos um novo diretorio e um subdiretório
 
@@ -729,6 +783,7 @@ O arquivo final foi salvo em:
 
 **Este número relativamente baixo de loci no conjunto final pode indicar:**
 
+```bash
 *Montagens de baixa qualidade ou incompletas para algumas espécies.*
 
 *Reads iniciais com baixa cobertura ou muitos gaps.*
@@ -738,6 +793,29 @@ O arquivo final foi salvo em:
 *Parâmetros de identidade ou cobertura usados anteriormente (na etapa match_contigs_to_probes) que podem ter sido restritivos demais.*
 
 </div>
+```
+#Extrair as sequências FASTA para os loci do conjunto
+#Entre no diretório do taxon set e crie uma pasta para logs:
+
+```bash
+cd taxon-sets/all
+```
+```bash
+mkdir -p log
+```
+
+Extraia as sequências FASTA:
+
+```bash
+phyluce_assembly_get_fastas_from_match_counts \
+    --contigs/home/tiagobelintani/uce-treinamento/assembly_2/contigs/ \
+    --locus-db /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite \
+    --match-count-output /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf \
+    --output  all-taxa-incomplete.fasta \
+    --incomplete-matrix /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.incomplete \
+    --log-path log
+```
+
 
 
 
