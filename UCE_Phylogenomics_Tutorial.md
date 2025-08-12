@@ -1,9 +1,3 @@
-<img width="8192" height="8192" alt="image" src="https://github.com/user-attachments/assets/f21d16c1-bb8c-4ad6-a14d-c16e13291fbc" /># UCE Phylogenomics: Tutorial de Processamento de Dados de Aranhas Mygalomorphae
-
-<div align="justify">
-Este tutorial visa descrever, de forma metodológica e reprodutível, o processamento de dados de enriquecimento de UCEs (Ultra-Conserved Elements) provenientes de amostras de aranhas da subordem Mygalomorphae.
-</div>
-
 ## Referência Bibliográfica
 
 Para detalhes adicionais sobre a extração, construção das bibliotecas e sequenciamento dos dados, consultar o artigo recentemente publicado:
@@ -950,6 +944,49 @@ done
 Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápidas, gráficos e filtros (por táxon, por locus, por comprimento mínimo etc.).
 
 Aqui (exploded_fasta.csv)[https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/exploded_fasta.csv]
+
+<hr>
+<h3 id="resumo-por-taxon-exploded">Resumo por táxon (exploded FASTA)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th align="right">Contigs</th>
+      <th align="right">Total bp</th>
+      <th align="right">Mean length</th>
+      <th align="right">95% CI length</th>
+      <th align="right">Min length</th>
+      <th align="right">Max length</th>
+      <th align="right">Median length</th>
+      <th align="right">Contigs &gt;1 kb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Cteniza-sp</td><td align="right">120</td><td align="right">67683</td><td align="right">564.025</td><td align="right">18.030</td><td align="right">310</td><td align="right">1372</td><td align="right">532.0</td><td align="right">4</td></tr>
+    <tr><td>Ctenolophus-sp</td><td align="right">110</td><td align="right">58269</td><td align="right">529.718</td><td align="right">14.137</td><td align="right">307</td><td align="right">1208</td><td align="right">510.0</td><td align="right">1</td></tr>
+    <tr><td>Gorgyrella-namaquensis</td><td align="right">41</td><td align="right">15806</td><td align="right">385.512</td><td align="right">11.424</td><td align="right">309</td><td align="right">569</td><td align="right">357.0</td><td align="right">0</td></tr>
+    <tr><td>Heligmomerus-sp</td><td align="right">51</td><td align="right">19604</td><td align="right">384.392</td><td align="right">11.616</td><td align="right">228</td><td align="right">652</td><td align="right">360.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-carajas</td><td align="right">4</td><td align="right">969</td><td align="right">242.250</td><td align="right">53.186</td><td align="right">118</td><td align="right">378</td><td align="right">236.5</td><td align="right">0</td></tr>
+    <tr><td>Idiops-clarus</td><td align="right">4</td><td align="right">1366</td><td align="right">341.500</td><td align="right">13.580</td><td align="right">321</td><td align="right">379</td><td align="right">333.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-fryi</td><td align="right">57</td><td align="right">22303</td><td align="right">391.281</td><td align="right">10.452</td><td align="right">307</td><td align="right">682</td><td align="right">374.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-germaini</td><td align="right">6</td><td align="right">1739</td><td align="right">289.833</td><td align="right">28.853</td><td align="right">188</td><td align="right">386</td><td align="right">306.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-guri</td><td align="right">6</td><td align="right">2219</td><td align="right">369.833</td><td align="right">41.268</td><td align="right">305</td><td align="right">572</td><td align="right">341.5</td><td align="right">0</td></tr>
+    <tr><td>Idiops-kanonganus</td><td align="right">5</td><td align="right">1409</td><td align="right">281.800</td><td align="right">24.239</td><td align="right">228</td><td align="right">351</td><td align="right">265.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-petiti</td><td align="right">31</td><td align="right">11424</td><td align="right">368.516</td><td align="right">12.464</td><td align="right">184</td><td align="right">612</td><td align="right">365.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-pirassununguensis</td><td align="right">52</td><td align="right">24084</td><td align="right">463.154</td><td align="right">21.256</td><td align="right">312</td><td align="right">946</td><td align="right">412.5</td><td align="right">0</td></tr>
+    <tr><td>Idiops-pretoriae</td><td align="right">21</td><td align="right">7393</td><td align="right">352.048</td><td align="right">12.624</td><td align="right">222</td><td align="right">491</td><td align="right">336.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-rastratus</td><td align="right">1</td><td align="right">368</td><td align="right">368.000</td><td align="right">0.000</td><td align="right">368</td><td align="right">368</td><td align="right">368.0</td><td align="right">0</td></tr>
+    <tr><td>Idiops-rohdei</td><td align="right">48</td><td align="right">20662</td><td align="right">430.458</td><td align="right">13.075</td><td align="right">307</td><td align="right">629</td><td align="right">407.5</td><td align="right">0</td></tr>
+    <tr><td>Idiops-sp2-RF2025</td><td align="right">47</td><td align="right">19455</td><td align="right">413.936</td><td align="right">37.791</td><td align="right">199</td><td align="right">2061</td><td align="right">374.0</td><td align="right">1</td></tr>
+    <tr><td>Idiops-sp3-RF2025</td><td align="right">8</td><td align="right">2573</td><td align="right">321.625</td><td align="right">17.554</td><td align="right">246</td><td align="right">403</td><td align="right">332.5</td><td align="right">0</td></tr>
+    <tr><td>Moggridgea-crudeni</td><td align="right">4</td><td align="right">887</td><td align="right">221.750</td><td align="right">11.940</td><td align="right">207</td><td align="right">257</td><td align="right">211.5</td><td align="right">0</td></tr>
+    <tr><td>Neocteniza-toba</td><td align="right">38</td><td align="right">15365</td><td align="right">404.342</td><td align="right">16.213</td><td align="right">308</td><td align="right">756</td><td align="right">360.0</td><td align="right">0</td></tr>
+    <tr><td>Segregara-transvaalensis</td><td align="right">56</td><td align="right">22010</td><td align="right">393.036</td><td align="right">9.528</td><td align="right">251</td><td align="right">583</td><td align="right">376.5</td><td align="right">0</td></tr>
+    <tr><td>Titanidiops-sp</td><td align="right">91</td><td align="right">45668</td><td align="right">501.846</td><td align="right">14.068</td><td align="right">286</td><td align="right">985</td><td align="right">504.0</td><td align="right">0</td></tr>
+  </tbody>
+</table>
+
 
 #Breve Descrição
 
