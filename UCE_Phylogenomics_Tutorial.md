@@ -350,7 +350,7 @@ Esse processo é importante porque, embora a montagem contenha todas as sequênc
 O PHYLUCE realiza essa identificação comparando os contigs montados com um banco de dados de loci UCEs de referência, geralmente fornecido em formato .fasta. Essa comparação é feita usando algoritmos de alinhamento rápido, como lastz, que detectam regiões de alta similaridade.
 </p>
 
-#Passos para encontrar loci UCE no PHYLUCE
+#**Passos para encontrar loci UCE no <a href="https://phyluce.readthedocs.io/en/latest/">Phyluce</a>**
 
 <p align="justify">
 #Organizar o diretório de montagem
@@ -359,10 +359,12 @@ Cada pasta deve conter o arquivo contigs.fasta gerado pelo montador.
 </p>
 
 #Preparar o banco de sondas UCE
+ 
 Baixe ou utilize o conjunto de sondas específico para o seu grupo de estudo (por exemplo, insetos, aves, aracnídeos).
 Esse arquivo .fasta será usado como referência.
+ 
+#Executar o alinhamento com lastz
 
-$\#Executar o alinhamento com lastz
 O comando típico no PHYLUCE para essa etapa é:
 
 ```bash
