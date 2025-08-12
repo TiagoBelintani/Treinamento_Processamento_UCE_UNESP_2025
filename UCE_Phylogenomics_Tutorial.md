@@ -345,16 +345,16 @@ Possíveis Problemas e Como Evitar
 Após a montagem das leituras em contigs, o próximo passo no PHYLUCE é identificar quais desses contigs contêm loci UCE (Ultra-Conserved Elements).
 Esse processo é importante porque, embora a montagem contenha todas as sequências resultantes do sequenciamento, apenas uma parte delas corresponde aos loci-alvo definidos pela sonda de captura utilizada no experimento.
 </div>
+ 
 
-
-
+ 
 <div align="justify">
 O PHYLUCE realiza essa identificação comparando os contigs montados com um banco de dados de loci UCEs de referência, geralmente fornecido em formato .fasta. Essa comparação é feita usando algoritmos de alinhamento rápido, como lastz, que detectam regiões de alta similaridade.
 </div>
+ 
+ 
 
-
-
-#Passos para encontrar loci UCE no PHYLUCE
+#**Passos para encontrar loci UCE no PHYLUCE**
 
 
 <div align="justify">
@@ -363,8 +363,10 @@ Certifique-se de que todas as pastas de montagem (por amostra) estão reunidas e
 Cada pasta deve conter o arquivo contigs.fasta gerado pelo montador.
 </div>
 
+   
 #Preparar o banco de sondas UCE
 
+  
 Baixe ou utilize o conjunto de sondas específico para o seu grupo de estudo (por exemplo, insetos, aves, aracnídeos).
 Esse arquivo .fasta será usado como referência.
 
@@ -411,6 +413,17 @@ mkdir probes
 [Probes – Google Drive](https://drive.google.com/file/d/1BTGtLKJQHw1uxE7X2kTqiSm0Gmnt8KwM/view?usp=drive_link)  
 [Probes – GitHub](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Probes)
 
+#renomear probes
+
+```bash
+mv * probes.fasta
+```
+*Estrutura diretorio atual
+
+```bash
+/home/tiagobelintani/uce-treinamento/probes/
+└── probes.fasta
+```
 
 ## 2. Preparar o Arquivo de Configuração
 
