@@ -433,7 +433,7 @@ pwd
 ```bash
 nano phyluce_assembly_match_contigs_to_probes_job.sh
 ```
-#(arquivo config)[
+#[arquivo config](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_match_contigs_to_probes_job.sh)
 
 ```bash
 #!/bin/bash
