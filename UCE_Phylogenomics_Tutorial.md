@@ -466,7 +466,53 @@ phyluce_assembly_match_contigs_to_probes \
     --output uce-resultados-busca
 ```
 
-#Deverá ver um resultado semelhante ao seguinte (também armazenado em log):
+#Deverá ver um resultado semelhante ao seguinte [também armazenado em log](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/phyluce_assembly_match_contigs_to_probes.log)
+
+```bash
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - ======= Starting phyluce_assembly_match_contigs_to_probes =======
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Version: 1.7.3
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Commit: None
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --contigs: /home/tiagobelintani/uce-treinamento/assembly_2/contigs
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --csv: None
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --dupefile: None
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --keep_duplicates: None
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --log_path: None
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --min_coverage: 80
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --min_identity: 80
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --output: /home/tiagobelintani/uce-treinamento/uce-resultados-busca
+2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --probes: /home/tiagobelintani/uce-treinamento/probes/probes.fasta
+2025-08-12 16:45:05,073 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --regex: ^(uce-\d+)(?:_p\d+.*)
+2025-08-12 16:45:05,073 - phyluce_assembly_match_contigs_to_probes - INFO - Argument --verbosity: INFO
+2025-08-12 16:45:05,142 - phyluce_assembly_match_contigs_to_probes - INFO - Creating the UCE-match database
+2025-08-12 16:45:05,733 - phyluce_assembly_match_contigs_to_probes - INFO - Processing contig data
+2025-08-12 16:45:05,734 - phyluce_assembly_match_contigs_to_probes - INFO - -----------------------------------------------------------------
+2025-08-12 16:45:08,138 - phyluce_assembly_match_contigs_to_probes - INFO - Cteniza_sp: 120 (4.93%) uniques of 2434 contigs, 0 dupe probe matches, 5 UCE loci removed for matching multiple contigs, 18 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:10,460 - phyluce_assembly_match_contigs_to_probes - INFO - Ctenolophus_sp: 110 (4.58%) uniques of 2401 contigs, 0 dupe probe matches, 3 UCE loci removed for matching multiple contigs, 14 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:11,597 - phyluce_assembly_match_contigs_to_probes - INFO - Gorgyrella_namaquensis: 41 (3.31%) uniques of 1238 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 9 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:12,827 - phyluce_assembly_match_contigs_to_probes - INFO - Heligmomerus_sp: 51 (3.69%) uniques of 1383 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 8 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:13,605 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_camelus: 0 (0.00%) uniques of 1033 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 0 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:14,456 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_carajas: 4 (0.10%) uniques of 3860 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 1 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:15,279 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_clarus: 4 (0.08%) uniques of 4939 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 0 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:16,601 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_fryi: 57 (2.88%) uniques of 1978 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 6 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:17,242 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_germaini: 6 (0.39%) uniques of 1534 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 1 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:18,351 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_guri: 6 (0.10%) uniques of 5991 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 0 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:19,178 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_kanonganus: 5 (0.09%) uniques of 5415 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 0 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:20,228 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_petiti: 31 (0.94%) uniques of 3303 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 5 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:21,477 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_pirassununguensis: 52 (2.20%) uniques of 2361 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 0 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:22,510 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_pretoriae: 21 (0.69%) uniques of 3039 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 3 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:23,093 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_rastratus: 1 (0.06%) uniques of 1807 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 0 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:24,344 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_rohdei: 48 (1.19%) uniques of 4050 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 6 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:25,442 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_sp2_RF2025: 47 (2.01%) uniques of 2334 contigs, 0 dupe probe matches, 2 UCE loci removed for matching multiple contigs, 3 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:26,431 - phyluce_assembly_match_contigs_to_probes - INFO - Idiops_sp3_RF2025: 8 (0.08%) uniques of 9556 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 1 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:27,453 - phyluce_assembly_match_contigs_to_probes - INFO - Moggridgea_crudeni: 4 (0.11%) uniques of 3555 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 0 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:28,899 - phyluce_assembly_match_contigs_to_probes - INFO - Neocteniza_toba: 38 (0.49%) uniques of 7777 contigs, 0 dupe probe matches, 0 UCE loci removed for matching multiple contigs, 2 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:30,227 - phyluce_assembly_match_contigs_to_probes - INFO - Segregara_transvaalensis: 56 (3.78%) uniques of 1480 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 11 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:32,202 - phyluce_assembly_match_contigs_to_probes - INFO - Titanidiops_sp: 91 (3.52%) uniques of 2587 contigs, 0 dupe probe matches, 1 UCE loci removed for matching multiple contigs, 16 contigs removed for matching multiple UCE loci
+2025-08-12 16:45:32,202 - phyluce_assembly_match_contigs_to_probes - INFO - -----------------------------------------------------------------
+2025-08-12 16:45:32,202 - phyluce_assembly_match_contigs_to_probes - INFO - The LASTZ alignments are in /home/tiagobelintani/uce-treinamento/uce-resultados-busca
+2025-08-12 16:45:32,202 - phyluce_assembly_match_contigs_to_probes - INFO - The UCE match database is in /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite
+2025-08-12 16:45:32,202 - phyluce_assembly_match_contigs_to_probes - INFO - ======= Completed phyluce_assembly_match_contigs_to_probes ======
+```
 
 ```bash
 
