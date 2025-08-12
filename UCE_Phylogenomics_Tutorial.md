@@ -340,37 +340,29 @@ Possíveis Problemas e Como Evitar
 
 # Encontrar UCE loci (Fingding UCE loci)
 
-
-<div align="justify">
+<p align="justify">
+Encontrando os Loci UCE (Finding UCE)
 Após a montagem das leituras em contigs, o próximo passo no PHYLUCE é identificar quais desses contigs contêm loci UCE (Ultra-Conserved Elements).
 Esse processo é importante porque, embora a montagem contenha todas as sequências resultantes do sequenciamento, apenas uma parte delas corresponde aos loci-alvo definidos pela sonda de captura utilizada no experimento.
-</div>
+</p>
 
- 
-<div align="justify">
+<p align="justify">
 O PHYLUCE realiza essa identificação comparando os contigs montados com um banco de dados de loci UCEs de referência, geralmente fornecido em formato .fasta. Essa comparação é feita usando algoritmos de alinhamento rápido, como lastz, que detectam regiões de alta similaridade.
-</div>
- 
- 
+</p>
 
-#**Passos para encontrar loci UCE no PHYLUCE**
+#Passos para encontrar loci UCE no PHYLUCE
 
-
-<div align="justify">
-Organizar o diretório de montagem
+<p align="justify">
+#Organizar o diretório de montagem
 Certifique-se de que todas as pastas de montagem (por amostra) estão reunidas em um único diretório.
 Cada pasta deve conter o arquivo contigs.fasta gerado pelo montador.
-</div>
+</p>
 
-   
 #Preparar o banco de sondas UCE
-
-  
 Baixe ou utilize o conjunto de sondas específico para o seu grupo de estudo (por exemplo, insetos, aves, aracnídeos).
 Esse arquivo .fasta será usado como referência.
 
-*Executar o alinhamento com lastz*
- 
+$\#Executar o alinhamento com lastz
 O comando típico no PHYLUCE para essa etapa é:
 
 ```bash
@@ -380,8 +372,6 @@ phyluce_assembly_match_contigs_to_probes \
   --output /caminho/para/uces_finder_output #arquivos tabulados com squile3
 ```
 
-
-Gerar a tabela de loci encontrados
 
 O resultado será um conjunto de arquivos que listam quais loci foram encontrados em cada amostra.
 Esses arquivos são usados nas etapas seguintes de filtragem e extração.
