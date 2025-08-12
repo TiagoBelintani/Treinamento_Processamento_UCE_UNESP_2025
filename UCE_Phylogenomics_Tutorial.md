@@ -448,7 +448,7 @@ source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
 
 phyluce_assembly_match_contigs_to_probes \
     --contigs /home/tiagobelintani/uce-treinamento/assembly/contigs \
-    --probes probes.fasta \
+    --probes /home/tiagobelintani/uce-treinamento/probes/probes.fasta \
     --output uce-resultados-busca
 ```
 
@@ -468,7 +468,6 @@ A escolha de cada configuração depende de fatores como:
 
 
 ```bash
-Explicação dos parâmetros
 --contigs
 Caminho para o diretório contendo as montagens (assemblies), onde cada pasta de amostra deve conter o arquivo contigs.fasta.
 Exemplo: /home/user/projeto/assemblies/.
@@ -517,8 +516,7 @@ Se especificado, mantém loci duplicados nos resultados (por padrão, duplicatas
 Gera saída no formato .csv, facilitando a importação para planilhas ou scripts de análise.
 ```
 
-Possíveis problemas e soluções
-Problema	Possível causa	Como resolver
+**Possíveis problemas e soluções**
 
 | Problema                               | Possível causa                                                 | Como resolver                                                         |
 | -------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------- |
