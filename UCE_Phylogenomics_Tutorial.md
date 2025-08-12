@@ -895,7 +895,8 @@ phyluce_assembly_get_fastas_from_match_counts \
 2025-08-12 17:56:01,168 - phyluce_assembly_get_match_counts - INFO - ========== Completed phyluce_assembly_get_match_counts ==========
 ```
 
-#Breve descrição
+**#Breve descrição**
+
 <div align="justify"> 
 Na etapa de extração, a análise usa o *phyluce_assembly_get_fastas_from_match_counts* para converter a matriz de loci×táxons em sequências, lendo as montagens em *--contigs*, o banco de matches (probe.matches.sqlite) em *--locus_db*, a configuração da matriz (all-taxa-incomplete.conf) em *--match_count_output*, o relatório de ausências (.incomplete) em *--incomplete_matrix* e escrevendo um FASTA monolítico em *--output* — todos os caminhos estão registrados no log da execução, garantindo rastreabilidade dos insumos e do produto final. 
 A matriz usada aqui é incompleta, contendo 171 loci distribuídos em 22 táxons, o que maximiza cobertura ao custo de missing data e é consistente com a contagem previamente produzida pelo phyluce_assembly_get_match_counts. 
@@ -904,6 +905,36 @@ A matriz usada aqui é incompleta, contendo 171 loci distribuídos em 22 táxons
 <div align="justify"> 
 Durante a extração, o utilitário itera táxon a táxon (por exemplo, inicia por Cteniza_sp), localiza o(s) contigs.fasta compatíveis, renomeia/parseia os contigs conforme necessário, escreve as sequências presentes no FASTA consolidado e registra os loci ausentes no arquivo .incomplete, permitindo posterior filtragem por ocupação antes das etapas filogenéticas.
 </div> 
+
+---
+
+## Explodindo o FASTA por táxon e sumarizando comprimentos
+
+Após gerar o FASTA monolítico (p.ex., `all-incomplete.fasta`), podemos **separar** o arquivo em um FASTA **por táxon** e, em seguida, **obter estatísticas de comprimento** por sequência para cada táxon.
+
+> **Visão geral do fluxo:**  
+> 1) `phyluce_assembly_explode_get_fastas_file` divide o FASTA monolítico **por táxon**.  
+> 2) Um `for` percorre cada FASTA gerado e usa `phyluce_assembly_get_fasta_lengths` para criar um **CSV consolidado** com os comprimentos (e métricas associadas) das sequências.
+
+> **Atenção:** a flag correta é `--by-taxon` (sem ponto no final).
+
+### Comandos
+
+```bash
+phyluce_assembly_explode_get_fastas_file \
+    --input ahe-incomplete.fasta \
+    --output exploded-fastas \
+    --by-taxon
+```
+
+ Iterar sobre cada FASTA por táxon e agregar métricas de comprimento
+
+ ```bash
+for i in exploded-fastas/*.fasta; do
+    phyluce_assembly_get_fasta_lengths --input "$i" --csv | tail -n +2 >> exploded_fasta.csv
+done
+```
+Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápidas, gráficos e filtros (por táxon, por locus, por comprimento mínimo etc.).
 
 
 
