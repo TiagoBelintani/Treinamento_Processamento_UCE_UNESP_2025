@@ -114,8 +114,10 @@ bash rename_fastq.sh
 
 ## Limpeza dos Dados com Trim Galore
 
+<div align="justify">
 A limpeza de dados de sequenciamento de nova geração (NGS) é um passo crucial para garantir a qualidade e a confiabilidade das análises subsequentes. Ferramentas como o [Trim Galore](https://github.com/FelixKrueger/TrimGalore), [Trimmomatic](https://github.com/timflutre/trimmomatic) atuam removendo sequências adaptadoras e filtrando leituras de baixa qualidade, que podem introduzir ruído ou enviesar resultados. Durante o processo de sequenciamento, é comum que resíduos técnicos, como adaptadores não removidos ou bases com qualidade deteriorada nas extremidades — se acumulem nas leituras. Esses artefatos, se não tratados, podem levar a alinhamentos incorretos, montagem de genomas incompleta e interpretações equivocadas dos dados biológicos.
-
+</div>
+  
 ### 1. Ativar o Ambiente
 
 ```bash
@@ -295,7 +297,31 @@ Possíveis Problemas e Como Evitar
 | **Diretório de saída incompleto**    | Execução interrompida ou falta de espaço em disco | Checar logs em `log/` e espaço disponível.                            |
 
 
+#Estrutura de diretorios atuais 
 
+```bash
+/home/tiagobelintani/uce-treinamento/
+├── assembly
+│   ├── Arbanitis_rapax_spades
+│   ├── contigs
+│   ├── Cteniza_sp._spades
+│   ├── Ctenolophus_sp._spades
+│   ├── ... 
+├── clean-fastq
+│   ├── Arbanitis_rapax
+│   ├── ...
+├── config
+│   └── assembly.conf
+├── job
+├── lista.txt
+├── log
+└── raw-fastq
+```
+
+
+
+
+#Encontrar UCE loci (Fingding UCE loci)
 
 
 
