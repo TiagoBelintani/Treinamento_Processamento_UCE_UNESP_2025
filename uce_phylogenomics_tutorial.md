@@ -331,11 +331,15 @@ Esse processo é importante porque, embora a montagem contenha todas as sequênc
 </div>
 
 
+
 <div align="justify">
 O PHYLUCE realiza essa identificação comparando os contigs montados com um banco de dados de loci UCEs de referência, geralmente fornecido em formato .fasta. Essa comparação é feita usando algoritmos de alinhamento rápido, como lastz, que detectam regiões de alta similaridade.
 </div>
 
+
+
 #Passos para encontrar loci UCE no PHYLUCE
+
 
 <div align="justify">
 Organizar o diretório de montagem
@@ -351,7 +355,7 @@ Esse arquivo .fasta será usado como referência.
 Executar o alinhamento com lastz
 O comando típico no PHYLUCE para essa etapa é:
 
-˜˜˜bash
+```bash
 phyluce_assembly_match_contigs_to_probes \
   --contigs /caminho/para/assemblies \ #diretorio com os contigs (symlinks)
   --probes uce-probes.fasta \ #diretorio com as probes
