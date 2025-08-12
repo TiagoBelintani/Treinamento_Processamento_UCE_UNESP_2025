@@ -842,10 +842,58 @@ phyluce_assembly_get_fastas_from_match_counts \
     --log-path log
 ```
 
+**O resultado desta etapa deve se parecer com isso:**
+[phyluce_assembly_match_contigs_to_probes.log](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/phyluce_assembly_match_contigs_to_probes.log)
 
-
-
-
+```bash
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - =========== Starting phyluce_assembly_get_match_counts ==========
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Version: 1.7.3
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Commit: None
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Argument --extend_locus_db: None
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Argument --incomplete_matrix: True
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Argument --keep_counts: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --locus_db: /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --log_path: None
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --optimize: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --output: /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --random: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --sample_size: 10
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --samples: 10
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --silent: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_group: all
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_list_config: /home/tiagobelintani/uce-treinamento/taxa.conf
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --verbosity: INFO
+2025-08-12 17:55:21,289 - phyluce_assembly_get_match_counts - INFO - There are 22 taxa in the taxon-group '[all]' in the config file taxa.conf
+2025-08-12 17:55:21,289 - phyluce_assembly_get_match_counts - INFO - Getting UCE names from database
+2025-08-12 17:55:21,887 - phyluce_assembly_get_match_counts - INFO - There are 1120 total UCE loci in the database
+2025-08-12 17:55:21,988 - phyluce_assembly_get_match_counts - INFO - Getting UCE matches by organism to generate a INCOMPLETE matrix
+2025-08-12 17:55:21,989 - phyluce_assembly_get_match_counts - INFO - There are 171 UCE loci in an INCOMPLETE matrix
+2025-08-12 17:55:21,989 - phyluce_assembly_get_match_counts - INFO - Writing the taxa and loci in the data matrix to /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:56:01,103 - phyluce_assembly_get_match_counts - INFO - =========== Starting phyluce_assembly_get_match_counts ==========
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Version: 1.7.3
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Commit: None
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --extend_locus_db: None
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --incomplete_matrix: True
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --keep_counts: False
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --locus_db: /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --log_path: None
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --optimize: False
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --output: /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --random: False
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --sample_size: 10
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --samples: 10
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --silent: False
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_group: all
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_list_config: /home/tiagobelintani/uce-treinamento/taxa.conf
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --verbosity: INFO
+2025-08-12 17:56:01,107 - phyluce_assembly_get_match_counts - INFO - There are 22 taxa in the taxon-group '[all]' in the config file taxa.conf
+2025-08-12 17:56:01,107 - phyluce_assembly_get_match_counts - INFO - Getting UCE names from database
+2025-08-12 17:56:01,113 - phyluce_assembly_get_match_counts - INFO - There are 1120 total UCE loci in the database
+2025-08-12 17:56:01,166 - phyluce_assembly_get_match_counts - INFO - Getting UCE matches by organism to generate a INCOMPLETE matrix
+2025-08-12 17:56:01,166 - phyluce_assembly_get_match_counts - INFO - There are 171 UCE loci in an INCOMPLETE matrix
+2025-08-12 17:56:01,166 - phyluce_assembly_get_match_counts - INFO - Writing the taxa and loci in the data matrix to /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:56:01,168 - phyluce_assembly_get_match_counts - INFO - ========== Completed phyluce_assembly_get_match_counts ==========
+```
 
 
 
