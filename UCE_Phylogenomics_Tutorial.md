@@ -816,10 +816,8 @@ Extraia as sequências FASTA:
 mkdir phyluce_assembly_get_fastas_from_match_counts_job.sh
 ```
 
-```bash
-[phyluce_assembly_get_fastas_from_match_counts_job.sh
-(https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_get_fastas_from_match_counts_job.sh)
-```
+[phyluce_assembly_get_fastas_from_match_counts_job.sh](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_get_fastas_from_match_counts_job.sh)
+
 
 *O job deve ser editado*
 
@@ -846,11 +844,6 @@ phyluce_assembly_get_fastas_from_match_counts \
 
 
 
-
-
-
-
-cd taxon-set/all/
 
 
 
