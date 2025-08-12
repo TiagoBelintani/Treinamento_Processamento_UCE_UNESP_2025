@@ -659,7 +659,7 @@ Segregara_transvaalensis
 Titanidiops_sp
 ```
 
-excluir execendentes 
+*excluir execendentes* 
 
 ```bash
 rm -r  taxa.txt
@@ -692,13 +692,13 @@ Idiops_sp2_RF2025
 Idiops_sp3_RF2025
 Moggridgea_crudeni
 Neocteniza_toba
-probe.matches.sqlite
+
 Segregara_transvaalensis
 Titanidiops_sp
 ```
 
 
-#Agora criarmos um novo diretorio e um subdiretório
+#Agora devemos criar um novo diretorio e um subdiretório
 
 ```bash
 mkdir -p taxon-set/all
@@ -803,18 +803,40 @@ cd taxon-sets/all
 ```bash
 mkdir -p log
 ```
+*confira o diretório*
+
+```bash
+pwd
+```
 
 Extraia as sequências FASTA:
 
 ```bash
+mkdir [phyluce_assembly_get_fastas_from_match_counts_job.sh](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_get_fastas_from_match_counts_job.sh)
+```
+*O job deve ser editado*
+
+```bash
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -c 1
+
+
+module load miniconda/3-2023-09
+
+source $(conda info --base)/etc/profile.d/conda.sh
+source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
+
+
 phyluce_assembly_get_fastas_from_match_counts \
-    --contigs/home/tiagobelintani/uce-treinamento/assembly_2/contigs/ \
+    --contigs /home/tiagobelintani/uce-treinamento/assembly_2/contigs/ \
     --locus-db /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite \
     --match-count-output /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf \
     --output  all-taxa-incomplete.fasta \
     --incomplete-matrix /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.incomplete \
     --log-path log
 ```
+
 
 
 
