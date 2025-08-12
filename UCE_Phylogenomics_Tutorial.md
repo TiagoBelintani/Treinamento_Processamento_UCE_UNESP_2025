@@ -1,4 +1,4 @@
-# UCE Phylogenomics: Tutorial de Processamento de Dados de Aranhas Mygalomorphae
+<img width="8192" height="8192" alt="image" src="https://github.com/user-attachments/assets/f21d16c1-bb8c-4ad6-a14d-c16e13291fbc" /># UCE Phylogenomics: Tutorial de Processamento de Dados de Aranhas Mygalomorphae
 
 <div align="justify">
 Este tutorial visa descrever, de forma metodológica e reprodutível, o processamento de dados de enriquecimento de UCEs (Ultra-Conserved Elements) provenientes de amostras de aranhas da subordem Mygalomorphae.
@@ -922,25 +922,68 @@ Após gerar o FASTA monolítico (p.ex., `all-incomplete.fasta`), podemos **separ
 
 ```bash
 phyluce_assembly_explode_get_fastas_file \
-    --input ahe-incomplete.fasta \
+    --input all-taxa-incomplete.fasta \
     --output exploded-fastas \
     --by-taxon
 ```
+O processamento dever ser parecido com:
+
+```bash
+phyluce_assembly_explode_get_fastas_file \
+>     --input all-taxa-incomplete.fasta \
+>     --output exploded-fastas \
+>     --by-taxon
+Reading fasta...
+Writing fasta...
+```
+
 
  Iterar sobre cada FASTA por táxon e agregar métricas de comprimento
 
  ```bash
-for i in exploded-fastas/*.fasta; do
-    phyluce_assembly_get_fasta_lengths --input "$i" --csv | tail -n +2 >> exploded_fasta.csv
+for i in exploded-fastas/*.fasta;
+do
+    phyluce_assembly_get_fasta_lengths --input $i --csv >> exploded_fasta.csv ;
 done
 ```
 Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápidas, gráficos e filtros (por táxon, por locus, por comprimento mínimo etc.).
 
+[exploded_fasta.cvs](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/exploded_fasta.csv)
 
 
+```bash
+### Resumo por táxon (exploded FASTA)
 
+| Sample                         | Contigs | Total bp | Mean length | 95% CI length | Min length | Max length | Median length | Contigs >1 kb |
+|:-------------------------------|--------:|---------:|------------:|--------------:|-----------:|-----------:|--------------:|--------------:|
+| Cteniza-sp                     |     120 |    67683 |     564.025 |        18.030 |        310 |       1372 |         532.0 |             4 |
+| Ctenolophus-sp                 |     110 |    58269 |     529.718 |        14.137 |        307 |       1208 |         510.0 |             1 |
+| Gorgyrella-namaquensis         |      41 |    15806 |     385.512 |        11.424 |        309 |        569 |         357.0 |             0 |
+| Heligmomerus-sp                |      51 |    19604 |     384.392 |        11.616 |        228 |        652 |         360.0 |             0 |
+| Idiops-carajas                 |       4 |      969 |     242.250 |        53.186 |        118 |        378 |         236.5 |             0 |
+| Idiops-clarus                  |       4 |     1366 |     341.500 |        13.580 |        321 |        379 |         333.0 |             0 |
+| Idiops-fryi                    |      57 |    22303 |     391.281 |        10.452 |        307 |        682 |         374.0 |             0 |
+| Idiops-germaini                |       6 |     1739 |     289.833 |        28.853 |        188 |        386 |         306.0 |             0 |
+| Idiops-guri                    |       6 |     2219 |     369.833 |        41.268 |        305 |        572 |         341.5 |             0 |
+| Idiops-kanonganus              |       5 |     1409 |     281.800 |        24.239 |        228 |        351 |         265.0 |             0 |
+| Idiops-petiti                  |      31 |    11424 |     368.516 |        12.464 |        184 |        612 |         365.0 |             0 |
+| Idiops-pirassununguensis       |      52 |    24084 |     463.154 |        21.256 |        312 |        946 |         412.5 |             0 |
+| Idiops-pretoriae               |      21 |     7393 |     352.048 |        12.624 |        222 |        491 |         336.0 |             0 |
+| Idiops-rastratus               |       1 |      368 |     368.000 |         0.000 |        368 |        368 |         368.0 |             0 |
+| Idiops-rohdei                  |      48 |    20662 |     430.458 |        13.075 |        307 |        629 |         407.5 |             0 |
+| Idiops-sp2-RF2025              |      47 |    19455 |     413.936 |        37.791 |        199 |       2061 |         374.0 |             1 |
+| Idiops-sp3-RF2025              |       8 |     2573 |     321.625 |        17.554 |        246 |        403 |         332.5 |             0 |
+| Moggridgea-crudeni             |       4 |      887 |     221.750 |        11.940 |        207 |        257 |         211.5 |             0 |
+| Neocteniza-toba                |      38 |    15365 |     404.342 |        16.213 |        308 |        756 |         360.0 |             0 |
+| Segregara-transvaalensis       |      56 |    22010 |     393.036 |         9.528 |        251 |        583 |         376.5 |             0 |
+| Titanidiops-sp                 |      91 |    45668 |     501.846 |        14.068 |        286 |        985 |         504.0 |             0 |
+```
 
+#Breve Descrição
 
+De modo geral, os resultados mostram um painel heterogêneo: táxons como Cteniza-sp (120 contigs; média ≈564 bp) e Ctenolophus-sp/Titanidiops-sp (110/91; ≈530/502 bp) recuperaram mais loci e com comprimentos medianos altos, enquanto casos como Moggridgea-crudeni (4 contigs; ≈222 bp) e Idiops-rastratus (1 contig; 368 bp) sugerem montagem fragmentada, baixa cobertura ou maior distância às probes; o 95% CI maior em Idiops-sp2-RF2025 (≈37,8) e o máximo de 2061 bp indicam distribuição alongada (possíveis “supercontigs”/regiões repetitivas), motivo para priorizar mediana (mais estável) e aplicar filtros por comprimento mínimo (p.ex., ≥300–400 bp) e por ocupação de loci entre táxons. O baixo número de “contigs >1 kb” na maioria reforça a cautela com loci muito curtos (informação limitada e alinhamentos instáveis); vale revisar qualidade das leituras e parâmetros de montagem.
+
+---
 
 
 
