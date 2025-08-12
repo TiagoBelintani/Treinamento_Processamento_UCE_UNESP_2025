@@ -350,6 +350,7 @@ Portanto, investir em uma etapa de sequenciamento bem planejada — garantindo c
 ├── log
 └── raw-fastq
 ```
+---
 
 # Encontrar UCE loci (Finding UCE loci)
 
@@ -401,6 +402,7 @@ Possíveis problemas
 | Arquivo de contigs não encontrado | Estrutura de diretórios incorreta           | Conferir se o caminho passado em `--contigs` está correto e contém `contigs.fasta`. |
 ```
 
+----
 
 # Passos Práticos
 
@@ -514,7 +516,7 @@ phyluce_assembly_match_contigs_to_probes \
 ```
  #Breve intepretação
 
-<div align="justify">
+<div align="justify"> 
 Com os parâmetros definidos para --min_coverage 80 e --min_identity 80 (default), o comando phyluce_assembly_match_contigs_to_probes realizou uma busca relativamente restritiva, exigindo que pelo menos 80% da sonda fosse coberta e que a similaridade mínima entre contig e probe também fosse de 80%. Esses valores favorecem a recuperação de loci de maior qualidade, mas podem reduzir bastante o número de UCEs identificados, especialmente em amostras mais divergentes ou com montagens fragmentadas. Isso explica a grande variação de resultados observada no log, com algumas espécies recuperando acima de 100 loci (ex.: Cteniza_sp com 120) e outras com praticamente nenhum locus (ex.: Idiops_camelus com 0). Além disso, o relatório indica remoções de loci por mapearem em múltiplos contigs ou contigs associados a múltiplos loci, o que evidencia a necessidade de avaliar a integridade e o nível de duplicação das montagens para otimizar parâmetros em futuras análises.
 </div>
 
@@ -596,6 +598,152 @@ Gera saída no formato .csv, facilitando a importação para planilhas ou script
 | Execução lenta                         | Muitas amostras ou sondas muito grandes                        | Usar mais *cores* e otimizar recursos do cluster.                     |
 | Arquivo `contigs.fasta` não encontrado | Estrutura de diretórios incorreta                              | Verificar caminhos em `--contigs` e garantir que os arquivos existam. |
 
+---
+
+### Extraindo Loci UCE (Extracting UCE loci)
+
+Após a identificação dos loci UCE, o passo seguinte consiste em definir quais táxons serão incluídos na análise. Para isso, é necessário criar um arquivo contendo a lista desses táxons e, a partir dele, gerar um arquivo de configuração da matriz de dados. Esse arquivo de configuração especificará, para cada táxon, quais loci foram efetivamente enriquecidos, servindo como referência para a extração das respectivas sequências no formato FASTA.
+
+---
+
+### 1. Criar o conjunto de táxons (*taxon set*)
+
+Decida quais táxons quer incluir. O nome de cada táxon deve ser exatamente igual ao usado nas montagens.  
+
+Exemplo de arquivo `taxon-set.conf`:
+
+```bash
+[all]
+species_1
+specie_2
+specie_3
+```
+
+Criar e editar config #isso pode variar a partir das estrutura inicial dos arquivos e pastas.
+
+```bash
+echo "[all]" > taxa.txt
+ls uce-resultados-busca >> taxa.txt
+```
+
+```bash
+sed 's/\.lastz$//' taxa.txt > taxa.prep
+```
+
+```bash
+sed 's/\.contigs$//' taxa.prep > taxa.conf
+```
+
+excluir execendentes 
+```bash
+rm -r taxa.prep taxa.txt
+```
+
+```bash
+editar no final com nano
+
+```
+
+#Agora criarmos um novo diretorio e um subdiretório
+
+```bash
+mkdir -p taxon-set/all
+```
+
+#Agora você deve executar 
+
+```bash
+ phyluce_assembly_get_match_counts \
+        --locus-db ~/uce-treinamento/uce-resultados-busca/probe.matches.sqlite \
+        --taxon-list-config  ~/uce-treinamento/taxa.conf \
+         --taxon-group 'all' \
+        --incomplete-matrix \
+        --output  ~/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+```
+
+#agora nos devemos ter algo semelhante: [phyluce_assembly_get_match_counts.log](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/phyluce_assembly_get_match_counts.log)
+
+```bash
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - =========== Starting phyluce_assembly_get_match_counts ==========
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Version: 1.7.3
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Commit: None
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Argument --extend_locus_db: None
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Argument --incomplete_matrix: True
+2025-08-12 17:55:21,146 - phyluce_assembly_get_match_counts - INFO - Argument --keep_counts: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --locus_db: /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --log_path: None
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --optimize: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --output: /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --random: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --sample_size: 10
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --samples: 10
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --silent: False
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_group: all
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_list_config: /home/tiagobelintani/uce-treinamento/taxa.conf
+2025-08-12 17:55:21,147 - phyluce_assembly_get_match_counts - INFO - Argument --verbosity: INFO
+2025-08-12 17:55:21,289 - phyluce_assembly_get_match_counts - INFO - There are 22 taxa in the taxon-group '[all]' in the config file taxa.conf
+2025-08-12 17:55:21,289 - phyluce_assembly_get_match_counts - INFO - Getting UCE names from database
+2025-08-12 17:55:21,887 - phyluce_assembly_get_match_counts - INFO - There are 1120 total UCE loci in the database
+2025-08-12 17:55:21,988 - phyluce_assembly_get_match_counts - INFO - Getting UCE matches by organism to generate a INCOMPLETE matrix
+2025-08-12 17:55:21,989 - phyluce_assembly_get_match_counts - INFO - There are 171 UCE loci in an INCOMPLETE matrix
+2025-08-12 17:55:21,989 - phyluce_assembly_get_match_counts - INFO - Writing the taxa and loci in the data matrix to /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:56:01,103 - phyluce_assembly_get_match_counts - INFO - =========== Starting phyluce_assembly_get_match_counts ==========
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Version: 1.7.3
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Commit: None
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --extend_locus_db: None
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --incomplete_matrix: True
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --keep_counts: False
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --locus_db: /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --log_path: None
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --optimize: False
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --output: /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --random: False
+2025-08-12 17:56:01,104 - phyluce_assembly_get_match_counts - INFO - Argument --sample_size: 10
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --samples: 10
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --silent: False
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_group: all
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --taxon_list_config: /home/tiagobelintani/uce-treinamento/taxa.conf
+2025-08-12 17:56:01,105 - phyluce_assembly_get_match_counts - INFO - Argument --verbosity: INFO
+2025-08-12 17:56:01,107 - phyluce_assembly_get_match_counts - INFO - There are 22 taxa in the taxon-group '[all]' in the config file taxa.conf
+2025-08-12 17:56:01,107 - phyluce_assembly_get_match_counts - INFO - Getting UCE names from database
+2025-08-12 17:56:01,113 - phyluce_assembly_get_match_counts - INFO - There are 1120 total UCE loci in the database
+2025-08-12 17:56:01,166 - phyluce_assembly_get_match_counts - INFO - Getting UCE matches by organism to generate a INCOMPLETE matrix
+2025-08-12 17:56:01,166 - phyluce_assembly_get_match_counts - INFO - There are 171 UCE loci in an INCOMPLETE matrix
+2025-08-12 17:56:01,166 - phyluce_assembly_get_match_counts - INFO - Writing the taxa and loci in the data matrix to /home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf
+2025-08-12 17:56:01,168 - phyluce_assembly_get_match_counts - INFO - ========== Completed phyluce_assembly_get_match_counts ==========
+```
+
+#Breve descrição
+<div align="justify"> 
+O comando executado buscou contar e organizar os loci UCE encontrados para cada táxon listado no arquivo taxa.conf, utilizando o banco de dados probe.matches.sqlite como fonte de correspondências.
+
+O parâmetro --incomplete_matrix foi ativado, o que significa que a matriz gerada inclui loci presentes em apenas parte dos táxons (e não apenas loci compartilhados por todos). Isso é útil quando queremos aproveitar ao máximo a informação disponível, mesmo que não haja cobertura completa para todas as espécies. Uma matrix completa, seria uma matrix recuparada considerado apenas dados completos. 
+
+O grupo de táxons definido como 'all' contem 22 espécies. No banco de dados,1.120 loci UCE no total foram recuperados, mas apenas 171 loci compuseram a matriz incompleta resultante.
+
+O arquivo final foi salvo em:
+
+```bash
+/home/tiagobelintani/uce-treinamento/taxon-set/all/all-taxa-incomplete.conf.
+```
+
+**Este número relativamente baixo de loci no conjunto final pode indicar:**
+
+*Montagens de baixa qualidade ou incompletas para algumas espécies.*
+
+*Reads iniciais com baixa cobertura ou muitos gaps.*
+
+*Diferença filogenética grande em relação às sondas utilizadas (probes), levando a menos correspondências.*
+
+*Parâmetros de identidade ou cobertura usados anteriormente (na etapa match_contigs_to_probes) que podem ter sido restritivos demais.*
+
+</div>
+
+
+
+
+
+cd taxon-set/all/
 
 
 
@@ -605,6 +753,17 @@ Gera saída no formato .csv, facilitando a importação para planilhas ou script
 
 
 
+
+
+
+
+
+
+
+
+
+
+`
 
 
 
