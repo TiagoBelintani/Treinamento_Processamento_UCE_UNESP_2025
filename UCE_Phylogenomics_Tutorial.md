@@ -792,7 +792,7 @@ O arquivo final foi salvo em:
 
 *Parâmetros de identidade ou cobertura usados anteriormente (na etapa match_contigs_to_probes) que podem ter sido restritivos demais.*
 
-</div>
+</div> 
 ```
 #Extrair as sequências FASTA para os loci do conjunto
 
@@ -895,7 +895,15 @@ phyluce_assembly_get_fastas_from_match_counts \
 2025-08-12 17:56:01,168 - phyluce_assembly_get_match_counts - INFO - ========== Completed phyluce_assembly_get_match_counts ==========
 ```
 
+#Breve descrição
+<div align="justify"> 
+Na etapa de extração, a análise usa o *phyluce_assembly_get_fastas_from_match_counts* para converter a matriz de loci×táxons em sequências, lendo as montagens em *--contigs*, o banco de matches (probe.matches.sqlite) em *--locus_db*, a configuração da matriz (all-taxa-incomplete.conf) em *--match_count_output*, o relatório de ausências (.incomplete) em *--incomplete_matrix* e escrevendo um FASTA monolítico em *--output* — todos os caminhos estão registrados no log da execução, garantindo rastreabilidade dos insumos e do produto final. 
+A matriz usada aqui é incompleta, contendo 171 loci distribuídos em 22 táxons, o que maximiza cobertura ao custo de missing data e é consistente com a contagem previamente produzida pelo phyluce_assembly_get_match_counts. 
+</div> 
 
+<div align="justify"> 
+Durante a extração, o utilitário itera táxon a táxon (por exemplo, inicia por Cteniza_sp), localiza o(s) contigs.fasta compatíveis, renomeia/parseia os contigs conforme necessário, escreve as sequências presentes no FASTA consolidado e registra os loci ausentes no arquivo .incomplete, permitindo posterior filtragem por ocupação antes das etapas filogenéticas.
+</div> 
 
 
 
