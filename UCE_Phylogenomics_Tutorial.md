@@ -948,7 +948,6 @@ done
 ```
 Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápidas, gráficos e filtros (por táxon, por locus, por comprimento mínimo etc.).
 
-[exploded_fasta.cvs](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/exploded_fasta.csv)
 
 
 <details>
