@@ -362,7 +362,7 @@ phyluce_assembly_match_contigs_to_probes \
   --output /caminho/para/uces_finder_output #arquivos tabulados com squile3
 ```
 
-```
+
 Gerar a tabela de loci encontrados
 
 O resultado será um conjunto de arquivos que listam quais loci foram encontrados em cada amostra.
@@ -370,11 +370,69 @@ Esses arquivos são usados nas etapas seguintes de filtragem e extração.
 
 Possíveis problemas
 
+```bash
 | Problema                          | Causa comum                                 | Como corrigir                                                                       |
 | --------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------- |
 | Nenhum locus encontrado           | Sonda incompatível com seu grupo taxonômico | Verificar se está usando o conjunto de sondas correto.                              |
 | Alinhamento muito lento           | Muitas amostras e/ou sonda muito grande     | Usar mais *cores* (`--cores`) e otimizar o cluster.                                 |
 | Arquivo de contigs não encontrado | Estrutura de diretórios incorreta           | Conferir se o caminho passado em `--contigs` está correto e contém `contigs.fasta`. |
+```
+
+
+# Passos Práticos
+
+## Baixar as probes (**iscas**)
+
+
+#criar dir para receber as probes
+
+```bash
+mkdir probes
+```
+#Opções de downloud
+
+[Probes] (https://figshare.com/articles/dataset/Arachnida_14_799_baits_targeting_1_120_conserved_loci_Arachnida-UCE-1_1K-v1_fasta_/3856146)
+
+[Probes] (https://drive.google.com/file/d/1BTGtLKJQHw1uxE7X2kTqiSm0Gmnt8KwM/view?usp=drive_link)
+
+[Probes] (https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Probes)
+
+## 2. Preparar o Arquivo de Configuração
+
+
+
+<div align="justify">
+Agora, no diretório inicial das suas análises, você deverá criar um job e executá-lo no terminal.
+</div>
+
+```bash
+pwd
+/home/seu_nome/uce-treinamento/
+```
+#criar o arquivo config
+
+```bash
+nano phyluce_assembly_match_contigs_to_probes_job.sh
+```
+#(arquivo config)[
+
+```bash
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -c 1
+
+
+module load miniconda/3-2023-09
+
+source $(conda info --base)/etc/profile.d/conda.sh
+source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
+
+phyluce_assembly_match_contigs_to_probes \
+    --contigs /home/tiagobelintani/uce-treinamento/assembly/contigs \
+    --probes uce-5k-probes.fasta \
+    --output uce-search-results
+```
+
 
 
 
