@@ -202,8 +202,9 @@ phyluce_assembly_assemblo_spades \
   --memory 64
 ```
 
-Explicação dos parâmetros:
+**Explicação dos parâmetros:**
 
+```bash
 --conf assembly.conf → Arquivo de configuração que lista as amostras, os caminhos para os arquivos FASTQ e parâmetros opcionais de montagem.
 
 --output spades-assemblies → Pasta onde os resultados da montagem serão salvos. Cada amostra terá seu próprio diretório com os contigs.
@@ -213,19 +214,21 @@ Explicação dos parâmetros:
 --memory 64 → Quantidade de memória RAM (em GB) disponível para a execução do SPAdes.
 
 Após a execução, a pasta de saída conterá os contigs prontos para as próximas etapas, como identificação e extração dos loci alvo.
-
+```
 
 # Passos Práticos
 
 ## 1. Preparar o Arquivo de Configuração
 
-O arquivo `assembly.conf` é essencial para que o **PHYLUCE** saiba onde encontrar os arquivos de leituras já limpas de cada amostra.  
+<div align="justify">  </div>
+O arquivo `assembly.conf` é essencial para que o <a href="https://phyluce.readthedocs.io/en/latest/">Phyluce</a> saiba onde encontrar os arquivos de leituras já limpas de cada amostra.  
 
 Ele deve conter uma lista com o nome da amostra e o caminho para o diretório `split-adapter-quality-trimmed` correspondente.
 
 Pode ser facilmente construido usando um editor de tabelas (excel ou outro pacote).
+</div>
 
-Exemplo de listagem simples:
+*Exemplo de listagem simples:*
 
 ```bash
 [samples]
@@ -292,6 +295,7 @@ phyluce_assembly_assemblo_spades \
 ```
 
 #3. Submeter e Monitorar o Job
+
 Envie o job para execução no SLURM:
 
 ```bash
@@ -334,7 +338,7 @@ Possíveis Problemas e Como Evitar
 └── raw-fastq
 ```
 
-#Encontrar UCE loci (Fingding UCE loci)
+# Encontrar UCE loci (Fingding UCE loci)
 
 
 <div align="justify">
