@@ -223,7 +223,7 @@ Ele deve conter uma lista com o nome da amostra e o caminho para o diretório `s
 
 Exemplo de listagem simples:
 
-```ini
+```bash
 [samples]
 Arbanitis_rapax:/home/tiagobelintani/uce-treinamento/clean-fastq/Arbanitis_rapax/split-adapter-quality-trimmed
 ...
@@ -237,6 +237,7 @@ Os nomes das amostras não devem conter espaços.
 Use nomes consistentes (iguais aos usados nos arquivos de leitura) para evitar erros.
 
 Se os caminhos tiverem espaços antes ou depois dos dois-pontos (:), remova-os usando sed:
+```
 
 ```bash
 sed -E 's/[[:space:]]*:[[:space:]]*/:/g' tabela.txt > assembly.conf
@@ -256,6 +257,7 @@ Gorgyrella_namaquensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Gorgyrel
 ...
 Titanidiops_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Titanidiops_sp./split-adapter-quality-trimmed
 ```
+
 2. Criar o Script de Montagem
 Crie um arquivo chamado spades_job.sh com o seguinte conteúdo:
 
@@ -354,6 +356,7 @@ phyluce_assembly_match_contigs_to_probes \
   --output /caminho/para/uces_finder_output #arquivos tabulados com squile3
 ```
 
+```
 Gerar a tabela de loci encontrados
 
 O resultado será um conjunto de arquivos que listam quais loci foram encontrados em cada amostra.
