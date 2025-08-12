@@ -220,7 +220,7 @@ Após a execução, a pasta de saída conterá os contigs prontos para as próxi
 
 ## 1. Preparar o Arquivo de Configuração
 
-<div align="justify">  </div>
+<div align="justify"> 
 O arquivo `assembly.conf` é essencial para que o <a href="https://phyluce.readthedocs.io/en/latest/">Phyluce</a> saiba onde encontrar os arquivos de leituras já limpas de cada amostra.  
 
 Ele deve conter uma lista com o nome da amostra e o caminho para o diretório `split-adapter-quality-trimmed` correspondente.
@@ -316,9 +316,21 @@ Possíveis Problemas e Como Evitar
 | **Montagem muito lenta**             | Poucos núcleos ou memória insuficiente            | Ajustar `--cores` e `--memory` conforme a disponibilidade do cluster. |
 | **Diretório de saída incompleto**    | Execução interrompida ou falta de espaço em disco | Checar logs em `log/` e espaço disponível.                            |
 
+#Resultados 
 
+<div align="justify">  
+Nesta prática, duas montagens ficaram incompletas devido à baixa qualidade inicial dos dados de sequenciamento. Nesse caso específico, observou-se um número reduzido de leituras e uma proporção significativa de sequências de baixa qualidade.
+</p>
+  
+<div align="justify"> 
+Esse problema poderia ser, em parte, solucionado por meio de novas tentativas utilizando outros montadores (assemblers) ou ajustando parâmetros críticos, como diferentes valores de k-mer. Ainda assim, é importante ressaltar que dados de qualidade insatisfatória impõem limitações severas às análises filogenômicas, comprometendo a recuperação de loci, a completude das montagens e, consequentemente, a robustez das inferências evolutivas.
+</p>
+  
+<div align="justify">   
+Portanto, investir em uma etapa de sequenciamento bem planejada — garantindo cobertura adequada, qualidade de leitura elevada e estratégias de limpeza eficientes — é essencial para minimizar perdas de informação e maximizar o sucesso das etapas subsequentes de montagem e análise.
 #Estrutura de diretorios atuais 
-
+</p>
+  
 *não é obrigatorio tal estrutura, mas pode facilitar muito a organização do fluxo de trabalho*
 
 ```bash
@@ -433,7 +445,7 @@ pwd
 ```bash
 nano phyluce_assembly_match_contigs_to_probes_job.sh
 ```
-#[arquivo config](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_match_contigs_to_probes_job.sh)
+#[Arquivo de execução - job slurm](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_match_contigs_to_probes_job.sh)
 
 ```bash
 #!/bin/bash
@@ -451,6 +463,13 @@ phyluce_assembly_match_contigs_to_probes \
     --probes /home/tiagobelintani/uce-treinamento/probes/probes.fasta \
     --output uce-resultados-busca
 ```
+
+#Deverá ver um resultado semelhante ao seguinte (também armazenado em log):
+
+```bash
+
+
+
 
 
 O comando `phyluce_assembly_match_contigs_to_probes` identifica quais *contigs* das montagens contêm loci UCE (*Ultra-Conserved Elements*) ao compará-los com um conjunto de sondas (*probes*) de referência.  
