@@ -333,6 +333,8 @@ Portanto, investir em uma etapa de sequenciamento bem planejada — garantindo c
   
 *não é obrigatorio tal estrutura, mas pode facilitar muito a organização do fluxo de trabalho*
 
+#Vamos continuar verificando a estrutura dos diretórios.
+
 ```bash
 /home/tiagobelintani/uce-treinamento/
 ├── assembly
@@ -350,7 +352,7 @@ Portanto, investir em uma etapa de sequenciamento bem planejada — garantindo c
 └── raw-fastq
 ```
 
-# Encontrar UCE loci (Fingding UCE loci)
+# Encontrar UCE loci (Finding UCE loci)
 
 <p align="justify">
 Encontrando os Loci UCE (Finding UCE)
@@ -468,10 +470,6 @@ phyluce_assembly_match_contigs_to_probes \
 
 ```bash
 
-
-
-
-
 O comando `phyluce_assembly_match_contigs_to_probes` identifica quais *contigs* das montagens contêm loci UCE (*Ultra-Conserved Elements*) ao compará-los com um conjunto de sondas (*probes*) de referência.  
 
 Este utilitário possui funções refinadas que podem otimizar a análise, permitindo ajustes finos de parâmetros.  
@@ -481,7 +479,7 @@ A escolha de cada configuração depende de fatores como:
 - Qualidade das leituras iniciais.
 - Similaridade com as sondas utilizadas.
 - Cobertura e identidade mínimas desejadas.
-
+```
 ---
 **Explicação dos parâmetros**
 
