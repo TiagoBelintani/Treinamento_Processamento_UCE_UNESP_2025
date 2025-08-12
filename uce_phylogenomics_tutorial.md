@@ -114,6 +114,8 @@ bash rename_fastq.sh
 
 ## Limpeza dos Dados com Trim Galore
 
+A limpeza de dados de sequenciamento de nova geração (NGS) é um passo crucial para garantir a qualidade e a confiabilidade das análises subsequentes. Ferramentas como o (Trim Galore)[https://github.com/FelixKrueger/TrimGalore], (Trimmomatic) [https://github.com/timflutre/trimmomatic] atuam removendo sequências adaptadoras e filtrando leituras de baixa qualidade, que podem introduzir ruído ou enviesar resultados. Durante o processo de sequenciamento, é comum que resíduos técnicos — como adaptadores não removidos ou bases com qualidade deteriorada nas extremidades — se acumulem nas leituras. Esses artefatos, se não tratados, podem levar a alinhamentos incorretos, montagem de genomas incompleta e interpretações equivocadas dos dados biológicos.
+
 ### 1. Ativar o Ambiente
 
 ```bash
@@ -257,5 +259,20 @@ squeue -u tiagobelintani
 ```
 
 ---
+## Encontrando os Locis UCE (Finding UCE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
