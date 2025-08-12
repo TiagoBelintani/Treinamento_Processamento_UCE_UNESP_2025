@@ -448,9 +448,85 @@ source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
 
 phyluce_assembly_match_contigs_to_probes \
     --contigs /home/tiagobelintani/uce-treinamento/assembly/contigs \
-    --probes uce-5k-probes.fasta \
-    --output uce-search-results
+    --probes probes.fasta \
+    --output uce-resultados-busca
 ```
+
+
+O comando `phyluce_assembly_match_contigs_to_probes` identifica quais *contigs* das montagens contêm loci UCE (*Ultra-Conserved Elements*) ao compará-los com um conjunto de sondas (*probes*) de referência.  
+
+Este utilitário possui funções refinadas que podem otimizar a análise, permitindo ajustes finos de parâmetros.  
+A escolha de cada configuração depende de fatores como:
+
+- Qualidade das montagens.
+- Qualidade das leituras iniciais.
+- Similaridade com as sondas utilizadas.
+- Cobertura e identidade mínimas desejadas.
+
+---
+**Explicação dos parâmetros**
+
+
+```bash
+Explicação dos parâmetros
+--contigs
+Caminho para o diretório contendo as montagens (assemblies), onde cada pasta de amostra deve conter o arquivo contigs.fasta.
+Exemplo: /home/user/projeto/assemblies/.
+
+--probes
+Arquivo .fasta contendo as sequências das sondas UCE usadas na captura. Deve corresponder ao seu grupo taxonômico.
+Exemplo: uce-probes-insetos.fasta.
+
+--output
+Diretório onde os resultados serão salvos. O programa criará subpastas e arquivos com informações sobre loci encontrados.
+
+--verbosity (opcional)
+Define o nível de mensagens exibidas durante a execução:
+
+INFO → Mostra todas as mensagens (padrão).
+
+WARN → Mostra apenas avisos e erros.
+
+CRITICAL → Mostra apenas mensagens críticas.
+
+--log-path (opcional)
+Caminho para salvar o arquivo de log. Útil para revisitar mensagens e parâmetros usados.
+
+--min-coverage (opcional)
+Cobertura mínima (em %) que um contig deve ter em relação à sonda para ser considerado um match válido.
+Valores altos reduzem falsos positivos, mas podem descartar loci parciais.
+
+--min-identity (opcional)
+Percentual mínimo de identidade de bases entre contig e sonda.
+Ajustar de acordo com a distância evolutiva do grupo estudado:
+
+Grupos próximos → valores altos (90–95%).
+
+Grupos distantes → valores mais baixos (70–80%).
+
+--dupefile (opcional)
+Arquivo onde serão registradas ocorrências de loci duplicados. Útil para inspeção posterior.
+
+--regex (opcional)
+Expressão regular para filtrar nomes de amostras ou contigs. Pode ser usada para processar subconjuntos específicos.
+
+--keep-duplicates (opcional)
+Se especificado, mantém loci duplicados nos resultados (por padrão, duplicatas são removidas).
+
+--csv (opcional)
+Gera saída no formato .csv, facilitando a importação para planilhas ou scripts de análise.
+```
+
+Possíveis problemas e soluções
+Problema	Possível causa	Como resolver
+
+| Problema                               | Possível causa                                                 | Como resolver                                                         |
+| -------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Nenhum locus encontrado                | Sondas incompatíveis com o grupo analisado                     | Use o conjunto de sondas correto para o táxon.                        |
+| Poucos loci recuperados                | Parâmetros de `--min-coverage` ou `--min-identity` muito altos | Ajustar valores para permitir correspondências mais relaxadas.        |
+| Execução lenta                         | Muitas amostras ou sondas muito grandes                        | Usar mais *cores* e otimizar recursos do cluster.                     |
+| Arquivo `contigs.fasta` não encontrado | Estrutura de diretórios incorreta                              | Verificar caminhos em `--contigs` e garantir que os arquivos existam. |
+
 
 
 
