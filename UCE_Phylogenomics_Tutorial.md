@@ -345,7 +345,6 @@ Possíveis Problemas e Como Evitar
 Após a montagem das leituras em contigs, o próximo passo no PHYLUCE é identificar quais desses contigs contêm loci UCE (Ultra-Conserved Elements).
 Esse processo é importante porque, embora a montagem contenha todas as sequências resultantes do sequenciamento, apenas uma parte delas corresponde aos loci-alvo definidos pela sonda de captura utilizada no experimento.
 </div>
- 
 
  
 <div align="justify">
@@ -370,7 +369,8 @@ Cada pasta deve conter o arquivo contigs.fasta gerado pelo montador.
 Baixe ou utilize o conjunto de sondas específico para o seu grupo de estudo (por exemplo, insetos, aves, aracnídeos).
 Esse arquivo .fasta será usado como referência.
 
-Executar o alinhamento com lastz
+*Executar o alinhamento com lastz*
+ 
 O comando típico no PHYLUCE para essa etapa é:
 
 ```bash
