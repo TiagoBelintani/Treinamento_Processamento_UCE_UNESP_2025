@@ -182,7 +182,7 @@ echo "Trim Galore finalizado com sucesso."
 No fluxo de análise de dados no PHYLUCE, a etapa de montagem é responsável por reconstruir sequências contíguas (contigs) a partir das leituras limpas de sequenciamento. 
 Para isso, o PHYLUCE oferece suporte a diferentes programas de montagem, todos integrados por meio de scripts próprios, mantendo um padrão de entrada e saída.
 
-Os montadores disponíveis no (PHYLUCE) [https://phyluce.readthedocs.io/en/latest/] incluem:
+Os montadores disponíveis no [PHYLUCE] (https://phyluce.readthedocs.io/en/latest/) incluem:
 
 [SPAdes](https://github.com/ablab/spades): geralmente a opção recomendada. É fácil de instalar, produz resultados consistentes e costuma apresentar melhor desempenho na maioria dos conjuntos de dados processados com PHYLUCE.
 
@@ -219,14 +219,17 @@ Após a execução, a pasta de saída conterá os contigs prontos para as próxi
 ## 1. Preparar o Arquivo de Configuração
 
 O arquivo `assembly.conf` é essencial para que o **PHYLUCE** saiba onde encontrar os arquivos de leituras já limpas de cada amostra.  
+
 Ele deve conter uma lista com o nome da amostra e o caminho para o diretório `split-adapter-quality-trimmed` correspondente.
+
+Pode ser facilmente construido usando um editor de tabelas (excel ou outro pacote).
 
 Exemplo de listagem simples:
 
 ```bash
 [samples]
 Arbanitis_rapax:/home/tiagobelintani/uce-treinamento/clean-fastq/Arbanitis_rapax/split-adapter-quality-trimmed
-...
+```
 
 Atenção:
 
@@ -237,15 +240,20 @@ Os nomes das amostras não devem conter espaços.
 Use nomes consistentes (iguais aos usados nos arquivos de leitura) para evitar erros.
 
 Se os caminhos tiverem espaços antes ou depois dos dois-pontos (:), remova-os usando sed:
-```
+
+
+Agora um comando utilizando "sed" para retirar espaços indesejáveis 
 
 ```bash
 sed -E 's/[[:space:]]*:[[:space:]]*/:/g' tabela.txt > assembly.conf
 ```
 
-Modelo de assembly.conf para várias amostras:
+#Modelo de assembly.conf para várias amostras:
 
-[Arquivo modelo](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Jobs_Conf)
+*Este arquivo é propenso a erros; verifique cuidadosamente para evitar problemas causados por espaços extras, caminhos inválidos ou erros de digitação.*
+
+[Arquivo modelo - assembly.conf](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Jobs_Conf) *precisa de edição
+
 
 ```bash
 [samples]
@@ -259,7 +267,8 @@ Titanidiops_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Titanidiops_sp.
 ```
 
 2. Criar o Script de Montagem
-Crie um arquivo chamado spades_job.sh com o seguinte conteúdo:
+   
+#Crie um arquivo chamado spades_job.sh com o seguinte conteúdo:
 
 ```bash
 #!/bin/bash
@@ -304,6 +313,8 @@ Possíveis Problemas e Como Evitar
 
 
 #Estrutura de diretorios atuais 
+
+*não é obrigatorio tal estrutura, mas pode facilitar muito a organização do fluxo de trabalho*
 
 ```bash
 /home/tiagobelintani/uce-treinamento/
