@@ -950,32 +950,45 @@ done
 Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápidas, gráficos e filtros (por táxon, por locus, por comprimento mínimo etc.).
 
 
+<hr> <details> <summary>Resumo por táxon (exploded_fasta.csv)</summary>
+exploded_fasta.csv
 
-#sumario
-| Sample                         | Contigs | Total bp | Mean length | 95% CI length | Min length | Max length | Median length | Contigs >1 kb |
-|:-------------------------------|--------:|---------:|------------:|--------------:|-----------:|-----------:|--------------:|--------------:|
-| Cteniza-sp                     |     120 |    67683 |     564.025 |        18.030 |        310 |       1372 |         532.0 |             4 |
-| Ctenolophus-sp                 |     110 |    58269 |     529.718 |        14.137 |        307 |       1208 |         510.0 |             1 |
-| Gorgyrella-namaquensis         |      41 |    15806 |     385.512 |        11.424 |        309 |        569 |         357.0 |             0 |
-| Heligmomerus-sp                |      51 |    19604 |     384.392 |        11.616 |        228 |        652 |         360.0 |             0 |
-| Idiops-carajas                 |       4 |      969 |     242.250 |        53.186 |        118 |        378 |         236.5 |             0 |
-| Idiops-clarus                  |       4 |     1366 |     341.500 |        13.580 |        321 |        379 |         333.0 |             0 |
-| Idiops-fryi                    |      57 |    22303 |     391.281 |        10.452 |        307 |        682 |         374.0 |             0 |
-| Idiops-germaini                |       6 |     1739 |     289.833 |        28.853 |        188 |        386 |         306.0 |             0 |
-| Idiops-guri                    |       6 |     2219 |     369.833 |        41.268 |        305 |        572 |         341.5 |             0 |
-| Idiops-kanonganus              |       5 |     1409 |     281.800 |        24.239 |        228 |        351 |         265.0 |             0 |
-| Idiops-petiti                  |      31 |    11424 |     368.516 |        12.464 |        184 |        612 |         365.0 |             0 |
-| Idiops-pirassununguensis       |      52 |    24084 |     463.154 |        21.256 |        312 |        946 |         412.5 |             0 |
-| Idiops-pretoriae               |      21 |     7393 |     352.048 |        12.624 |        222 |        491 |         336.0 |             0 |
-| Idiops-rastratus               |       1 |      368 |     368.000 |         0.000 |        368 |        368 |         368.0 |             0 |
-| Idiops-rohdei                  |      48 |    20662 |     430.458 |        13.075 |        307 |        629 |         407.5 |             0 |
-| Idiops-sp2-RF2025              |      47 |    19455 |     413.936 |        37.791 |        199 |       2061 |         374.0 |             1 |
-| Idiops-sp3-RF2025              |       8 |     2573 |     321.625 |        17.554 |        246 |        403 |         332.5 |             0 |
-| Moggridgea-crudeni             |       4 |      887 |     221.750 |        11.940 |        207 |        257 |         211.5 |             0 |
-| Neocteniza-toba                |      38 |    15365 |     404.342 |        16.213 |        308 |        756 |         360.0 |             0 |
-| Segregara-transvaalensis       |      56 |    22010 |     393.036 |         9.528 |        251 |        583 |         376.5 |             0 |
-| Titanidiops-sp                 |      91 |    45668 |     501.846 |        14.068 |        286 |        985 |         504.0 |             0 |
-</details>
+Resumo por táxon (exploded FASTA)
+Sample	Contigs	Total bp	Mean length	95% CI length	Min length	Max length	Median length	Contigs >1 kb
+Cteniza-sp	120	67683	564.025	18.030	310	1372	532.0	4
+Ctenolophus-sp	110	58269	529.718	14.137	307	1208	510.0	1
+Gorgyrella-namaquensis	41	15806	385.512	11.424	309	569	357.0	0
+Heligmomerus-sp	51	19604	384.392	11.616	228	652	360.0	0
+Idiops-carajas	4	969	242.250	53.186	118	378	236.5	0
+Idiops-clarus	4	1366	341.500	13.580	321	379	333.0	0
+Idiops-fryi	57	22303	391.281	10.452	307	682	374.0	0
+Idiops-germaini	6	1739	289.833	28.853	188	386	306.0	0
+Idiops-guri	6	2219	369.833	41.268	305	572	341.5	0
+Idiops-kanonganus	5	1409	281.800	24.239	228	351	265.0	0
+Idiops-petiti	31	11424	368.516	12.464	184	612	365.0	0
+Idiops-pirassununguensis	52	24084	463.154	21.256	312	946	412.5	0
+Idiops-pretoriae	21	7393	352.048	12.624	222	491	336.0	0
+Idiops-rastratus	1	368	368.000	0.000	368	368	368.0	0
+Idiops-rohdei	48	20662	430.458	13.075	307	629	407.5	0
+Idiops-sp2-RF2025	47	19455	413.936	37.791	199	2061	374.0	1
+Idiops-sp3-RF2025	8	2573	321.625	17.554	246	403	332.5	0
+Moggridgea-crudeni	4	887	221.750	11.940	207	257	211.5	0
+Neocteniza-toba	38	15365	404.342	16.213	308	756	360.0	0
+Segregara-transvaalensis	56	22010	393.036	9.528	251	583	376.5	0
+Titanidiops-sp	91	45668	501.846	14.068	286	985	504.0	0
+
+</details> ::contentReference[oaicite:0]{index=0}
+
+
+
+
+
+
+
+
+Sources
+
+Ask ChatGPT
 
 
 #Breve Descrição
