@@ -519,7 +519,7 @@ Com os parâmetros definidos para --min_coverage 80 e --min_identity 80 (default
 </div>
 
 <p align="center">
-  <img src="imagens/uce_matches_por_especie.png" alt="UCEs únicos por espécie" width="800">
+  <img src="Imagens/uce_matches_por_especie.png" alt="UCEs únicos por espécie" width="800">
 </p>
 
 ```bash
