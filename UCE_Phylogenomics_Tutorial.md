@@ -1,4 +1,3 @@
-<img width="2379" height="1180" alt="image" src="https://github.com/user-attachments/assets/c240d37c-faca-411a-ab19-60f669973048" />
 # UCE Phylogenomics: Tutorial de Processamento de Dados de Aranhas Mygalomorphae
 
 <div align="justify">
@@ -519,7 +518,9 @@ phyluce_assembly_match_contigs_to_probes \
 Com os parâmetros definidos para --min_coverage 80 e --min_identity 80 (default), o comando phyluce_assembly_match_contigs_to_probes realizou uma busca relativamente restritiva, exigindo que pelo menos 80% da sonda fosse coberta e que a similaridade mínima entre contig e probe também fosse de 80%. Esses valores favorecem a recuperação de loci de maior qualidade, mas podem reduzir bastante o número de UCEs identificados, especialmente em amostras mais divergentes ou com montagens fragmentadas. Isso explica a grande variação de resultados observada no log, com algumas espécies recuperando acima de 100 loci (ex.: Cteniza_sp com 120) e outras com praticamente nenhum locus (ex.: Idiops_camelus com 0). Além disso, o relatório indica remoções de loci por mapearem em múltiplos contigs ou contigs associados a múltiplos loci, o que evidencia a necessidade de avaliar a integridade e o nível de duplicação das montagens para otimizar parâmetros em futuras análises.
 </div>
 
-![UCEs únicos por espécie](Imagens/uce_matches_por_especie.png)
+<p align="center">
+  <img src="imagens/uce_matches_por_especie.png" alt="UCEs únicos por espécie" width="800">
+</p>
 
 ```bash
 
