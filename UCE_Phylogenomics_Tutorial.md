@@ -951,7 +951,7 @@ Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápi
 [exploded_fasta.cvs](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/exploded_fasta.csv)
 
 
-```bash
+
 | Sample                         | Contigs | Total bp | Mean length | 95% CI length | Min length | Max length | Median length | Contigs >1 kb |
 |:-------------------------------|--------:|---------:|------------:|--------------:|-----------:|-----------:|--------------:|--------------:|
 | Cteniza-sp                     |     120 |    67683 |     564.025 |        18.030 |        310 |       1372 |         532.0 |             4 |
@@ -975,7 +975,7 @@ Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápi
 | Neocteniza-toba                |      38 |    15365 |     404.342 |        16.213 |        308 |        756 |         360.0 |             0 |
 | Segregara-transvaalensis       |      56 |    22010 |     393.036 |         9.528 |        251 |        583 |         376.5 |             0 |
 | Titanidiops-sp                 |      91 |    45668 |     501.846 |        14.068 |        286 |        985 |         504.0 |             0 |
-```
+
 
 #Breve Descrição
 
