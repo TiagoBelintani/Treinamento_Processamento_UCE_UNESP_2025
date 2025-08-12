@@ -795,7 +795,8 @@ O arquivo final foi salvo em:
 </div>
 ```
 #Extrair as sequências FASTA para os loci do conjunto
-#Entre no diretório do taxon set e crie uma pasta para logs:
+
+**Entre no diretório do taxon set e crie uma pasta para logs:**
 
 ```bash
 cd taxon-sets/all
