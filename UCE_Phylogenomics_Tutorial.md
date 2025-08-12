@@ -952,8 +952,6 @@ Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápi
 
 
 ```bash
-### Resumo por táxon (exploded FASTA)
-
 | Sample                         | Contigs | Total bp | Mean length | 95% CI length | Min length | Max length | Median length | Contigs >1 kb |
 |:-------------------------------|--------:|---------:|------------:|--------------:|-----------:|-----------:|--------------:|--------------:|
 | Cteniza-sp                     |     120 |    67683 |     564.025 |        18.030 |        310 |       1372 |         532.0 |             4 |
