@@ -943,7 +943,8 @@ done
 
 Com isso, você obtém um CSV único (exploded_fasta.csv) para inspeções rápidas, gráficos e filtros (por táxon, por locus, por comprimento mínimo etc.).
 
-Aqui (exploded_fasta)[https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/exploded_fasta.csv]
+Veja: [exploded_fasta.csv](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/exploded_fasta.csv)
+
 
 <hr>
 <h3 id="resumo-por-taxon-exploded">Resumo por táxon (exploded FASTA)</h3>
