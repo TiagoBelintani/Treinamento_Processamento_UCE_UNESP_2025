@@ -1,7 +1,9 @@
 
 # UCE Phylogenomics: Tutorial de Processamento de Dados de Aranhas Mygalomorphae
 
+<div align="justify">
 Este tutorial visa descrever, de forma metodológica e reprodutível, o processamento de dados de enriquecimento de UCEs (Ultra-Conserved Elements) provenientes de amostras de aranhas da subordem Mygalomorphae.
+</div>
 
 ## Referência Bibliográfica
 
@@ -176,6 +178,7 @@ echo "Trim Galore finalizado com sucesso."
 
 ## Montagem dos Dados com SPAdes
 
+<div align="justify">
 No fluxo de análise de dados no PHYLUCE, a etapa de montagem é responsável por reconstruir sequências contíguas (contigs) a partir das leituras limpas de sequenciamento. 
 Para isso, o PHYLUCE oferece suporte a diferentes programas de montagem, todos integrados por meio de scripts próprios, mantendo um padrão de entrada e saída.
 
@@ -188,6 +191,7 @@ Os montadores disponíveis no (PHYLUCE) [https://phyluce.readthedocs.io/en/lates
 [ABySS](https://pmc.ncbi.nlm.nih.gov/articles/PMC5411771/): voltado para conjuntos de dados maiores ou genomas mais complexos, capaz de lidar com grandes volumes de leituras.
 
 Para utilizar o SPAdes dentro do PHYLUCE, o comando típico é:
+</div>
 
 ```bash
 phyluce_assembly_assemblo_spades \ 
@@ -304,8 +308,6 @@ Possíveis Problemas e Como Evitar
 ├── assembly
 │   ├── Arbanitis_rapax_spades
 │   ├── contigs
-│   ├── Cteniza_sp._spades
-│   ├── Ctenolophus_sp._spades
 │   ├── ... 
 ├── clean-fastq
 │   ├── Arbanitis_rapax
@@ -318,11 +320,52 @@ Possíveis Problemas e Como Evitar
 └── raw-fastq
 ```
 
-
-
-
 #Encontrar UCE loci (Fingding UCE loci)
 
+
+<div align="justify">
+  Encontrando os Loci UCE (Finding UCE)
+Após a montagem das leituras em contigs, o próximo passo no PHYLUCE é identificar quais desses contigs contêm loci UCE (Ultra-Conserved Elements).
+Esse processo é importante porque, embora a montagem contenha todas as sequências resultantes do sequenciamento, apenas uma parte delas corresponde aos loci-alvo definidos pela sonda de captura utilizada no experimento.
+</div>
+
+<div align="justify">
+O PHYLUCE realiza essa identificação comparando os contigs montados com um banco de dados de loci UCEs de referência, geralmente fornecido em formato .fasta. Essa comparação é feita usando algoritmos de alinhamento rápido, como lastz, que detectam regiões de alta similaridade.
+</div>
+
+#Passos para encontrar loci UCE no PHYLUCE
+
+Organizar o diretório de montagem
+Certifique-se de que todas as pastas de montagem (por amostra) estão reunidas em um único diretório.
+Cada pasta deve conter o arquivo contigs.fasta gerado pelo montador.
+
+Preparar o banco de sondas UCE
+
+Baixe ou utilize o conjunto de sondas específico para o seu grupo de estudo (por exemplo, insetos, aves, aracnídeos).
+Esse arquivo .fasta será usado como referência.
+
+Executar o alinhamento com lastz
+O comando típico no PHYLUCE para essa etapa é:
+
+˜˜˜bash
+phyluce_assembly_match_contigs_to_probes \
+  --contigs /caminho/para/assemblies \ #diretorio com os contigs (symlinks)
+  --probes uce-probes.fasta \ #diretorio com as probes
+  --output /caminho/para/uces_finder_output #arquivos tabulados com squile3
+```
+
+Gerar a tabela de loci encontrados
+
+O resultado será um conjunto de arquivos que listam quais loci foram encontrados em cada amostra.
+Esses arquivos são usados nas etapas seguintes de filtragem e extração.
+
+Possíveis problemas
+
+| Problema                          | Causa comum                                 | Como corrigir                                                                       |
+| --------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Nenhum locus encontrado           | Sonda incompatível com seu grupo taxonômico | Verificar se está usando o conjunto de sondas correto.                              |
+| Alinhamento muito lento           | Muitas amostras e/ou sonda muito grande     | Usar mais *cores* (`--cores`) e otimizar o cluster.                                 |
+| Arquivo de contigs não encontrado | Estrutura de diretórios incorreta           | Conferir se o caminho passado em `--contigs` está correto e contém `contigs.fasta`. |
 
 
 
