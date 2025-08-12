@@ -14,7 +14,7 @@ Para detalhes adicionais sobre a extração, construção das bibliotecas e sequ
 Os dados utilizados neste tutorial encontram-se depositados no repositório público do NCBI:
 
 **BioProject:** PRJNA1161786  
-**Link:** [https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP561602](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP561602)
+**Link:** [SRA GenBank](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP561602)
 
 ### Conjunto de Acessions
 
@@ -114,7 +114,7 @@ bash rename_fastq.sh
 
 ## Limpeza dos Dados com Trim Galore
 
-A limpeza de dados de sequenciamento de nova geração (NGS) é um passo crucial para garantir a qualidade e a confiabilidade das análises subsequentes. Ferramentas como o [Trim Galore](https://github.com/FelixKrueger/TrimGalore), [Trimmomatic] (https://github.com/timflutre/trimmomatic) atuam removendo sequências adaptadoras e filtrando leituras de baixa qualidade, que podem introduzir ruído ou enviesar resultados. Durante o processo de sequenciamento, é comum que resíduos técnicos, como adaptadores não removidos ou bases com qualidade deteriorada nas extremidades — se acumulem nas leituras. Esses artefatos, se não tratados, podem levar a alinhamentos incorretos, montagem de genomas incompleta e interpretações equivocadas dos dados biológicos.
+A limpeza de dados de sequenciamento de nova geração (NGS) é um passo crucial para garantir a qualidade e a confiabilidade das análises subsequentes. Ferramentas como o [Trim Galore](https://github.com/FelixKrueger/TrimGalore), (Trimmomatic) (https://github.com/timflutre/trimmomatic) atuam removendo sequências adaptadoras e filtrando leituras de baixa qualidade, que podem introduzir ruído ou enviesar resultados. Durante o processo de sequenciamento, é comum que resíduos técnicos, como adaptadores não removidos ou bases com qualidade deteriorada nas extremidades — se acumulem nas leituras. Esses artefatos, se não tratados, podem levar a alinhamentos incorretos, montagem de genomas incompleta e interpretações equivocadas dos dados biológicos.
 
 ### 1. Ativar o Ambiente
 
@@ -174,25 +174,69 @@ echo "Trim Galore finalizado com sucesso."
 
 ## Montagem dos Dados com SPAdes
 
-### 1. Preparar o Arquivo de Configuração
+No fluxo de análise de dados no PHYLUCE, a etapa de montagem é responsável por reconstruir sequências contíguas (contigs) a partir das leituras limpas de sequenciamento. 
+Para isso, o PHYLUCE oferece suporte a diferentes programas de montagem, todos integrados por meio de scripts próprios, mantendo um padrão de entrada e saída.
 
-Utilize a listagem dos diretórios `split-adapter-quality-trimmed` para montar o arquivo `assembly.conf`.
+Os montadores disponíveis no (PHYLUCE) [https://phyluce.readthedocs.io/en/latest/] incluem:
 
-Exemplo do conteúdo:
+(SPAdes)[https://github.com/ablab/spades]: geralmente a opção recomendada. É fácil de instalar, produz resultados consistentes e costuma apresentar melhor desempenho na maioria dos conjuntos de dados processados com PHYLUCE.
+
+(Velvet)[https://github.com/dzerbino/velvet]: indicado para montagens de genomas menores ou dados com boa cobertura, sendo eficiente e rápido em cenários menos complexos.
+
+(ABySS)[https://pmc.ncbi.nlm.nih.gov/articles/PMC5411771/]: voltado para conjuntos de dados maiores ou genomas mais complexos, capaz de lidar com grandes volumes de leituras.
+
+Para utilizar o SPAdes dentro do PHYLUCE, o comando típico é:
+
+```bash
+phyluce_assembly_assemblo_spades \ 
+  --conf assembly.conf \ %+
+  --output spades-assemblies \
+  --cores 12 \
+  --memory 64
+```
+
+Explicação dos parâmetros:
+
+--conf assembly.conf → Arquivo de configuração que lista as amostras, os caminhos para os arquivos FASTQ e parâmetros opcionais de montagem.
+--output spades-assemblies → Pasta onde os resultados da montagem serão salvos. Cada amostra terá seu próprio diretório com os contigs.
+--cores 12 → Número de núcleos de CPU a serem usados, acelerando o processamento.
+--memory 64 → Quantidade de memória RAM (em GB) disponível para a execução do SPAdes.
+
+Após a execução, a pasta de saída conterá os contigs prontos para as próximas etapas, como identificação e extração dos loci alvo.
+
+
+
+# Passos Práticos
+
+## 1. Preparar o Arquivo de Configuração
+
+O arquivo `assembly.conf` é essencial para que o **PHYLUCE** saiba onde encontrar os arquivos de leituras já limpas de cada amostra.  
+Ele deve conter uma lista com o nome da amostra e o caminho para o diretório `split-adapter-quality-trimmed` correspondente.
+
+Exemplo de listagem simples:
 
 ```ini
 [samples]
 Arbanitis_rapax:/home/tiagobelintani/uce-treinamento/clean-fastq/Arbanitis_rapax/split-adapter-quality-trimmed
 ...
-```
 
-Remova espaços desnecessários com `sed`:
+Atenção:
+
+Os nomes das amostras não devem conter espaços.
+
+É importante que o caminho seja exato e que o diretório exista.
+
+Use nomes consistentes (iguais aos usados nos arquivos de leitura) para evitar erros.
+
+Se os caminhos tiverem espaços antes ou depois dos dois-pontos (:), remova-os usando sed:
 
 ```bash
 sed -E 's/[[:space:]]*:[[:space:]]*/:/g' tabela.txt > assembly.conf
 ```
 
-Assembly.conf model
+Modelo de assembly.conf para várias amostras:
+
+[Arquivo modelo](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Jobs_Conf)
 
 ```bash
 [samples]
@@ -200,66 +244,53 @@ Arbanitis_rapax:/home/tiagobelintani/uce-treinamento/clean-fastq/Arbanitis_rapax
 Cteniza_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Cteniza_sp./split-adapter-quality-trimmed
 Ctenolophus_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Ctenolophus_sp./split-adapter-quality-trimmed
 Galeosoma_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Galeosoma_sp./split-adapter-quality-trimmed
-Gorgyrella_namaquensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Gorgyrella_namaquensis/split-adapter-quality-trimm$
-Heligmomerus_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Heligmomerus_sp./split-adapter-quality-trimmed
-Idiops_camelus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_camelus/split-adapter-quality-trimmed
-Idiops_carajas:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_carajas/split-adapter-quality-trimmed
-Idiops_clarus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_clarus/split-adapter-quality-trimmed
-Idiops_fryi:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_fryi/split-adapter-quality-trimmed
-Idiops_germaini:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_germaini/split-adapter-quality-trimmed
-Idiops_guri:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_guri/split-adapter-quality-trimmed
-Idiops_kanonganus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_kanonganus/split-adapter-quality-trimmed
-Idiops_petiti:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_petiti/split-adapter-quality-trimmed
-Idiops_pirassununguensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_pirassununguensis/split-adapter-quality-t$
-Idiops_pretoriae:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_pretoriae/split-adapter-quality-trimmed
-Idiops_rastratus:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_rastratus/split-adapter-quality-trimmed
-Idiops_rohdei:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_rohdei/split-adapter-quality-trimmed
-Idiops_sp2_RF2025:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_sp2_RF2025/split-adapter-quality-trimmed
-Idiops_sp3_RF2025:/home/tiagobelintani/uce-treinamento/clean-fastq/Idiops_sp3_RF2025/split-adapter-quality-trimmed
-Moggridgea_crudeni:/home/tiagobelintani/uce-treinamento/clean-fastq/Moggridgea_crudeni/split-adapter-quality-trimmed
-Neocteniza_toba:/home/tiagobelintani/uce-treinamento/clean-fastq/Neocteniza_toba/split-adapter-quality-trimmed
-Segregara_transvaalensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Segregara_transvaalensis/split-adapter-quality-t$
+Gorgyrella_namaquensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Gorgyrella_namaquensis/split-adapter-quality-trimmed
+...
 Titanidiops_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Titanidiops_sp./split-adapter-quality-trimmed
 ```
-
-
-### 2. Script de Montagem
-
-Salve como `spades_job.sh`:
+2. Criar o Script de Montagem
+Crie um arquivo chamado spades_job.sh com o seguinte conteúdo:
 
 ```bash
 #!/bin/bash
-#SBATCH -t 30:00:00
-#SBATCH -c 12
-#SBATCH --mem=128
+#SBATCH -t 30:00:00           # Tempo máximo de execução (30h)
+#SBATCH -c 12                 # Número de CPUs
+#SBATCH --mem=128             # Memória total disponível (GB)
 
+# Carregar miniconda e o ambiente do PHYLUCE
 module load miniconda/3-2023-09
-
 source $(conda info --base)/etc/profile.d/conda.sh
-source activate /home/seu_nome/miniconda3/envs/phyluce-1.7.3 #alterar o caminho para seu ambiente
+source activate /home/seu_nome/miniconda3/envs/phyluce-1.7.3  # Ajuste para o caminho do seu ambiente
 
+# Executar o SPAdes via PHYLUCE
 phyluce_assembly_assemblo_spades \
-  --output assembly \
-  --cores 12 \
-  --memory 64 \
-  --log-path log \
-  --config assembly.conf
+  --output assembly \         # Pasta de saída
+  --cores 12 \                 # Número de núcleos
+  --memory 64 \                 # Memória para o SPAdes (GB)
+  --log-path log \              # Pasta para arquivos de log
+  --config assembly.conf        # Arquivo de configuração
 ```
 
-Submeta o job via SLURM:
+#3. Submeter e Monitorar o Job
+Envie o job para execução no SLURM:
 
 ```bash
 sbatch spades_job.sh
+Acompanhe o status:
 ```
-
-Verifique o status dos jobs:
 
 ```bash
 squeue -u tiagobelintani
 ```
 
----
-## Encontrando os Locis UCE (Finding UCE)
+Possíveis Problemas e Como Evitar
+
+| Problema comum                       | Possível causa                                    | Solução                                                               |
+| ------------------------------------ | ------------------------------------------------- | --------------------------------------------------------------------- |
+| **Erro "No such file or directory"** | Caminho no `assembly.conf` incorreto              | Verificar caminhos e corrigir.                                        |
+| **Script falha logo no início**      | Ambiente conda não ativado corretamente           | Confirmar o caminho do ambiente `phyluce` no script.                  |
+| **Montagem muito lenta**             | Poucos núcleos ou memória insuficiente            | Ajustar `--cores` e `--memory` conforme a disponibilidade do cluster. |
+| **Diretório de saída incompleto**    | Execução interrompida ou falta de espaço em disco | Checar logs em `log/` e espaço disponível.                            |
 
 
 
