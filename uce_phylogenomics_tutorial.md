@@ -114,7 +114,7 @@ bash rename_fastq.sh
 
 ## Limpeza dos Dados com Trim Galore
 
-A limpeza de dados de sequenciamento de nova geração (NGS) é um passo crucial para garantir a qualidade e a confiabilidade das análises subsequentes. Ferramentas como o [Trim Galore](https://github.com/FelixKrueger/TrimGalore), (Trimmomatic) (https://github.com/timflutre/trimmomatic) atuam removendo sequências adaptadoras e filtrando leituras de baixa qualidade, que podem introduzir ruído ou enviesar resultados. Durante o processo de sequenciamento, é comum que resíduos técnicos, como adaptadores não removidos ou bases com qualidade deteriorada nas extremidades — se acumulem nas leituras. Esses artefatos, se não tratados, podem levar a alinhamentos incorretos, montagem de genomas incompleta e interpretações equivocadas dos dados biológicos.
+A limpeza de dados de sequenciamento de nova geração (NGS) é um passo crucial para garantir a qualidade e a confiabilidade das análises subsequentes. Ferramentas como o [Trim Galore](https://github.com/FelixKrueger/TrimGalore), [Trimmomatic](https://github.com/timflutre/trimmomatic) atuam removendo sequências adaptadoras e filtrando leituras de baixa qualidade, que podem introduzir ruído ou enviesar resultados. Durante o processo de sequenciamento, é comum que resíduos técnicos, como adaptadores não removidos ou bases com qualidade deteriorada nas extremidades — se acumulem nas leituras. Esses artefatos, se não tratados, podem levar a alinhamentos incorretos, montagem de genomas incompleta e interpretações equivocadas dos dados biológicos.
 
 ### 1. Ativar o Ambiente
 
@@ -179,11 +179,11 @@ Para isso, o PHYLUCE oferece suporte a diferentes programas de montagem, todos i
 
 Os montadores disponíveis no (PHYLUCE) [https://phyluce.readthedocs.io/en/latest/] incluem:
 
-(SPAdes)[https://github.com/ablab/spades]: geralmente a opção recomendada. É fácil de instalar, produz resultados consistentes e costuma apresentar melhor desempenho na maioria dos conjuntos de dados processados com PHYLUCE.
+[SPAdes](https://github.com/ablab/spades): geralmente a opção recomendada. É fácil de instalar, produz resultados consistentes e costuma apresentar melhor desempenho na maioria dos conjuntos de dados processados com PHYLUCE.
 
-(Velvet)[https://github.com/dzerbino/velvet]: indicado para montagens de genomas menores ou dados com boa cobertura, sendo eficiente e rápido em cenários menos complexos.
+[Velvet](https://github.com/dzerbino/velvet): indicado para montagens de genomas menores ou dados com boa cobertura, sendo eficiente e rápido em cenários menos complexos.
 
-(ABySS)[https://pmc.ncbi.nlm.nih.gov/articles/PMC5411771/]: voltado para conjuntos de dados maiores ou genomas mais complexos, capaz de lidar com grandes volumes de leituras.
+[ABySS](https://pmc.ncbi.nlm.nih.gov/articles/PMC5411771/): voltado para conjuntos de dados maiores ou genomas mais complexos, capaz de lidar com grandes volumes de leituras.
 
 Para utilizar o SPAdes dentro do PHYLUCE, o comando típico é:
 
@@ -198,12 +198,14 @@ phyluce_assembly_assemblo_spades \
 Explicação dos parâmetros:
 
 --conf assembly.conf → Arquivo de configuração que lista as amostras, os caminhos para os arquivos FASTQ e parâmetros opcionais de montagem.
+
 --output spades-assemblies → Pasta onde os resultados da montagem serão salvos. Cada amostra terá seu próprio diretório com os contigs.
+
 --cores 12 → Número de núcleos de CPU a serem usados, acelerando o processamento.
+
 --memory 64 → Quantidade de memória RAM (em GB) disponível para a execução do SPAdes.
 
 Após a execução, a pasta de saída conterá os contigs prontos para as próximas etapas, como identificação e extração dos loci alvo.
-
 
 
 # Passos Práticos
