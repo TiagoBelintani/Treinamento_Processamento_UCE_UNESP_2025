@@ -309,7 +309,7 @@ Possíveis Problemas e Como Evitar
 | **Montagem muito lenta**             | Poucos núcleos ou memória insuficiente            | Ajustar `--cores` e `--memory` conforme a disponibilidade do cluster. |
 | **Diretório de saída incompleto**    | Execução interrompida ou falta de espaço em disco | Checar logs em `log/` e espaço disponível.                            |
 
-#(Resultados) [https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Data/Contigs]
+#[Resultados](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Data/Contigs)
 
 <div align="justify">  
 Nesta prática, duas montagens ficaram incompletas devido à baixa qualidade inicial dos dados de sequenciamento. Nesse caso específico, observou-se um número reduzido de leituras e uma proporção significativa de sequências de baixa qualidade.
