@@ -533,6 +533,7 @@ A escolha de cada configuração depende de fatores como:
 - Cobertura e identidade mínimas desejadas.
 ```
 ---
+
 **Explicação dos parâmetros**
 
 
@@ -596,7 +597,7 @@ Gera saída no formato .csv, facilitando a importação para planilhas ou script
 
 ---
 
-### Extraindo Loci UCE (Extracting UCE loci)
+# Extraindo Loci UCE (Extracting UCE loci)
 
 Após a identificação dos loci UCE, o passo seguinte consiste em definir quais táxons serão incluídos na análise. Para isso, é necessário criar um arquivo contendo a lista desses táxons e, a partir dele, gerar um arquivo de configuração da matriz de dados. Esse arquivo de configuração especificará, para cada táxon, quais loci foram efetivamente enriquecidos, servindo como referência para a extração das respectivas sequências no formato FASTA.
 
@@ -619,11 +620,15 @@ Criar e editar config #isso pode variar a partir das estrutura inicial dos arqui
 
 ```bash
 echo "[all]" > taxa.txt
-ls uce-resultados-busca >> taxa.txt
+ls uce-resultados-busca >> taxa.txt  #isso deve funcionar em qualquer ambiente, apenas mude a pasta "uce-resultados-busca
 ```
 
 ```bash
 sed 's/\.lastz$//' taxa.txt > taxa.conf
+```
+
+```bash
+nano taxa.conf
 ```
 
 Agora é precisamos retirar a linha *probe.matches.sqlite*
@@ -650,7 +655,7 @@ Idiops_sp2_RF2025
 Idiops_sp3_RF2025
 Moggridgea_crudeni
 Neocteniza_toba
-probe.matches.sqlite
+**probe.matches.sqlite**
 Segregara_transvaalensis
 Titanidiops_sp
 ```
@@ -688,13 +693,12 @@ Idiops_sp2_RF2025
 Idiops_sp3_RF2025
 Moggridgea_crudeni
 Neocteniza_toba
-
 Segregara_transvaalensis
 Titanidiops_sp
 ```
 
 
-#Agora devemos criar um novo diretorio e um subdiretório
+# Agora devemos criar um novo diretorio e um subdiretório
 
 ```bash
 mkdir -p taxon-set/all
