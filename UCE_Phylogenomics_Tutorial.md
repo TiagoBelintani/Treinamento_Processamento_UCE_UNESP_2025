@@ -704,7 +704,11 @@ Titanidiops_sp
 mkdir -p taxon-set/all
 ```
 
-#Agora você deve executar 
+```bash
+cd taxon-set/all
+```
+
+#Agora você deve executar (diretamente no terminal)
 
 ```bash
  phyluce_assembly_get_match_counts \
@@ -794,6 +798,8 @@ O arquivo final foi salvo em:
 
 </div> 
 ```
+---
+
 #Extrair as sequências FASTA para os loci do conjunto
 
 **Entre no diretório do taxon set e crie uma pasta para logs:**
@@ -813,7 +819,7 @@ pwd
 Extraia as sequências FASTA:
 
 ```bash
-mkdir phyluce_assembly_get_fastas_from_match_counts_job.sh
+nano phyluce_assembly_get_fastas_from_match_counts_job.sh
 ```
 
 [phyluce_assembly_get_fastas_from_match_counts_job.sh](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_get_fastas_from_match_counts_job.sh)
