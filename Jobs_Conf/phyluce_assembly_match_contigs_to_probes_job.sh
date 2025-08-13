@@ -11,4 +11,9 @@ source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
 phyluce_assembly_match_contigs_to_probes \
     --contigs /home/tiagobelintani/uce-treinamento/assembly/contigs \
     --probes /home/tiagobelintani/uce-treinamento/probes/probes.fasta \
-    --output uce-resultados-busca
+    --min-coverage 80 \
+    --min-identity 80 \
+     --output uce-resultados-busca \
+    --log-path log 
+
+
