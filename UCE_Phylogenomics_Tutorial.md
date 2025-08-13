@@ -458,7 +458,9 @@ source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
 phyluce_assembly_match_contigs_to_probes \
     --contigs /home/tiagobelintani/uce-treinamento/assembly/contigs \
     --probes /home/tiagobelintani/uce-treinamento/probes/probes.fasta \
-    --output uce-resultados-busca
+    --output uce-resultados-busca \
+    --min-coverage 80 \ #poder mudar, para melhorar a captura de dados
+    --min-identity 80 --log-path log
 ```
 
 #Deverá ver um resultado semelhante ao seguinte [também armazenado em log](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/phyluce_assembly_match_contigs_to_probes.log)
