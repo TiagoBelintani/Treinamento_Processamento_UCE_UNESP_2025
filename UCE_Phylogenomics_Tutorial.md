@@ -1587,7 +1587,7 @@ Exemplo: a matriz 75% garante que **cada locus tem ≥75 táxons**, mas não exi
 
 ## No nosso caso (4 táxons totais)
 
-- `--taxa 4` informa ao PHYLUCE que temos **4 organismos no dataset**.  
+- `--taxa 4` informa ao PHYLUCE que desejamos reter no min **4 organismos por alinhamento
 - Para `--percent 0.75`, o programa exige que **pelo menos 3 táxons (75% de 4)** estejam presentes em cada locus.  
 - Para `--percent 0.95`, como 95% de 4 = 3,8 → arredonda para 4, exigindo **todos os 4 táxons** em cada locus.
 
@@ -1612,7 +1612,7 @@ phyluce_align_get_only_loci_with_min_taxa \
     --taxa 4 \
     --percent 0.75 \
     --output mafft-nexus-internal-trimmed-gblocks-clean-75p \
-    --cores 12 \
+    --cores 2 \
     --log-path log
 ```
 E se quisermos 95%?
@@ -1624,7 +1624,7 @@ phyluce_align_get_only_loci_with_min_taxa \
     --taxa 4 \
     --percent 0.95 \
     --output mafft-nexus-internal-trimmed-gblocks-clean-95p \
-    --cores 12 \
+    --cores 2 \
     --log-path log
 ```
 
@@ -1672,17 +1672,125 @@ Muitos loci estão na faixa de 75–85% de ocupância.
 Poucos loci têm 100% de táxons representados.
 
 Há também um conjunto com 50–60%, que amplia o número total de loci mas aumenta lacunas.
+---
 
+# Preparando os dados para análises filogenéticas
 
+Com a matriz de dados de 75% de completude pronta, podemos formatar os alinhamentos para programas de inferência filogenética, como RAxML ou IQTree, que utilizam arquivos em formato PHYLIP ou NEXUS.
 
+O phyluce facilita essa conversão com o comando abaixo:
 
+# entrar no diretório de trabalho
+```bash
+cd uce-tutorial/taxon-sets/all
+```
+```bash
+# concatenar os alinhamentos em formato PHYLIP
+phyluce_align_concatenate_alignments \
+    --alignments mafft-nexus-internal-trimmed-gblocks-clean-75p \
+    --output mafft-nexus-internal-trimmed-gblocks-clean-75p-raxml \
+    --phylip \
+    --log-path log
+```
 
+O resultado inclui tanto a matriz concatenada (.phylip) quanto os charsets, que permitem análises particionadas a baixo custo computacional.
 
+```bash
+Se preferir saída em NEXUS, basta trocar a flag --phylip por --nexus.
+```
 
+Próximos passos
 
+RAxML / IQTree: usar a matriz concatenada para inferir árvores filogenéticas.
 
+Métodos gene-tree/species-tree: trabalhar diretamente com os alinhamentos individuais presentes em mafft-nexus-internal-trimmed-gblocks-clean-75p.
 
+Conversões adicionais de formato podem ser feitas com phyluce_align_convert_one_align_to_another.
 
+---
+# Análises Filogenéticas: Gene Trees e Species Tree (IQ-TREE 3 + ASTRAL)
+
+Este guia descreve:
+1) Instalação e ambiente.
+2) Inferência **gene tree** por locus (ML) com IQ-TREE 3.
+3) Execução em HPC (SLURM) via GNU Parallel ou Array Job.
+4) Inferência de **species tree** a partir das gene trees [ASTRAL](https://github.com/chaoszhang/ASTER) (Pacote Aster).
+
+> Supõe-se que os alinhamentos por locus (FASTA) estão em `50p/` (ou similar).
+> Ajuste caminhos e recursos conforme seu cluster.
+
+---
+
+## 1) Instalação e ambiente
+
+### Conda/mamba (recomendado)
+```bash
+
+# criar ambiente
+```bash
+mamba create -n programas_filo -c conda-forge -c bioconda iqtree gnu-parallel openjdk -y
+```
+
+# OBS: o pacote "iqtree" já instala a versão recente; no seu PATH o binário pode ser "iqtree2" ou "iqtree".
+# em muitos builds recentes, "iqtree" resolve para o executável correto (v≥2). Para IQ-TREE 3, alguns clusters já fornecem "iqtree3".
+# ative
+
+```
+conda activate programas_filo
+```
+
+# conferir binário
+```bash
+iqtree3 --version
+```
+
+Se o seu cluster tiver módulos, algo como module load iqtree/3.x e module load parallel pode bastar.
+
+2) Gene Tree Inference (por locus) com IQ-TREE 3
+
+3) Vamos preparar o job
+
+```bash
+nano iqtree3_job.slurm
+```
+
+```bash
+#!/bin/bash
+#SBATCH --time=10:00:00
+#SBATCH --cpus-per-task=12
+
+# Ativação correta do ambiente Conda
+module load miniconda/3-2023-09
+source activate /home/tiagobelintani/miniconda3/envs/programas_filo
+
+# Gera a lista de arquivos .nexus
+find mafft-nexus-internal-trimmed-gblocks-clean-75p -name "*.nexus" | sort > loci_list.txt
+
+# Função para o IQ-TREE
+run_iqtree() {
+    FILE="$1"
+    BASENAME=$(basename "$FILE" .nexus)
+    DIR=$(dirname "$FILE")
+
+    iqtree3 \
+      -s "$FILE" \
+      -st DNA \
+      -m MFP \
+      -bb 1000 \
+      -alrt 1000 \
+      -nt 4 \
+      --redo \
+      -pre "$DIR/${BASENAME}"
+}
+
+export -f run_iqtree
+
+# Execução paralela (usando todos os CPUs disponíveis)
+parallel -j $SLURM_CPUS_PER_TASK run_iqtree :::: loci_list.txt
+```
+ 
+
+4) Species Tree (ASTRAL a partir das gene trees)
 
 
 
