@@ -1,0 +1,57 @@
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - ========= Starting phyluce_align_get_align_summary_data =========
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - Version: 1.7.3
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - Commit: None
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - Argument --alignments: /home/tiagobelintani/uce-treinamento/taxon-set/all/mafft-nexus-internal-trimmed-gblocks
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - Argument --cores: 1
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - Argument --input_format: nexus
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - Argument --log_path: /home/tiagobelintani/uce-treinamento/taxon-set/all/log
+2025-08-19 18:25:36,383 - phyluce_align_get_align_summary_data - INFO - Argument --output: None
+2025-08-19 18:25:36,384 - phyluce_align_get_align_summary_data - INFO - Argument --show_taxon_counts: False
+2025-08-19 18:25:36,384 - phyluce_align_get_align_summary_data - INFO - Argument --verbosity: INFO
+2025-08-19 18:25:36,384 - phyluce_align_get_align_summary_data - INFO - Getting alignment files
+2025-08-19 18:25:36,390 - phyluce_align_get_align_summary_data - INFO - Computing summary statistics using 1 cores
+2025-08-19 18:25:44,515 - phyluce_align_get_align_summary_data - INFO - ----------------------- Alignment summary -----------------------
+2025-08-19 18:25:44,515 - phyluce_align_get_align_summary_data - INFO - [Alignments] loci:	1,036
+2025-08-19 18:25:44,515 - phyluce_align_get_align_summary_data - INFO - [Alignments] length:	315,896
+2025-08-19 18:25:44,515 - phyluce_align_get_align_summary_data - INFO - [Alignments] mean:	304.92
+2025-08-19 18:25:44,515 - phyluce_align_get_align_summary_data - INFO - [Alignments] 95% CI:	3.62
+2025-08-19 18:25:44,516 - phyluce_align_get_align_summary_data - INFO - [Alignments] min:	72
+2025-08-19 18:25:44,516 - phyluce_align_get_align_summary_data - INFO - [Alignments] max:	531
+2025-08-19 18:25:44,516 - phyluce_align_get_align_summary_data - INFO - ------------------- Informative Sites summary -------------------
+2025-08-19 18:25:44,516 - phyluce_align_get_align_summary_data - INFO - [Sites] loci:	1,036
+2025-08-19 18:25:44,516 - phyluce_align_get_align_summary_data - INFO - [Sites] total:	17,590
+2025-08-19 18:25:44,517 - phyluce_align_get_align_summary_data - INFO - [Sites] mean:	16.98
+2025-08-19 18:25:44,517 - phyluce_align_get_align_summary_data - INFO - [Sites] 95% CI:	0.89
+2025-08-19 18:25:44,517 - phyluce_align_get_align_summary_data - INFO - [Sites] min:	0
+2025-08-19 18:25:44,517 - phyluce_align_get_align_summary_data - INFO - [Sites] max:	69
+2025-08-19 18:25:44,518 - phyluce_align_get_align_summary_data - INFO - ------------------------- Taxon summary -------------------------
+2025-08-19 18:25:44,518 - phyluce_align_get_align_summary_data - INFO - [Taxa] mean:		6.44
+2025-08-19 18:25:44,518 - phyluce_align_get_align_summary_data - INFO - [Taxa] 95% CI:	0.18
+2025-08-19 18:25:44,518 - phyluce_align_get_align_summary_data - INFO - [Taxa] min:		3
+2025-08-19 18:25:44,518 - phyluce_align_get_align_summary_data - INFO - [Taxa] max:		16
+2025-08-19 18:25:44,519 - phyluce_align_get_align_summary_data - INFO - ----------------- Missing data from trim summary ----------------
+2025-08-19 18:25:44,519 - phyluce_align_get_align_summary_data - INFO - [Missing] mean:	0.00
+2025-08-19 18:25:44,519 - phyluce_align_get_align_summary_data - INFO - [Missing] 95% CI:	0.00
+2025-08-19 18:25:44,519 - phyluce_align_get_align_summary_data - INFO - [Missing] min:	0.00
+2025-08-19 18:25:44,519 - phyluce_align_get_align_summary_data - INFO - [Missing] max:	0.00
+2025-08-19 18:25:44,527 - phyluce_align_get_align_summary_data - INFO - -------------------- Character count summary --------------------
+2025-08-19 18:25:44,527 - phyluce_align_get_align_summary_data - INFO - [All characters]	2,002,945
+2025-08-19 18:25:44,527 - phyluce_align_get_align_summary_data - INFO - [Nucleotides]		1,919,295
+2025-08-19 18:25:44,527 - phyluce_align_get_align_summary_data - INFO - ---------------- Data matrix completeness summary ---------------
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 50%]		346 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 55%]		256 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 60%]		171 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 65%]		113 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 70%]		68 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 75%]		68 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 80%]		35 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 85%]		14 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 90%]		9 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - [Matrix 95%]		2 alignments
+2025-08-19 18:25:44,528 - phyluce_align_get_align_summary_data - INFO - ------------------------ Character counts -----------------------
+2025-08-19 18:25:44,529 - phyluce_align_get_align_summary_data - INFO - [Characters] '-' is present 83,650 times
+2025-08-19 18:25:44,529 - phyluce_align_get_align_summary_data - INFO - [Characters] 'A' is present 542,310 times
+2025-08-19 18:25:44,529 - phyluce_align_get_align_summary_data - INFO - [Characters] 'C' is present 411,871 times
+2025-08-19 18:25:44,529 - phyluce_align_get_align_summary_data - INFO - [Characters] 'G' is present 406,459 times
+2025-08-19 18:25:44,529 - phyluce_align_get_align_summary_data - INFO - [Characters] 'T' is present 558,655 times
+2025-08-19 18:25:44,529 - phyluce_align_get_align_summary_data - INFO - ========= Completed phyluce_align_get_align_summary_data ========
