@@ -1099,6 +1099,118 @@ As aranhas *Mygalomorphae* (tarântulas e armadeiras, entre outras) ilustram bem
 - Faircloth BC (2016). PHYLUCE is a software package for the analysis of conserved genomic loci. *Bioinformatics*.  
 - Castresana J (2000). Selection of conserved blocks from multiple alignments for phylogenetic analysis. *Mol Biol Evol*.  
 
+# Passos práticos: alinhamento e poda de UCEs
+
+ **Atenção**: todas as análises devem ser executadas no diretório especificado:
+
+```bash
+/home/tiagobelintani/uce-treinamento/taxon-set/all
+```
+
+Embora esta etapa não seja muito custosa computacionalmente, optamos por executá-la via **SLURM**, garantindo maior reprodutibilidade e organização.
+
+---
+
+## Preparando o job no SLURM
+
+Abra o editor `nano` para criar o próximo script de submissão:
+
+```bash
+nano phyluce_align_seqcap_align.slurm
+```
+
+Dentro do arquivo, insira o seguinte conteúdo (ajuste recursos conforme necessário):
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=uce-align
+#SBATCH --output=uce-align.%j.out
+#SBATCH --error=uce-align.%j.err
+#SBATCH --time=50:00:00
+#SBATCH -c 12
+#SBATCH --mem=32G
+
+set -euo pipefail
+
+module load miniconda/3-2023-09
+source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
+
+phyluce_align_seqcap_align \
+    --input all-taxa-incomplete.fasta \
+    --output mafft-nexus-internal-trimmed \
+    --taxa 4 \
+    --aligner mafft \
+    --cores 12 \
+    --incomplete-matrix \
+    --output-format fasta \
+    --no-trim \
+    --log-path log
+```
+
+Salve (`CTRL+O`) e saia (`CTRL+X`) do editor.
+
+---
+
+## Estratégia adotada
+
+Nesta equipe adotamos a estratégia de **poda interna** (*internal trimming*), utilizando `--no-trim` na etapa de alinhamento e posteriormente aplicando ferramentas de filtragem (e.g. Gblocks) para remover regiões de baixa qualidade.
+
+- **Vantagem**: garante maior confiabilidade em grupos divergentes (e.g. *Mygalomorphae*), onde blocos internos mal alinhados podem distorcer o sinal filogenético.  
+- **Limitação**: pode reduzir a quantidade de dados disponíveis, sendo menos apropriado para datasets rasos (nível de espécie).
+
+---
+
+## Referências adicionais
+
+Para informações detalhadas sobre outras estratégias de alinhamento e poda, consulte a documentação oficial do [Phyluce](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
