@@ -1723,9 +1723,9 @@ Este guia descreve:
 
 ## 1) Instalação e ambiente
 
-### Conda/mamba (recomendado)
+Conda/mamba (recomendado)
 
-# criar ambiente
+ criar ambiente
 
 ```bash
 mamba create -n programas_filo -c conda-forge -c bioconda iqtree gnu-parallel openjdk -y
@@ -1787,6 +1787,11 @@ export -f run_iqtree
 # Execução paralela (usando todos os CPUs disponíveis)
 parallel -j $SLURM_CPUS_PER_TASK run_iqtree :::: loci_list.txt
 ```
+
+```bash
+sbacth iqtree3_job.slurm
+```
+
  
 4) Species Tree (ASTRAL a partir das gene trees)
 
