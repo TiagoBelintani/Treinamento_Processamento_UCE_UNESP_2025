@@ -1512,8 +1512,41 @@ phyluce_align_get_align_summary_data \
     --cores 1 \
     --log-path log
 ```
+---
 
+# Limpeza de alinhamentos (Alignment cleaning)
+<div align="justify">
+Em muitos workflows, cada sequência no alinhamento recebe um **rótulo composto**: `nome_do_taxon + nome_do_locus`.  
+Isso é ótimo para **auditoria** (garantir que cada locus/taxon entrou corretamente), mas **não é o ideal** para as análises posteriores, que normalmente esperam **apenas o nome do táxon** no cabeçalho das sequências.
+<div></div>
+  
+Como decidimos continuar o tutorial usando os alinhamentos **podados pelo Gblocks**, vamos **limpar** esses alinhamentos removendo o sufixo do locus dos cabeçalhos.
 
+---
+
+## Passo a passo
+
+1) **Confirme o diretório de trabalho**  
+   Garanta que você está no conjunto de táxons correto:
+
+```bash
+cd uce-tutorial/taxon-sets/all
+```
+
+Limpe os cabeçalhos dos alinhamentos Gblocks
+O comando abaixo percorre os arquivos do diretório de alinhamentos podados e remove o nome do locus dos rótulos, mantendo apenas o nome do táxon.
+A saída é escrita em um novo diretório com o sufixo -clean.
+
+```bash
+phyluce_align_remove_locus_name_from_files \
+    --alignments mafft-nexus-internal-trimmed-gblocks \
+    --output mafft-nexus-internal-trimmed-gblocks-clean \
+    --cores 12 \
+    --log-path log
+```
+O que esperar como saída
+
+Um novo diretório: mafft-nexus-internal-trimmed-gblocks-clean/ contendo os mesmos alinhamentos, porém com cabeçalhos simplificados (apenas o nome do táxon).
 
 
 
