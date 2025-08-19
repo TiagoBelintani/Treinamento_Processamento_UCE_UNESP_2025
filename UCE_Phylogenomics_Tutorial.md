@@ -1659,7 +1659,9 @@ Distribuição De Ocupância Em Loci UCE (Exemplo Hipotético)
 
 Aqui está um exemplo visual de como a ocupância pode ser distribuída em um dataset de UCEs:
 
-![Figura1](aminho/para/imagem.png](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/output.png)
+<p align="center">
+  <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/output.png" alt="Figura1 - Distribuição de ocupância" width="500"/>
+</p>
 
 
 No exemplo:
