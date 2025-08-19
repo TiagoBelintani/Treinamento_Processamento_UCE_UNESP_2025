@@ -1288,11 +1288,13 @@ Interpretação: a maioria dos loci está representada em 6 a 7 táxons. Isso su
 **Dados faltantes**
 ```bash
 Média, mínimo e máximo: todos 0.00
+```
 
  Interpretação: após o trimming, não há dados faltantes detectáveis. Excelente sinal de limpeza no alinhamento.
 
-**Contagem de caracteres**
 
+**Contagem de caracteres**
+```bash
 Total de caracteres: 5.451.787
 
 Nucleotídeos efetivos (A, C, G, T): 3.060.767
