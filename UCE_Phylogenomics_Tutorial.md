@@ -1789,7 +1789,6 @@ export -f run_iqtree
 parallel -j $SLURM_CPUS_PER_TASK run_iqtree :::: loci_list.txt
 ```
  
-
 4) Species Tree (ASTRAL a partir das gene trees)
 
 
