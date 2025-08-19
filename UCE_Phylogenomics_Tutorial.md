@@ -1368,12 +1368,6 @@ Saída esperada
 
 Após a execução, o diretório mafft-nexus-internal-trimmed-gblocks/ conterá os alinhamentos podados (tipicamente com sufixos indicando Gblocks). O diretório log/ terá os registros de execução. Em seguida, recomenda-se sumarizar novamente:
 
-phyluce_align_get_align_summary_data \
-  --alignments mafft-nexus-internal-trimmed-gblocks \
-  --cores 12 \
-  --log log
-
-
 Esse resumo permitirá comparar número de loci, comprimentos médios, sítios informativos e completude da matriz antes vs. depois da poda.
 
 ```bash
@@ -1401,9 +1395,9 @@ Perfis de parâmetros recomendados (e como aplicá-los)
 <div align="justify">
 Abaixo estão perfis práticos em função da profundidade de divergência. Para os grupos aqui analisados:
 
-Entre famílias (Theraphosidae vs. Idiopidae) → divergência profunda: perfil muito conservador.
+Entre famílias  → divergência profunda: perfil muito conservador.
 
-Entre gêneros dentro de Idiopidae (Idiops vs. Arbanitis) → intermediário.
+Entre gêneros dentro  (Idiops vs. Arbanitis) → intermediário.
 
 Dentro de um gênero (p.ex., apenas Idiops ou apenas Arbanitis; ou variações populacionais em Dolichotele) → raso.
 <div></div>
@@ -1424,13 +1418,15 @@ Gblocks seq.fasta --b1 0.5 --b2 0.5 --b3 6 --b4 6
 Gblocks seq.fasta --b1 0.5 --b2 0.5 --b3 10 --b4 4
 # Mais permissivo; retém mais variação potencialmente informativa em escalas recentes.
 ```
+---
+
 # Vamos adotar uma poda coerente para relações profundas
 
-Para comparações entre famílias (Theraphosidae × Idiopidae) e entre gêneros distantes (*Dolichotele*, *Idiops*, *Arbanitis*), recomenda-se uma **poda interna conservadora** com Gblocks. O objetivo é manter apenas blocos inequivocamente homólogos, reduzindo ruído que pode distorcer a topologia.
+Para comparações entre famílias e entre gêneros distantes, recomenda-se uma **poda interna conservadora** com Gblocks. O objetivo é manter apenas blocos inequivocamente homólogos, reduzindo ruído que pode distorcer a topologia.
 
 **Perfil recomendado (profundo, conservador):**
 - `--b1 0.5` — exige ≥50% dos táxons para considerar um sítio conservado  
-- `--b2 0.85` — exige ≥85% dos táxons nos sítios flanqueadores  
+- `--b2 0.85` — exige ≥85% dos táxons nos sítios flanqueadores *Para eu aceitar uma região como válida no alinhamento, os sítios que ficam nas bordas dos blocos conservados precisam estar presentes em pelo menos 85% dos táxons.”*
 - `--b3 4` — no máximo 4 posições não conservadas consecutivas  
 - `--b4 8` — blocos conservados devem ter ≥8 bp  
 - (Opcional) `-t=d` e `-b5=a` — dados de DNA; gaps permitidos onde necessário
@@ -1438,6 +1434,7 @@ Para comparações entre famílias (Theraphosidae × Idiopidae) e entre gêneros
 > Este perfil tende a **remover flancos e regiões ruidosas**, favorecendo blocos nucleares mais confiáveis — apropriado para divergências profundas em Mygalomorphae.
 
 ---
+
 **Preparar o job**
 
 ```bash
