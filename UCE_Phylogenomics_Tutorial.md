@@ -1147,7 +1147,25 @@ Salve (`CTRL+O`) e saia (`CTRL+X`) do editor.
 
 ```bash
 sbatch phyluce_align_seqcap_align.slurm
+``1
+
+```bash
+O número de lócus UCE descartados nesta etapa é elevado, mas isso se deve ao tamanho reduzido da amostragem utilizada (n=4). Esse efeito está diretamente relacionado ao parâmetro --taxa 4, que instrui o programa a manter apenas aqueles lócus presentes em todos os quatro táxons da matriz. Como a exigência de completude é máxima, qualquer lócus ausente em um dos indivíduos é automaticamente eliminado.
+
+Em cenários com maior diversidade amostral, é comum ajustar esse parâmetro para valores mais baixos, permitindo a inclusão de lócus presentes em um subconjunto dos táxons. No entanto, em datasets pequenos, a definição --taxa 4 tende a resultar em filtragem muito rigorosa e, portanto, em uma redução substancial do número de lócus retidos.
 ```
+
+O resultado pode ser vizualido na pasta [log](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/LOGS)
+
+ele vai se parecer com:
+```bash
+2025-08-19 17:03:44,459 - phyluce_align_seqcap_align - INFO - Aligning with MAFFT
+2025-08-19 17:03:44,460 - phyluce_align_seqcap_align - INFO - Alignment begins. 'X' indicates dropped alignments (these are reported after alignment)
+2025-08-19 17:07:43,746 - phyluce_align_seqcap_align - INFO - Alignment ends
+2025-08-19 17:07:43,746 - phyluce_align_seqcap_align - INFO - Writing output files
+2025-08-19 17:07:44,396 - phyluce_align_seqcap_align - INFO - ============== Completed phyluce_align_seqcap_align =============
+```
+
 ---
 
 ## Estratégia adotada
@@ -1163,6 +1181,7 @@ Nesta equipe adotamos a estratégia de **poda interna** (*internal trimming*), u
 
 Para informações detalhadas sobre outras estratégias de alinhamento e poda, consulte a documentação oficial do [Phyluce](https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#finding-uce-loci).
 
+---
 
 
 
