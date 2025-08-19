@@ -1728,7 +1728,7 @@ Conda/mamba (recomendado)
  criar ambiente
 
 ```bash
-mamba create -n programas_filo -c conda-forge -c bioconda iqtree gnu-parallel openjdk -y
+conda create -n programas_filo -c conda-forge -c bioconda iqtree parallel openjdk -y
 ```
 
 OBS: o pacote "iqtree" já instala a versão recente; no seu PATH o binário pode ser "iqtree2" ou "iqtree". 
