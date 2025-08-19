@@ -1355,22 +1355,112 @@ Nesta etapa, realizaremos a **poda interna** dos loci UCE utilizando o **Gblocks
 
 ## Comando (PHYLUCE → Gblocks)
 
-```bash
 # Executar Gblocks sobre os alinhamentos não podados internamente
+```bash
 phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed \
     --alignments mafft-nexus-internal-trimmed \
     --output mafft-nexus-internal-trimmed-gblocks \
     --cores 12 \
     --log log
+```
+
+Saída esperada
+
+Após a execução, o diretório mafft-nexus-internal-trimmed-gblocks/ conterá os alinhamentos podados (tipicamente com sufixos indicando Gblocks). O diretório log/ terá os registros de execução. Em seguida, recomenda-se sumarizar novamente:
+
+phyluce_align_get_align_summary_data \
+  --alignments mafft-nexus-internal-trimmed-gblocks \
+  --cores 12 \
+  --log log
 
 
+Esse resumo permitirá comparar número de loci, comprimentos médios, sítios informativos e completude da matriz antes vs. depois da poda.
 
+```bash
+b1: mínimo de sequências exigidas para um sítio conservado (valor absoluto ou proporção, p.ex. 0.5).
 
+b2: mínimo de sequências exigidas para um sítio flanqueador.
 
+b3: máximo de posições não conservadas consecutivas (limita “ilhas” de má homologia).
 
+b4: comprimento mínimo de um bloco conservado.
 
+b5: permissividade a gaps (a = todos; h = ~metade; n = nenhum).
 
+Regra prática:
 
+Aumentar b1/b2 endurece a definição de conservação (mais sítios descartados).
+
+Diminuir b3 e aumentar b4 encurta e fortalece os blocos (mais conservador).
+
+b5 controla o quanto de gaps é aceitável nos blocos retidos.
+```
+
+Perfis de parâmetros recomendados (e como aplicá-los)
+
+<div align="justify">
+Abaixo estão perfis práticos em função da profundidade de divergência. Para os grupos aqui analisados:
+
+Entre famílias (Theraphosidae vs. Idiopidae) → divergência profunda: perfil muito conservador.
+
+Entre gêneros dentro de Idiopidae (Idiops vs. Arbanitis) → intermediário.
+
+Dentro de um gênero (p.ex., apenas Idiops ou apenas Arbanitis; ou variações populacionais em Dolichotele) → raso.
+<div></div>
+
+1) Nível alto (muito conservador) — divergências profundas
+
+```bash
+Gblocks seq.fasta --b1 0.5 --b2 0.85 --b3 4 --b4 8   # gaps conforme default (b5 implícito)
+# Retém sobretudo regiões claramente conservadas; corta flancos e trechos ruidosos.
+```
+2) Nível intermediário — entre gêneros / nível de gênero em Idiopidae
+```bash
+Gblocks seq.fasta --b1 0.5 --b2 0.5 --b3 6 --b4 6
+# Compromisso entre retenção de sinal e remoção de ruído; perfil comum em publicações.
+```
+3) Nível raso — espécie/população (dentro de um gênero)
+```bash
+Gblocks seq.fasta --b1 0.5 --b2 0.5 --b3 10 --b4 4
+# Mais permissivo; retém mais variação potencialmente informativa em escalas recentes.
+```
+# Vamos adotar uma poda coerente para relações profundas
+
+Para comparações entre famílias (Theraphosidae × Idiopidae) e entre gêneros distantes (*Dolichotele*, *Idiops*, *Arbanitis*), recomenda-se uma **poda interna conservadora** com Gblocks. O objetivo é manter apenas blocos inequivocamente homólogos, reduzindo ruído que pode distorcer a topologia.
+
+**Perfil recomendado (profundo, conservador):**
+- `--b1 0.5` — exige ≥50% dos táxons para considerar um sítio conservado  
+- `--b2 0.85` — exige ≥85% dos táxons nos sítios flanqueadores  
+- `--b3 4` — no máximo 4 posições não conservadas consecutivas  
+- `--b4 8` — blocos conservados devem ter ≥8 bp  
+- (Opcional) `-t=d` e `-b5=a` — dados de DNA; gaps permitidos onde necessário
+
+> Este perfil tende a **remover flancos e regiões ruidosas**, favorecendo blocos nucleares mais confiáveis — apropriado para divergências profundas em Mygalomorphae.
+
+---
+**Preparar o job**
+
+```bash
+nano phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed.slurm
+```
+```bash
+
+#!/bin/bash
+#SBATCH --time=1:00:00
+#SBATCH -c 2
+
+set -euo pipefail
+
+module load miniconda/3-2023-09
+source activate /home/tiagobelintani/miniconda3/envs/phyluce-1.7.3
+
+phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed \
+    --alignments mafft-nexus-internal-trimmed \
+    --output mafft-nexus-internal-trimmed-gblocks \
+    --b1 0.5 --b2 0.85 --b3 4 --b4 8 \
+    --cores 2 \
+    --log log
+```
 
 
 
