@@ -9,7 +9,7 @@ Este guia prático conduz do download dos dados (NCBI/SRA) à inferência filoge
 - [Limpeza dos Dados com Trim Galore](#limpeza-dos-dados-com-trim-galore)
 - [Montagem dos Dados com SPAdes](#montagem-dos-dados-com-spades)
 - [Encontrar UCE loci (Finding UCE loci)](#encontrar-uce-loci-finding-uce-loci)
-- [Extrair as sequências FASTA para os loci do conjunto](#extrair-as-sequências-fasta-para-os-loci-do-conjunto)
+- [Extrair as sequências FASTA para os loci do conjunto](#extrair-as-sequencias-fasta-para-os-loci-do-conjunto)
 - [Explodir FASTA por Táxon e Resumir Comprimentos](#explodir-fasta-por-táxon-e-resumir-comprimentos)
 - [Alinhamento e Poda de Lócus UCE](#alinhamento-e-poda-de-lócus-uce)
 - [Poda interna com Gblocks (via PHYLUCE)](#poda-interna-com-gblocks-via-phyluce)
@@ -365,7 +365,7 @@ Portanto, investir em uma etapa de sequenciamento bem planejada — garantindo c
 ```
 ---
 
-# Encontrar UCE loci (Finding UCE loci)
+### Extrair as sequências FASTA para os loci do conjunto
 
 <p align="justify">
 Encontrando os Loci UCE (Finding UCE)
