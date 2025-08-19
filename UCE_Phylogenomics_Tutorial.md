@@ -1604,6 +1604,7 @@ Assim:
 ```bash
 cd uce-tutorial/taxon-sets/all
 ```
+Vamos executar diretamente no terminal
 
 ```bash
 phyluce_align_get_only_loci_with_min_taxa \
