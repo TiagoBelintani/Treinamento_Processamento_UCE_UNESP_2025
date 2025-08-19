@@ -1724,22 +1724,21 @@ Este guia descreve:
 ## 1) Instalação e ambiente
 
 ### Conda/mamba (recomendado)
-```bash
 
 # criar ambiente
+
 ```bash
 mamba create -n programas_filo -c conda-forge -c bioconda iqtree gnu-parallel openjdk -y
 ```
 
-# OBS: o pacote "iqtree" já instala a versão recente; no seu PATH o binário pode ser "iqtree2" ou "iqtree".
-# em muitos builds recentes, "iqtree" resolve para o executável correto (v≥2). Para IQ-TREE 3, alguns clusters já fornecem "iqtree3".
-# ative
+OBS: o pacote "iqtree" já instala a versão recente; no seu PATH o binário pode ser "iqtree2" ou "iqtree". 
 
-```
+```bash
 conda activate programas_filo
 ```
 
-# conferir binário
+conferir binário
+
 ```bash
 iqtree3 --version
 ```
