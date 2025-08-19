@@ -1145,6 +1145,9 @@ phyluce_align_seqcap_align \
 
 Salve (`CTRL+O`) e saia (`CTRL+X`) do editor.
 
+```bash
+sbatch phyluce_align_seqcap_align.slurm
+```
 ---
 
 ## Estratégia adotada
