@@ -1789,7 +1789,7 @@ parallel -j $SLURM_CPUS_PER_TASK run_iqtree :::: loci_list.txt
 ```
 
 ```bash
-sbacth iqtree3_job.slurm
+sbatch iqtree3_job.slurm
 ```
 
  
