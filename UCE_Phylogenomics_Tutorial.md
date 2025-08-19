@@ -1123,12 +1123,8 @@ Dentro do arquivo, insira o seguinte conte√∫do (ajuste recursos conforme necess√
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=uce-align
-#SBATCH --output=uce-align.%j.out
-#SBATCH --error=uce-align.%j.err
-#SBATCH --time=50:00:00
+#SBATCH --time=1:00:00
 #SBATCH -c 12
-#SBATCH --mem=32G
 
 set -euo pipefail
 
@@ -1140,7 +1136,7 @@ phyluce_align_seqcap_align \
     --output mafft-nexus-internal-trimmed \
     --taxa 4 \
     --aligner mafft \
-    --cores 12 \
+    --cores 4 \
     --incomplete-matrix \
     --output-format fasta \
     --no-trim \
