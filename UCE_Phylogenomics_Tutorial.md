@@ -4,24 +4,19 @@
 Este guia prático conduz do download dos dados (NCBI/SRA) à inferência filogenética usando UCEs. Você aprenderá a organizar o ambiente, checar e limpar leituras (Trim Galore), montar contigs (SPAdes) e identificar loci alvo com o PHYLUCE (match_contigs_to_probes, get_match_counts, get_fastas). Em seguida, alinhamos (MAFFT), realizamos poda interna (Gblocks), controlamos ocupância/completude da matriz e concatenamos para análises particionadas. Por fim, inferimos gene trees e species tree (IQ-TREE 3 + ASTRAL), sempre com scripts reprodutíveis (SLURM). O tutorial é voltado a iniciantes e intermediários, com foco em boas práticas e decisões de parâmetros para diferentes profundidades evolutivas.
 <div></div>
   
-- [Referência Bibliográfica](#referência-bibliográfica)
+
 - [Acesso aos Dados](#acesso-aos-dados)
-- [Estruturação do Ambiente de Trabalho](#estruturação-do-ambiente-de-trabalho)
-- [Transferência dos Dados](#transferência-dos-dados)
-- [Verificação de Integridade e Quantificação](#verificação-de-integridade-e-quantificação)
-- [Renomeação dos Arquivos](#renomeação-dos-arquivos)
 - [Limpeza dos Dados com Trim Galore](#limpeza-dos-dados-com-trim-galore)
 - [Montagem dos Dados com SPAdes](#montagem-dos-dados-com-spades)
 - [Encontrar UCE loci (Finding UCE loci)](#encontrar-uce-loci-finding-uce-loci)
-- [Extrair as sequências FASTA para os loci do conjunto](#Extrair-as-sequências-FASTA-para-os-loci-do-conjunto)
+- [Extrair as sequências FASTA para os loci do conjunto](#extrair-as-sequências-fasta-para-os-loci-do-conjunto)
 - [Explodir FASTA por Táxon e Resumir Comprimentos](#explodir-fasta-por-táxon-e-resumir-comprimentos)
 - [Alinhamento e Poda de Lócus UCE](#alinhamento-e-poda-de-lócus-uce)
-- [Sumário dos Alinhamentos (interpretação)](#sumário-dos-alinhamentos-interpretação)
 - [Poda interna com Gblocks (via PHYLUCE)](#poda-interna-com-gblocks-via-phyluce)
-- [Limpeza de alinhamentos (Alignment cleaning)](#limpeza-de-alinhamentos-alignment-cleaning)
 - [Matrizes finais de dados (Final data matrices)](#matrizes-finais-de-dados-final-data-matrices)
 - [Preparando dados para análises filogenéticas](#preparando-dados-para-análises-filogenéticas)
 - [Análises Filogenéticas: Gene Trees e Species Tree (IQ-TREE 3 + ASTRAL)](#análises-filogenéticas-gene-trees-e-species-tree-iq-tree-3--astral)
+
   
 ## Referência Bibliográfica
 
