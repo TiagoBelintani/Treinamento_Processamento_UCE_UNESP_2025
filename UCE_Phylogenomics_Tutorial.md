@@ -1548,11 +1548,127 @@ O que esperar como saída
 
 Um novo diretório: mafft-nexus-internal-trimmed-gblocks-clean/ contendo os mesmos alinhamentos, porém com cabeçalhos simplificados (apenas o nome do táxon).
 
+**A exucação deve se parecer com isso**
+
+```bash
+2025-08-19 18:42:33,128 - phyluce_align_remove_locus_name_from_files - INFO - ====== Starting phyluce_align_remove_locus_name_from_files ======
+2025-08-19 18:42:33,128 - phyluce_align_remove_locus_name_from_files - INFO - Version: 1.7.3
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Commit: None
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --alignments: /home/tiagobelintani/uce-treinamento/taxon-set/all/mafft-nexus-internal-trimmed-gblocks
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --cores: 2
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --input_format: nexus
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --log_path: /home/tiagobelintani/uce-treinamento/taxon-set/all/log
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --output: /home/tiagobelintani/uce-treinamento/taxon-set/all/mafft-nexus-internal-trimmed-gblocks-clean
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --output_format: nexus
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --taxa: None
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Argument --verbosity: INFO
+2025-08-19 18:42:33,129 - phyluce_align_remove_locus_name_from_files - INFO - Getting alignment files
+Running............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2025-08-19 18:42:35,491 - phyluce_align_remove_locus_name_from_files - INFO - Taxon names in alignments: Idiops_sp3_RF2025,Idiops_rohdei,Heligmomerus_sp,Gorgyrella_namaquensis,Ctenolophus_sp,Idiops_germaini,Idiops_carajas,Cteniza_sp,Titanidiops_sp,Idiops_guri,Moggridgea_crudeni,Idiops_clarus,Idiops_kanonganus,Idiops_rastratus,Idiops_fryi,Idiops_pretoriae,Idiops_camelus,Idiops_petiti,Idiops_sp2_RF2025,Segregara_transvaalensis,Neocteniza_toba,Idiops_pirassununguensis
+2025-08-19 18:42:35,492 - phyluce_align_remove_locus_name_from_files - INFO - ====== Completed phyluce_align_remove_locus_name_from_files =====
+```
+
+# Matrizes finais de dados (Final data matrices)
+
+Após a etapa de limpeza, precisamos definir **quais loci entram na matriz final**.  
+Aqui entra o conceito de **completude da matriz**: o percentual de táxons representados em cada alinhamento.
+
+---
+
+## O que significa “completude”?
+
+- **Matriz 75% completa**: em um estudo com 100 táxons, cada alinhamento incluído precisa ter **pelo menos 75 táxons**.  
+- **Matriz 95% completa**: no mesmo exemplo, cada alinhamento incluído precisa ter **pelo menos 95 táxons**.  
+
+ **Atenção**: isso **não significa** que cada táxon terá dados em todos os loci.  
+Exemplo: a matriz 75% garante que **cada locus tem ≥75 táxons**, mas não exige que **os mesmos 75 táxons** estejam presentes em todos os loci.
+
+---
+
+## No nosso caso (4 táxons totais)
+
+- `--taxa 4` informa ao PHYLUCE que temos **4 organismos no dataset**.  
+- Para `--percent 0.75`, o programa exige que **pelo menos 3 táxons (75% de 4)** estejam presentes em cada locus.  
+- Para `--percent 0.95`, como 95% de 4 = 3,8 → arredonda para 4, exigindo **todos os 4 táxons** em cada locus.
+
+Assim:
+- A **matriz 75%** é mais **permissiva**, inclui loci mesmo se faltar 1 táxon.  
+- A **matriz 95%** é mais **estrita**, aceita apenas loci com todos os 4 táxons.
+
+---
+
+## Gerando a matriz 75% completa
+
+1. **Certifique-se do diretório de trabalho**:
+
+```bash
+cd uce-tutorial/taxon-sets/all
+```
+
+```bash
+phyluce_align_get_only_loci_with_min_taxa \
+    --alignments mafft-nexus-internal-trimmed-gblocks-clean \
+    --taxa 4 \
+    --percent 0.75 \
+    --output mafft-nexus-internal-trimmed-gblocks-clean-75p \
+    --cores 12 \
+    --log-path log
+```
+E se quisermos 95%?
+
+Basta ajustar --percent 0.95:
+```bash
+phyluce_align_get_only_loci_with_min_taxa \
+    --alignments mafft-nexus-internal-trimmed-gblocks-clean \
+    --taxa 4 \
+    --percent 0.95 \
+    --output mafft-nexus-internal-trimmed-gblocks-clean-95p \
+    --cores 12 \
+    --log-path log
+```
+
+O que é “ocupância” em filogenômica?
+
+Em uma matriz de loci, ocupância é a proporção de táxons que estão representados em cada locus.
+
+Se você tem 10 espécies e um locus aparece em 7 delas, a ocupância desse locus é 70%.
+
+Uma matriz de alinhamentos pode então ser descrita pela média de ocupância: quantos táxons, em média, aparecem por locus.
+
+Por que importa?
+
+Alta ocupância → menos dados faltantes, mais comparabilidade entre táxons.
+
+Baixa ocupância → mais loci aproveitados, mas com buracos na matriz (nem todos os táxons representados).
+
+⚖A escolha é sempre um trade-off: incluir mais loci (aceitando lacunas) vs. manter uma matriz mais densa (menos lacunas, mas menos loci).
+
+Exemplo (simples, n=4)
+Locus	Táxons presentes	Ocupância
+L1	4/4	100%
+L2	3/4	75%
+L3	2/4	50%
+
+Média de ocupância = (100 + 75 + 50) / 3 = 75%.
+
+Gráfico ilustrativo
+
+Vou gerar um gráfico de barras mostrando a distribuição de ocupância em um dataset hipotético.
+
+Distribuição De Ocupância Em Loci UCE (Exemplo Hipotético)
+
+Aqui está um exemplo visual de como a ocupância pode ser distribuída em um dataset de UCEs:
+
+![Figura1](aminho/para/imagem.png](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/output.png)
 
 
+No exemplo:
 
+Muitos loci estão na faixa de 75–85% de ocupância.
 
+Poucos loci têm 100% de táxons representados.
 
+Há também um conjunto com 50–60%, que amplia o número total de loci mas aumenta lacunas.
 
 
 
