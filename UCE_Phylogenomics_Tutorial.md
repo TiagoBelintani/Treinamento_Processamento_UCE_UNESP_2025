@@ -1007,6 +1007,97 @@ De modo geral, os resultados mostram um painel heterogêneo: táxons como Cteniz
 
 ---
 
+# Alinhamento e Poda de Lócus UCE
+
+Os elementos ultraconservados (UCEs) são uma poderosa fonte de dados para inferências filogenéticas em diferentes escalas evolutivas. Entretanto, a forma como os lócus UCE são alinhados e podados (trimming) exerce grande influência nos resultados subsequentes. Estratégias distintas podem ser mais ou menos adequadas dependendo do tempo de divergência entre os táxons analisados.
+
+---
+
+## Estratégias de Tratamento dos Alinhamentos de UCE
+
+1. **Alinhamentos sem poda**  
+   Utilizar os alinhamentos sem qualquer modificação preserva todos os sítios, mas frequentemente mantém regiões mal alinhadas ou ambíguas. Essa abordagem pode ser útil para análises exploratórias, mas corre o risco de introduzir ruído.
+
+2. **Poda nas extremidades (edge-trimming)**  
+   Quando se analisam **táxons próximos** (por exemplo, divergências < 30–50 milhões de anos), aparar apenas as extremidades do alinhamento geralmente é suficiente. Isso remove regiões ambíguas nas bordas, preservando os sítios centrais informativos.  
+   - No **phyluce**, esse é o comportamento padrão quando os alinhamentos são gerados sem a opção `--no-trim`.
+
+3. **Poda interna (internal trimming)**  
+   Para análises envolvendo **divergências profundas** (> 50 milhões de anos), como em *Mygalomorphae* ou *Opiliones*, a poda interna torna-se essencial. Nesses casos, blocos mal alinhados podem ocorrer em diversas partes do alinhamento e precisam ser removidos.  
+   - No **phyluce**, isso é feito gerando alinhamentos sem poda (`--no-trim`) e, em seguida, submetendo-os ao **Gblocks**.
+
+---
+
+## Escolha do Programa de Alinhamento
+
+- **MAFFT** – rápido, robusto, amplamente utilizado em grandes datasets.  
+- **MUSCLE** – preciso, embora às vezes menos estável em matrizes muito grandes.  
+- **SATé (externo)** – co-otimiza alinhamento e árvore, mas é computacionalmente custoso.  
+
+A escolha depende do tamanho do dataset, da profundidade da divergência e dos recursos computacionais disponíveis.
+
+---
+
+## Poda Interna com Gblocks
+
+[Gblocks](http://molevol.cmima.csic.es/castresana/Gblocks.html) identifica e remove regiões mal alinhadas em alinhamentos múltiplos de sequências. A escolha de parâmetros é determinante e deve ser ajustada conforme a escala filogenética.
+
+### Exemplos de Comandos
+
+```bash
+# Uso básico (dados de nucleotídeos, parâmetros estritos)
+Gblocks seq.fasta -t=d -b1=5 -b2=10 -b3=50 -b4=5 -b5=a
+
+# Sintaxe alternativa com limiares proporcionais
+Gblocks seq.fasta --b1 0.5 --b2 0.5 --b3 10 --b4 4
+```
+
+### Conjuntos de Parâmetros Recomendados
+
+Explicação dos parâmetros:  
+- **b1** = número mínimo de sequências para um sítio conservado (valor absoluto ou proporção)  
+- **b2** = número mínimo de sequências para um sítio flanqueador  
+- **b3** = número máximo de posições não conservadas consecutivas  
+- **b4** = comprimento mínimo de um bloco conservado  
+- **b5** = permissividade para gaps (`a` = todos, `n` = nenhum, `h` = metade, etc.)  
+
+```bash
+# Nível alto (muito conservador)
+Gblocks seq.fasta --b1 0.5 --b2 0.85 --b3 4 --b4 8
+# Muito estrito: retém basicamente regiões codificantes e remove regiões flanqueadoras
+# Recomendado para análises de datação de divergências profundas (e.g., Mygalomorphae, Opiliones famílias)
+
+# Nível intermediário (uso mais comum)
+Gblocks seq.fasta --b1 0.5 --b2 0.5 --b3 6 --b4 6
+# Balanceado, frequentemente utilizado em estudos filogenômicos publicados
+# Adequado para análises em nível de gênero até família (e.g., gêneros de Mygalomorphae)
+
+# Nível raso (espécies e populações)
+Gblocks seq.fasta --b1 0.5 --b2 0.5 --b3 10 --b4 4
+# Mais permissivo, retém mais variação
+# Ideal para datasets de nível específico ou populacional
+```
+
+---
+
+## Recomendações Práticas
+
+- Para **divergências recentes**: a poda apenas nas extremidades geralmente é suficiente; a poda interna pode eliminar variação útil.  
+- Para **divergências antigas**: usar Gblocks com parâmetros conservadores aumenta a confiabilidade do alinhamento.  
+- Sempre **testar múltiplos conjuntos de parâmetros** e comparar os resultados, especialmente quando se lida com grupos de ampla escala evolutiva.  
+
+---
+
+## Notas sobre Mygalomorphae
+
+As aranhas *Mygalomorphae* (tarântulas e armadeiras, entre outras) ilustram bem a necessidade de poda interna. Suas divergências remontam à fragmentação da Gondwana (>100 milhões de anos), o que leva a alinhamentos UCE repletos de regiões pouco conservadas. Nestes casos, recomenda-se fortemente o uso de parâmetros conservadores no Gblocks.
+
+---
+
+## Referências
+
+- Faircloth BC (2016). PHYLUCE is a software package for the analysis of conserved genomic loci. *Bioinformatics*.  
+- Castresana J (2000). Selection of conserved blocks from multiple alignments for phylogenetic analysis. *Mol Biol Evol*.  
 
 
 
