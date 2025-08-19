@@ -1467,11 +1467,51 @@ phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed \
     --cores 2 \
     --log log
 ```
+**vamos executar**
+
 ```bash
 sbatch phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed.slurm
 ```
 
+O resultado deve ser parecer com:
 
+```bash
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO -  Starting phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed 
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Version: 1.7.3
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Commit: None
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --alignments: /home/tiagobelintani/uce-treinamento/taxon-set/all/mafft-nexus-internal-trimmed
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --b1: 0.5
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --b2: 0.85
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --b3: 4
+2025-08-19 18:13:32,923 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --b4: 8
+2025-08-19 18:13:32,924 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --cores: 2
+2025-08-19 18:13:32,924 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --input_format: fasta
+2025-08-19 18:13:32,924 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --log_path: /home/tiagobelintani/uce-treinamento/taxon-set/all/log
+2025-08-19 18:13:32,924 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --output: /home/tiagobelintani/uce-treinamento/taxon-set/all/mafft-nexus-internal-trimmed-gblocks
+2025-08-19 18:13:32,924 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --output_format: nexus
+2025-08-19 18:13:32,924 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Argument --verbosity: INFO
+2025-08-19 18:13:32,924 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Getting aligned sequences for trimming
+2025-08-19 18:13:32,940 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Alignment trimming begins.
+2025-08-19 18:13:44,928 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Alignment trimming ends
+2025-08-19 18:13:44,929 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO - Writing output files
+2025-08-19 18:13:46,462 - phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed - INFO -  Completed phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed 
+```
+
++um novo diretório deve surgir
+
+```bash
+(phyluce-1.7.3) [tiagobelintani@access2 all]$ cd mafft-nexus-internal-trimmed-gblocks/
+```
+**Agora podemos obter um novo sumário**
+
+Copie e cole diretamente no terminal
+
+```bash
+phyluce_align_get_align_summary_data \
+    --alignments mafft-nexus-internal-trimmed-gblocks \
+    --cores 1 \
+    --log-path log
+```
 
 
 
