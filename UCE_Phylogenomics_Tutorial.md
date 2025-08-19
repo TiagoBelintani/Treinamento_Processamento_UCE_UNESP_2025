@@ -1372,22 +1372,29 @@ Esse resumo permitirá comparar número de loci, comprimentos médios, sítios i
 
 ```bash
 b1: mínimo de sequências exigidas para um sítio conservado (valor absoluto ou proporção, p.ex. 0.5).
-
+```
+```bash
 b2: mínimo de sequências exigidas para um sítio flanqueador.
-
+```
+```bash
 b3: máximo de posições não conservadas consecutivas (limita “ilhas” de má homologia).
-
+```
+```bash
 b4: comprimento mínimo de um bloco conservado.
-
+```
+```bash
 b5: permissividade a gaps (a = todos; h = ~metade; n = nenhum).
+```
 
+```bash
 Regra prática:
-
+```
 Aumentar b1/b2 endurece a definição de conservação (mais sítios descartados).
 
 Diminuir b3 e aumentar b4 encurta e fortalece os blocos (mais conservador).
 
 b5 controla o quanto de gaps é aceitável nos blocos retidos.
+```
 ```
 
 Perfis de parâmetros recomendados (e como aplicá-los)
@@ -1401,6 +1408,8 @@ Entre gêneros dentro  (Idiops vs. Arbanitis) → intermediário.
 
 Dentro de um gênero (p.ex., apenas Idiops ou apenas Arbanitis; ou variações populacionais em Dolichotele) → raso.
 <div></div>
+
+---
 
 1) Nível alto (muito conservador) — divergências profundas
 
@@ -1458,7 +1467,9 @@ phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed \
     --cores 2 \
     --log log
 ```
-
+```bash
+sbatch phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed.slurm
+```
 
 
 
