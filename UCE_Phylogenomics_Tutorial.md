@@ -1541,7 +1541,7 @@ A saída é escrita em um novo diretório com o sufixo -clean.
 phyluce_align_remove_locus_name_from_files \
     --alignments mafft-nexus-internal-trimmed-gblocks \
     --output mafft-nexus-internal-trimmed-gblocks-clean \
-    --cores 12 \
+    --cores 2 \
     --log-path log
 ```
 O que esperar como saída
