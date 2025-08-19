@@ -1244,7 +1244,90 @@ A saida vai se parecer com:
 2025-08-19 17:22:23,217 - phyluce_align_get_align_summary_data - INFO - ========= Completed phyluce_align_get_align_summary_data ========
 ```
 
+# Comentários sobre o resumo de alinhamento
+ Alinhamento geral
 
+Número de loci: 1.036
+
+Comprimento total: 792.934 pb
+
+Comprimento médio por locus: 765 pb (±15 pb, intervalo de confiança de 95%).
+
+Variação: loci de 374 até 2.557 pb.
+
+ Interpretação: há uma boa quantidade de loci e um tamanho médio consistente, o que sugere alinhamentos relativamente estáveis, embora alguns loci sejam bem mais longos.
+
+Sítios informativos
+
+Total de sítios informativos: 36.853
+
+Média por locus: ~36
+
+Amplitude: de 0 até 217 sítios informativos.
+
+ Interpretação: alguns loci não possuem variação (0 sítios informativos), o que é esperado para UCEs. Porém, muitos apresentam diversidade útil para análises filogenéticas.
+
+**Cobertura taxonômica**
+
+Número médio de táxons por locus: 6,4
+
+Mínimo: 3 táxons
+
+Máximo: 16 táxons
+
+Interpretação: a maioria dos loci está representada em 6 a 7 táxons. Isso sugere uma matriz relativamente completa, mas alguns loci possuem cobertura baixa (apenas 3 espécies).
+
+**Dados faltantes**
+
+Média, mínimo e máximo: todos 0.00
+
+ Interpretação: após o trimming, não há dados faltantes detectáveis. Excelente sinal de limpeza no alinhamento.
+
+**Contagem de caracteres**
+
+Total de caracteres: 5.451.787
+
+Nucleotídeos efetivos (A, C, G, T): 3.060.767
+
+Gaps (“-”): 2.391.020
+
+Interpretação: quase 44% da matriz é composta por gaps, o que reflete regiões removidas ou desalinhadas. É um valor alto, mas comum em análises com divergência considerável.
+
+**Completude da matriz**
+
+Matrix 50%: 346 alinhamentos têm ≥50% dos táxons representados
+
+Matrix 70%: 68 alinhamentos
+
+Matrix 90%: apenas 9 alinhamentos
+
+Matrix 95%: apenas 2 alinhamentos
+
+Interpretação: a completude cai rapidamente conforme o critério aumenta. Ou seja, poucas regiões são amplamente compartilhadas entre todos os táxons, o que limita análises de matriz “estrita” (alta completude). Para este dataset, uma matriz 50–60% provavelmente é o melhor compromisso entre número de loci e cobertura.
+
+**Frequência de caracteres**
+
+A (adenina): 883.419
+
+C (citosina): 640.644
+
+G (guanina): 634.828
+
+T (timina): 901.876
+
+Gaps (-): 2.391.020
+
+Interpretação: a composição de nucleotídeos está equilibrada, sem viés GC/T extremo. Os gaps são o elemento dominante, reflexo do trimming interno.
+
+Conclusão geral
+
+O dataset apresenta 1.036 loci alinhados, com comprimento médio razoável e variação filogeneticamente informativa.
+
+A proporção de gaps é alta, mas não fora do esperado para grupos antigos/divergentes.
+
+A matriz mostra boa densidade de loci em 50% dos táxons, mas perde muito quando exigimos presença em ≥80–90%.
+
+Ideal para análises em que se aceita incompletude moderada (50–70%), mas não recomendado exigir presença em todos os táxons.
 
 
 
