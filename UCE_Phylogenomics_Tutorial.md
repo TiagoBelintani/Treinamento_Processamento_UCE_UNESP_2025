@@ -1335,7 +1335,7 @@ Interpretação: a composição de nucleotídeos está equilibrada, sem viés GC
 
 
 Conclusão geral
-```bash
+<div align="justify"> 
 O dataset apresenta 1.036 loci alinhados, com comprimento médio razoável e variação filogeneticamente informativa.
 
 A proporção de gaps é alta, mas não fora do esperado para grupos antigos/divergentes.
@@ -1343,10 +1343,25 @@ A proporção de gaps é alta, mas não fora do esperado para grupos antigos/div
 A matriz mostra boa densidade de loci em 50% dos táxons, mas perde muito quando exigimos presença em ≥80–90%.
 
 Ideal para análises em que se aceita incompletude moderada (50–70%), mas não recomendado exigir presença em todos os táxons.
-```
+<div></div>
+
 ---
 
+# Poda interna com [Gblocks](https://home.cc.umanitoba.ca/~psgendb/doc/Castresana/Gblocks_documentation.html) (via Phyluce)
 
+Nesta etapa, realizaremos a **poda interna** dos loci UCE utilizando o **Gblocks**, por meio do wrapper do PHYLUCE. Essa etapa remove blocos internamente mal alinhados ou com baixa confiabilidade, reduzindo ruído e aumentando a robustez das análises filogenéticas — especialmente importante em **Mygalomorphae**, como no conjunto aqui tratado (*Dolichotele* — Theraphosidae; *Idiops* e *Arbanitis* — Idiopidae).
+
+---
+
+## Comando (PHYLUCE → Gblocks)
+
+```bash
+# Executar Gblocks sobre os alinhamentos não podados internamente
+phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed \
+    --alignments mafft-nexus-internal-trimmed \
+    --output mafft-nexus-internal-trimmed-gblocks \
+    --cores 12 \
+    --log log
 
 
 
