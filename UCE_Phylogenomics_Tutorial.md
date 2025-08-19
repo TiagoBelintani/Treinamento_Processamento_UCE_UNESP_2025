@@ -271,7 +271,7 @@ Agora um comando utilizando "sed" para retirar espaços indesejáveis
 sed -E 's/[[:space:]]*:[[:space:]]*/:/g' tabela.txt > assembly.conf
 ```
 
-#Modelo de assembly.conf para várias amostras:
+### Modelo de assembly.conf
 
 *Este arquivo é propenso a erros; verifique cuidadosamente para evitar problemas causados por espaços extras, caminhos inválidos ou erros de digitação.*
 
@@ -289,9 +289,9 @@ Gorgyrella_namaquensis:/home/tiagobelintani/uce-treinamento/clean-fastq/Gorgyrel
 Titanidiops_sp.:/home/tiagobelintani/uce-treinamento/clean-fastq/Titanidiops_sp./split-adapter-quality-trimmed
 ```
 
-2. Criar o Script de Montagem
+## 2. Criar o Script de Montagem
    
-#Crie um arquivo chamado spades_job.sh com o seguinte conteúdo:
+### Criar o arquivo spades_job.sh com o seguinte conteúdo:
 
 ```bash
 #!/bin/bash
@@ -313,7 +313,7 @@ phyluce_assembly_assemblo_spades \
   --config assembly.conf        # Arquivo de configuração
 ```
 
-#3. Submeter e Monitorar o Job
+## 3. Submeter e Monitorar o Job
 
 Envie o job para execução no SLURM:
 
@@ -326,7 +326,7 @@ Acompanhe o status:
 squeue -u tiagobelintani
 ```
 
-Possíveis Problemas e Como Evitar
+### Possíveis problemas e como evitar
 
 | Problema comum                       | Possível causa                                    | Solução                                                               |
 | ------------------------------------ | ------------------------------------------------- | --------------------------------------------------------------------- |
@@ -347,13 +347,12 @@ Esse problema poderia ser, em parte, solucionado por meio de novas tentativas ut
   
 <div align="justify">   
 Portanto, investir em uma etapa de sequenciamento bem planejada — garantindo cobertura adequada, qualidade de leitura elevada e estratégias de limpeza eficientes — é essencial para minimizar perdas de informação e maximizar o sucesso das etapas subsequentes de montagem e análise.
-#Estrutura de diretorios atuais 
+## Estrutura de diretórios atuais
 </p>
   
 *não é obrigatorio tal estrutura, mas pode facilitar muito a organização do fluxo de trabalho*
 
-#Vamos continuar verificando a estrutura dos diretórios.
-
+### Verificando a estrutura dos diretórios
 ```bash
 /home/tiagobelintani/uce-treinamento/
 ├── assembly
@@ -384,20 +383,20 @@ Esse processo é importante porque, embora a montagem contenha todas as sequênc
 O PHYLUCE realiza essa identificação comparando os contigs montados com um banco de dados de loci UCEs de referência, geralmente fornecido em formato .fasta. Essa comparação é feita usando algoritmos de alinhamento rápido, como lastz, que detectam regiões de alta similaridade.
 </p>
 
-#**Passos para encontrar loci UCE no <a href="https://phyluce.readthedocs.io/en/latest/">Phyluce</a>**
+##Passos para encontrar loci UCE no <a href="https://phyluce.readthedocs.io/en/latest/">Phyluce</a>**
 
 <p align="justify">
-#Organizar o diretório de montagem
+###Organizar o diretório de montagem
 Certifique-se de que todas as pastas de montagem (por amostra) estão reunidas em um único diretório.
 Cada pasta deve conter o arquivo contigs.fasta gerado pelo montador.
 </p>
 
-#Preparar o banco de sondas UCE
+###Preparar o banco de sondas UCE
  
 Baixe ou utilize o conjunto de sondas específico para o seu grupo de estudo (por exemplo, insetos, aves, aracnídeos).
 Esse arquivo .fasta será usado como referência.
  
-#Executar o alinhamento com lastz
+###Executar o alinhamento com lastz
 
 O comando típico no PHYLUCE para essa etapa é:
 
@@ -412,7 +411,7 @@ phyluce_assembly_match_contigs_to_probes \
 O resultado será um conjunto de arquivos que listam quais loci foram encontrados em cada amostra.
 Esses arquivos são usados nas etapas seguintes de filtragem e extração.
 
-Possíveis problemas
+### Possíveis problemas
 
 ```bash
 | Problema                          | Causa comum                                 | Como corrigir                                                                       |
@@ -429,23 +428,23 @@ Possíveis problemas
 ## Baixar as probes (**iscas**)
 
 
-#criar dir para receber as probes
+###criar dir para receber as probes
 
 ```bash
 mkdir probes
 ```
-#Opções de downloud
+###Opções de downloud
 
 [Probes – Figshare](https://figshare.com/articles/dataset/Arachnida_14_799_baits_targeting_1_120_conserved_loci_Arachnida-UCE-1_1K-v1_fasta_/3856146)  
 [Probes – Google Drive](https://drive.google.com/file/d/1BTGtLKJQHw1uxE7X2kTqiSm0Gmnt8KwM/view?usp=drive_link)  
 [Probes – GitHub](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/tree/main/Probes)
 
-#renomear probes
+###renomear probes
 
 ```bash
 mv * probes.fasta
 ```
-*Estrutura diretorio atual
+###Estrutura diretorio atual
 
 ```bash
 /home/tiagobelintani/uce-treinamento/probes/
@@ -468,7 +467,7 @@ pwd
 ```bash
 nano phyluce_assembly_match_contigs_to_probes_job.sh
 ```
-#[Arquivo de execução - job slurm](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_match_contigs_to_probes_job.sh)
+###[Arquivo de execução - job slurm](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Jobs_Conf/phyluce_assembly_match_contigs_to_probes_job.sh)
 
 ```bash
 #!/bin/bash
@@ -489,7 +488,7 @@ phyluce_assembly_match_contigs_to_probes \
     --min-identity 80 --log-path log
 ```
 
-#Deverá ver um resultado semelhante ao seguinte [também armazenado em log](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/phyluce_assembly_match_contigs_to_probes.log)
+###Deverá ver um resultado semelhante ao seguinte [também armazenado em log](https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/LOGS/phyluce_assembly_match_contigs_to_probes.log)
 
 ```bash
 2025-08-12 16:45:05,072 - phyluce_assembly_match_contigs_to_probes - INFO - ======= Starting phyluce_assembly_match_contigs_to_probes =======
@@ -536,7 +535,7 @@ phyluce_assembly_match_contigs_to_probes \
 2025-08-12 16:45:32,202 - phyluce_assembly_match_contigs_to_probes - INFO - The UCE match database is in /home/tiagobelintani/uce-treinamento/uce-resultados-busca/probe.matches.sqlite
 2025-08-12 16:45:32,202 - phyluce_assembly_match_contigs_to_probes - INFO - ======= Completed phyluce_assembly_match_contigs_to_probes ======
 ```
- #Breve intepretação
+ ###Breve intepretação
 
 <div align="justify"> 
 Com os parâmetros definidos para --min_coverage 80 e --min_identity 80 (default), o comando phyluce_assembly_match_contigs_to_probes realizou uma busca relativamente restritiva, exigindo que pelo menos 80% da sonda fosse coberta e que a similaridade mínima entre contig e probe também fosse de 80%. Esses valores favorecem a recuperação de loci de maior qualidade, mas podem reduzir bastante o número de UCEs identificados, especialmente em amostras mais divergentes ou com montagens fragmentadas. Isso explica a grande variação de resultados observada no log, com algumas espécies recuperando acima de 100 loci (ex.: Cteniza_sp com 120) e outras com praticamente nenhum locus (ex.: Idiops_camelus com 0). Além disso, o relatório indica remoções de loci por mapearem em múltiplos contigs ou contigs associados a múltiplos loci, o que evidencia a necessidade de avaliar a integridade e o nível de duplicação das montagens para otimizar parâmetros em futuras análises.
@@ -724,7 +723,7 @@ Titanidiops_sp
 ```
 
 
-# Agora devemos criar um novo diretorio e um subdiretório
+###Agora devemos criar um novo diretorio e um subdiretório
 
 ```bash
 mkdir -p taxon-set/all
@@ -826,7 +825,7 @@ O arquivo final foi salvo em:
 ```
 ---
 
-#Extrair as sequências FASTA para os loci do conjunto
+###Extrair as sequências FASTA para os loci do conjunto
 
 **Entre no diretório do taxon set e crie uma pasta para logs:**
 
@@ -927,7 +926,7 @@ phyluce_assembly_get_fastas_from_match_counts \
 2025-08-12 17:56:01,168 - phyluce_assembly_get_match_counts - INFO - ========== Completed phyluce_assembly_get_match_counts ==========
 ```
 
-**#Breve descrição**
+###Breve descrição
 
 <div align="justify"> 
 Na etapa de extração, a análise usa o *phyluce_assembly_get_fastas_from_match_counts* para converter a matriz de loci×táxons em sequências, lendo as montagens em *--contigs*, o banco de matches (probe.matches.sqlite) em *--locus_db*, a configuração da matriz (all-taxa-incomplete.conf) em *--match_count_output*, o relatório de ausências (.incomplete) em *--incomplete_matrix* e escrevendo um FASTA monolítico em *--output* — todos os caminhos estão registrados no log da execução, garantindo rastreabilidade dos insumos e do produto final. 
@@ -1125,7 +1124,7 @@ As aranhas *Mygalomorphae* (tarântulas e armadeiras, entre outras) ilustram bem
 - Faircloth BC (2016). PHYLUCE is a software package for the analysis of conserved genomic loci. *Bioinformatics*.  
 - Castresana J (2000). Selection of conserved blocks from multiple alignments for phylogenetic analysis. *Mol Biol Evol*.  
 
-# Passos práticos: alinhamento e poda de UCEs
+###Prática: alinhamento e poda de UCEs
 
  **Atenção**: todas as análises devem ser executadas no diretório especificado:
 
@@ -1725,7 +1724,7 @@ O resultado inclui tanto a matriz concatenada (.phylip) quanto os charsets, que 
 Se preferir saída em NEXUS, basta trocar a flag --phylip por --nexus.
 ```
 
-Próximos passos
+##Próximos passos--
 
 RAxML / IQTree: usar a matriz concatenada para inferir árvores filogenéticas.
 
