@@ -3,7 +3,9 @@
 <div align="justify">
 Este guia prático conduz do download dos dados (NCBI/SRA) à inferência filogenética usando UCEs. Você aprenderá a organizar o ambiente, checar e limpar leituras (Trim Galore), montar contigs (SPAdes) e identificar loci alvo com o PHYLUCE (match_contigs_to_probes, get_match_counts, get_fastas). Em seguida, alinhamos (MAFFT), realizamos poda interna (Gblocks), controlamos ocupância/completude da matriz e concatenamos para análises particionadas. Por fim, inferimos gene trees e species tree (IQ-TREE 3 + ASTRAL), sempre com scripts reprodutíveis (SLURM). O tutorial é voltado a iniciantes e intermediários, com foco em boas práticas e decisões de parâmetros para diferentes profundidades evolutivas.
 <div></div>
-  
+
+---
+---
 
 - [Acesso aos Dados](#acesso-aos-dados)
 - [Limpeza dos Dados com Trim Galore](#limpeza-dos-dados-com-trim-galore)
@@ -13,8 +15,8 @@ Este guia prático conduz do download dos dados (NCBI/SRA) à inferência filoge
 - [Poda interna com Gblocks (via PHYLUCE)](#poda-interna-com-gblocks-via-phyluce)
 - [Matrizes finais de dados (Final data matrices)](#matrizes-finais-de-dados-final-data-matrices)
 - [Análises Filogenéticas: Gene Trees e Species Tree (IQ-TREE 3 + ASTRAL)](#análises-filogenéticas-gene-trees-e-species-tree-iq-tree-3--astral)
+---
 
-  
 ## Referência Bibliográfica
 
 Para detalhes adicionais sobre a extração, construção das bibliotecas e sequenciamento dos dados, consultar o artigo recentemente publicado:
