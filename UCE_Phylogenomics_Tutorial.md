@@ -9,12 +9,9 @@ Este guia prático conduz do download dos dados (NCBI/SRA) à inferência filoge
 - [Limpeza dos Dados com Trim Galore](#limpeza-dos-dados-com-trim-galore)
 - [Montagem dos Dados com SPAdes](#montagem-dos-dados-com-spades)
 - [Encontrar UCE loci (Finding UCE loci)](#encontrar-uce-loci-finding-uce-loci)
-- [Extrair as sequências FASTA para os loci do conjunto](#extrair-as-sequencias-fasta-para-os-loci-do-conjunto)
-- [Explodir FASTA por Táxon e Resumir Comprimentos](#explodir-fasta-por-táxon-e-resumir-comprimentos)
 - [Alinhamento e Poda de Lócus UCE](#alinhamento-e-poda-de-lócus-uce)
 - [Poda interna com Gblocks (via PHYLUCE)](#poda-interna-com-gblocks-via-phyluce)
 - [Matrizes finais de dados (Final data matrices)](#matrizes-finais-de-dados-final-data-matrices)
-- [Preparando dados para análises filogenéticas](#preparando-dados-para-análises-filogenéticas)
 - [Análises Filogenéticas: Gene Trees e Species Tree (IQ-TREE 3 + ASTRAL)](#análises-filogenéticas-gene-trees-e-species-tree-iq-tree-3--astral)
 
   
