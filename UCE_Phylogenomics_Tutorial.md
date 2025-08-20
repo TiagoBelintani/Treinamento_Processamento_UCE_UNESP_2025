@@ -2,7 +2,7 @@
 ### Tutorial: Filogenômica com Elementos Ultraconservados (UCEs)
 
 <div align="justify">
-Este guia prático conduz do download dos dados (NCBI/SRA) à inferência filogenética usando UCEs. Você aprenderá a organizar o ambiente, checar e limpar leituras (Trim Galore), montar contigs (SPAdes) e identificar loci alvo com o PHYLUCE (match_contigs_to_probes, get_match_counts, get_fastas). Em seguida, alinhamos (MAFFT), realizamos poda interna (Gblocks), controlamos ocupância/completude da matriz e concatenamos para análises particionadas. Por fim, inferimos gene trees e species tree (IQ-TREE 3 + ASTRAL), sempre com scripts reprodutíveis (SLURM). O tutorial é voltado a iniciantes e intermediários, com foco em boas práticas e decisões de parâmetros para diferentes profundidades evolutivas.
+Este guia prático conduz do download dos dados  à inferência filogenética usando UCEs. Você aprenderá a organizar o ambiente, checar e limpar leituras (Trim Galore), montar contigs e identificar loci alvo com o PHYLUCE . Em seguida, alinhamos, realizamos poda interna, controlamos ocupância/completude da matriz e concatenamos para análises particionadas. Por fim, inferimos gene trees e species tree, sempre com scripts reprodutíveis (SLURM). O tutorial é voltado a iniciantes e intermediários, com foco em boas práticas e decisões de parâmetros para diferentes profundidades evolutivas.
 <div></div>
 
 ---
