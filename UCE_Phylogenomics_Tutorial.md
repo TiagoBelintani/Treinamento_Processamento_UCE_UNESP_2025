@@ -19,7 +19,8 @@ Este guia prático conduz do download dos dados  à inferência filogenética us
 - [Gene Tree Inference (por locus) com IQ-TREE 3](#gene-tree-inference-por-locus-com-iq-tree-3)
 - [Species Tree (ASTRAL a partir das gene trees)](#species-tree-astral-a-partir-das-gene-trees)
 - [Analise com loci concatenados **concatenated_based**](#Analise-com-loci-concatenados)
-- [Analise com loci concatenados ](#analise-com-loci-concatenados-concatenatedbased)
+- [Analise com loci concatenados](#analise-com-loci-concatenados-concatenatedbased)
+- [Analise com loci concatenados (concatenated_based)](#Analise-com-loci-concatenados-concatenated_based)]
 
 
 ---
@@ -2198,7 +2199,7 @@ O ASTRAL conseguiu recuperar vários clados sólidos, especialmente dentro de Id
 <div>
 ```
 
-## Analise com loci concatenados **concatenated_based**
+## Analise com loci concatenados (concatenated_based)
 
 
 
