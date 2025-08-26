@@ -18,6 +18,7 @@ Este guia prático conduz do download dos dados  à inferência filogenética us
 - [Análises Filogenéticas: Gene Trees e Species Tree (IQ-TREE 3 + ASTRAL)](#análises-filogenéticas-gene-trees-e-species-tree-iq-tree-3--astral)
 - [Gene Tree Inference (por locus) com IQ-TREE 3](#gene-tree-inference-por-locus-com-iq-tree-3)
 - [Species Tree (ASTRAL a partir das gene trees)](#species-tree-astral-a-partir-das-gene-trees)
+- [Analise com loci concatenados **concatenated_based**](#Analise-com-loci-concatenados-**concatenated_based**)
 
 ---
 
@@ -2188,6 +2189,14 @@ Para nossa execução vamos executar e Cteniza.
   <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/species_tree.png" alt="Species Tree" width="500"/>
 </p>
 
+Comentários 
+```bash
+<div align="justify">
+O ASTRAL conseguiu recuperar vários clados sólidos, especialmente dentro de Idiops e nos pares mais próximos. Porém, os baixos suportes em nós profundos indicam conflito entre gene trees e sugerem que algumas relações internas permanecem incertas, possivelmente por radiação rápida, incongruência entre loci ou dados insuficientes. A próxima etapa é enraizar adequadamente e colapsar nós fracos, antes de tirar conclusões taxonômicas fortes.
+<div>
+```
+
+## Analise com loci concatenados **concatenated_based**
 
 
 
