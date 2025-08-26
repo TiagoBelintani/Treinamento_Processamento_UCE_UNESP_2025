@@ -1875,23 +1875,171 @@ O ASTRAL precisa que seja fornecido como entrada:
 1. O conjunto de gene trees (`*.treefile` de cada locus).  
 2. Parâmetros de suporte para estimar confiabilidade dos nós.  
 <div></div>
-
+---
 <div align="justify">
 A saída será uma **species tree anotada** com suportes locais, pronta para interpretação biológica ou visualização em softwares como *FigTree*.  
 <div></div>
   
-```bash
-Aprofunde seus estudos: (Chao Zhang, Maryam Rabiee, Erfan Sayyari & Siavash Mirarab, 2018)[https://link.springer.com/article/10.1186/s12859-018-2129-y]
-```
 ---
 
-#Vamos para pratica 
+Aprofunde seus estudos: (Chao Zhang, Maryam Rabiee, Erfan Sayyari & Siavash Mirarab, 2018)[https://link.springer.com/article/10.1186/s12859-018-2129-y]
+
+---
+
+##Vamos para pratica 
 
 Para isso usaremos o Astal IV implementado junto ao pacote (ASTER)[https://github.com/chaoszhang/ASTER] 
 
-```bash
+
 Pra mais informações (Chao Zhang, Rasmus Nielsen, Siavash Mirarab, ASTER: A Package for Large-scale Phylogenomic Reconstructions, Molecular Biology and Evolution, 2025, msaf172) [https://doi.org/10.1093/molbev/msaf172]
+
+1) Vamos iniciar nossos ambientes de trabalho (Miniconda3 + programas_filo)
+
+Primeiro o conda
+```bash
+source ~/miniconda3/bin/activate
 ```
+Agora o ambiente
+
+```bash
+conda activate ~/miniconda3/envs/programas_filo
+```
+
+Agora vamos instalar utilizando o conda o compilado do ASTER **ASTER Accurate Species Tree EstimatoR**
+
+```bash
+conda install aster
+```
+
+Verificamos se tudo deu certo 
+
+```
+como fazemos isso?
+```
+
+2) Preparar os arquivos para o processamento
+
+Vamos precisar gerar um novo diretório, compilar todas as arvores em unico arquivo e gerar um arquivo de map
+
+Criando o diretório
+
+```bash
+~/uce-treinamento/taxon-set/all/
+```
+
+```bash
+mkdir ~/uce-treinamento/taxon-set/all/species_tree
+```
+Compilando todas arvores e transferir o arquivo para o novo "dir"
+
+```bash
+cat ~/uce-treinamento/taxon-set/all/mafft-nexus-internal-trimmed-gblocks-clean-50p/*.treefile > ~/uce-treinamento/taxon-set/all/species_tree/genes.tree
+```
+
+Vamos adentrar ao "dir"
+
+```bash
+cd ~/uce-treinamento/taxon-set/all/species_tree/
+```
+
+Devemos ter algo do tipo
+
+```bash
+(programas_filo) [jane_doe@access2 species_tree]$ ls
+genes.tree
+```
+
+```bash
+more genes.tree 
+(Cteniza_sp:0.1672848697,((Ctenolophus_sp:0.0158885591,Gorgyrella_namaquensis:0.234607462
+2)0/40:0.0000020215,Heligmomerus_sp:0.0201357739)33.1/48:0.0251242775,Titanidiops_sp:0.03
+39558201);
+(Ctenolophus_sp:0.0083125537,((Idiops_fryi:0.0715519660,Titanidiops_sp:0.0052001221)42.7/
+58:0.0067375198,Neocteniza_toba:0.2740381252)83.1/77:0.0113864705,(Idiops_pirassununguens
+is:0.1868505735,Idiops_sp2_RF2025:0.0000027394)90.1/85:0.0060180013);
+(Cteniza_sp:0.0355557521,(((((Ctenolophus_sp:0.0097037765,Gorgyrella_namaquensis:0.015802
+4543)0/28:0.0000010000,Segregara_transvaalensis:0.0349327319)94.6/73:0.0147477131,Heligmo
+merus_sp:0.0096528182)77.1/45:0.0052417007,((Idiops_fryi:0.0105733510,Titanidiops_sp:0.01
+10433160)73.7/75:0.0098281069,Idiops_pretoriae:0.0072178337)97.6/95:0.0320618027)0/21:0.0
+000020676,(Idiops_petiti:0.0000010000,(Idiops_pirassununguensis:0.1325919545,Idiops_sp2_R
+F2025:0.1011648768)95.1/93:0.0959116675)92.9/62:0.0194605704)95.6/96:0.0621309694,Neocten
+iza_toba:0.1485412773);
+(Cteniza_sp:0.0978279827,((Ctenolophus_sp:0.0650342702,Segregara_transvaalensis:0.0060748
+263)85.8/80:0.0064980502,Heligmomerus_sp:0.0187934166)48.6/57:0.0068119179,Titanidiops_sp
+:0.0181327987);
+(Cteniza_sp:0.1122898423,((Ctenolophus_sp:0.0066277214,(Idiops_fryi:0.0098439291,Titanidi
+ops_sp:0.0027682634)97.5/95:0.0202107382)68.2/41:0.0025764271,(Gorgyrella_namaquensis:0.0
+261145474,(Heligmomerus_sp:0.0436845646,(Idiops_pirassununguensis:0.0109376678,Idiops_roh
+dei:0.0196998313)90.4/82:0.0125027005)67.4/32:0.0024924916)74/25:0.0070678761)56/46:0.025
+4553100,(Idiops_petiti:0.2734535551,Idiops_sp2_RF2025:0.0000016386)76.6/89:0.0227078027);
+(Gorgyrella_namaquensis:0.0317074869,(Heligmomerus_sp:0.0084393438,Segregara_transvaalens
+is:0.0076216400)75.8/68:0.0039070660,((Idiops_fryi:0.0037836762,((Idiops_germaini:0.04001
+78664,Idiops_pirassununguensis:0.1909027338)0/23:0.0000010000,Idiops_rohdei:0.0040734932)
+86/47:0.0073594865)0/24:0.0000010000,(Idiops_petiti:0.0117362340,Idiops_sp2_RF2025:0.1037
+968594)45.2/25:0.0090828319)78.8/57:0.0037308241);
+(Cteniza_sp:0.5652594902,Ctenolophus_sp:0.0051061348,(Segregara_transvaalensis:0.01200290
+20,Titanidiops_sp:0.0339313647)78.4/75:0.0174907428);
+(Cteniza_sp:0.0688532788,(((Ctenolophus_sp:0.0064917152,(Heligmomerus_sp:0.0102440061,Tit
+anidiops_sp:0.0200705140)73.3/32:0.0031607931)0/18:0.0000023083,Segregara_transvaalensis:
+0.1203368686)86.7/37:0.0089990664,Gorgyrella_namaquensis:0.0000021207)88.7/69:0.014150650
+3,(Idiops_pirassununguensis:0.3545116856,Idiops_sp2_RF2025:0.0010212128)80.2/74:0.0089806
+655);
+(Gorgyrella_namaquensis:0.0897388809,((Idiops_pirassununguensis:0.0823857065,Idiops_rohde
+i:0.1458039619)40.2/61:0.0386274644,Neocteniza_toba:0.2887528084)92.3/90:0.0701979620,Seg
+regara_transvaalensis:0.0291413365);
+(Cteniza_sp:0.1955204936,(Ctenolophus_sp:0.0129612479,Gorgyrella_namaquensis:0.0552343177
+)55.5/65:0.0175805337,Titanidiops_sp:0.0778502304);
+(Cteniza_sp:0.0541302383,(((Ctenolophus_sp:0.0029856455,Segregara_transvaalensis:0.009108
+8568)0/22:0.0000010000,((Heligmomerus_sp:0.0173098784,Idiops_kanonganus:0.6605939695)92.6
+/79:0.0357306991,((Idiops_petiti:0.0189879352,Idiops_sp2_RF2025:0.1014472609)87.3/91:0.01
+77377047,Idiops_pirassununguensis:0.0118561166)88.3/77:0.0063593588)0/45:0.0000010000)0/3
+0:0.0000010000,Gorgyrella_namaquensis:0.0151501230)73.4/60:0.0101324085,((Idiops_fryi:0.0
+029345804,Idiops_pretoriae:0.0217662535)81.3/74:0.0053581301,Titanidiops_sp:0.0098442925)
+43.6/62:0.0058063730);
+(Ctenolophus_sp:0.0091187715,((Idiops_clarus:0.5278280319,(Idiops_fryi:0.1929155
+```
+
+3) Vamos o map file
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3) 
+
 
 
 
