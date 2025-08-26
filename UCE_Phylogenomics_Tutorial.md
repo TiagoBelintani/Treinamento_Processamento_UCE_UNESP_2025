@@ -16,7 +16,8 @@ Este guia prático conduz do download dos dados  à inferência filogenética us
 - [Poda interna com Gblocks (via PHYLUCE)](#poda-interna-com-gblocks-via-phyluce)
 - [Matrizes finais de dados (Final data matrices)](#matrizes-finais-de-dados-final-data-matrices)
 - [Análises Filogenéticas: Gene Trees e Species Tree (IQ-TREE 3 + ASTRAL)](#análises-filogenéticas-gene-trees-e-species-tree-iq-tree-3--astral)
-- [Gene Tree Inference (por locus) com IQ-TREE 3](Gene-Tree-Inference-(por-locus)-com-IQ-TREE-3) 
+- [Gene Tree Inference (por locus) com IQ-TREE 3](Gene-Tree-Inference-(por-locus)-com-IQ-TREE-3)
+- [Species Tree (ASTRAL a partir das gene trees)](Species-Tree-(ASTRAL-a-partir-das-gene-trees)) 
 ---
 
 ## Referência Bibliográfica
@@ -1765,7 +1766,7 @@ iqtree3 --version
 
 Se o seu cluster tiver módulos, algo como module load iqtree/3.x e module load parallel pode bastar.
 
-# Gene Tree Inference (por locus) com IQ-TREE 3
+## Gene Tree Inference (por locus) com IQ-TREE 3
 
 3) Vamos preparar o job
 
@@ -1812,8 +1813,9 @@ parallel -j $SLURM_CPUS_PER_TASK run_iqtree :::: loci_list.txt
 sbatch iqtree3_job.slurm
 ```
 
- 
-4) Species Tree (ASTRAL a partir das gene trees)
+## Species Tree (ASTRAL a partir das gene trees)
+
+
 
 
 
