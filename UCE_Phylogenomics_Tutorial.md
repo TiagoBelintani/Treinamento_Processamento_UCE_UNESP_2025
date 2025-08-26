@@ -2201,9 +2201,22 @@ O ASTRAL conseguiu recuperar vários clados sólidos, especialmente dentro de Id
 
 ## Analise com loci concatenados (concatenated_based)
 
+A análise com loci concatenados, é uma das estratégias mais tradicionais e robustas em filogenia e bioinformática evolutiva. A ideia central é simples, mas poderosa: em vez de estudar cada gene ou locus separadamente, todos os loci selecionados são concatenados em uma única matriz de dados, formando um supergene virtual. Isso permite que padrões evolutivos mais amplos e consistentes emerjam, aumentando a resolução das árvores filogenéticas e facilitando a detecção de sinais comuns entre genes.
 
+Do ponto de vista da Bioinformática, essa abordagem oferece vantagens e desafios. Ao criar um supergene, você aumenta o volume de dados disponíveis para algoritmos de inferência filogenética. Ferramentas como RAxML, IQ-TREE, ou mesmo pipelines de aprendizado supervisionado adaptados para dados genômicos, conseguem operar com esses dados concatenados para produzir inferências robustas, tanto de relações evolutivas quanto de associações funcionais.
 
+O funcionamento é relativamente direto:
 
+Seleção de loci: genes ou regiões genômicas de interesse são escolhidos com base na qualidade e relevância evolutiva.
+
+Alinhamento individual: cada locus é alinhado separadamente para garantir que as posições homólogas estejam corretamente comparadas.
+
+Concatenação: todos os loci alinhados são unidos em uma única matriz, mantendo a consistência de cada posição.
+
+Análise filogenética ou de ML: a matriz concatenada é então submetida a algoritmos de inferência, que podem incluir métodos clássicos como Máxima Verossimilhança ou Bayesianos, ou métodos de Machine Learning, dependendo da pergunta biológica.
+
+**Embora poderosa, essa abordagem exige cautela**: a concatenação assume que todos os loci compartilham um mesmo histórico evolutivo, o que nem sempre é verdade. Recomenda-se sempre combinar essa estratégia com análises de congruência entre genes (gene tree vs species tree) e ferramentas de validação estatística para evitar conclusões enviesadas.
+---
 
 
 
