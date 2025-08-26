@@ -23,7 +23,6 @@ Este guia prático conduz do download dos dados  à inferência filogenética us
 - [Analise com loci concatenados (concatenated_based)](#Analise-com-loci-concatenados-concatenated_based))
 - [IQTREE3 com dados concatenados](#IQTREE3-com-dados-concatenados)
 
-
 ---
 
 ## Referência Bibliográfica
