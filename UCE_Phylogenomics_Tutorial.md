@@ -1865,11 +1865,11 @@ Para mais informações, consulte também o (IQ-TREE Tutorial)[https://iqtree.gi
 <div align="justify">
 Após inferir centenas ou milhares de **gene trees** independentes com o IQ-TREE3, o próximo passo é sintetizar essa informação em uma **espécies tree** (*species tree*). Para isso, utilizaremos o **ASTRAL-iv**, um programa rápido e amplamente aceito para reconstrução de espécies a partir de múltiplas árvores gênicas sob o modelo de coalescência.  
 <div></div>
-
+  
 <div align="justify">
 A lógica é simples: cada gene tree carrega um sinal filogenético parcial (e muitas vezes conflitante). O **ASTRAL** combina todas essas árvores, buscando a topologia de espécies que melhor explica o conjunto de discordâncias gênicas.  
 <div></div>
-
+---
 <div align="justify">
 O ASTRAL precisa que seja fornecido como entrada:  
 1. O conjunto de gene trees (`*.treefile` de cada locus).  
@@ -1879,14 +1879,19 @@ O ASTRAL precisa que seja fornecido como entrada:
 <div align="justify">
 A saída será uma **species tree anotada** com suportes locais, pronta para interpretação biológica ou visualização em softwares como *FigTree*.  
 <div></div>
-
-Aprofunde seus estudos (Chao Zhang, Maryam Rabiee, Erfan Sayyari & Siavash Mirarab, 2018)[https://link.springer.com/article/10.1186/s12859-018-2129-y]
+  
+```bash
+Aprofunde seus estudos: (Chao Zhang, Maryam Rabiee, Erfan Sayyari & Siavash Mirarab, 2018)[https://link.springer.com/article/10.1186/s12859-018-2129-y]
+```
 ---
 
 #Vamos para pratica 
 
 Para isso usaremos o Astal IV implementado junto ao pacote (ASTER)[https://github.com/chaoszhang/ASTER] 
+
+```bash
 Pra mais informações (Chao Zhang, Rasmus Nielsen, Siavash Mirarab, ASTER: A Package for Large-scale Phylogenomic Reconstructions, Molecular Biology and Evolution, 2025, msaf172) [https://doi.org/10.1093/molbev/msaf172]
+```
 
 
 
