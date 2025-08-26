@@ -2182,9 +2182,11 @@ A árvore gerada pelo ASTRAL é **não enraizada** por padrão. Para análise bi
    O arquivo resultante (por exemplo, `astral_rooted.tree`) será a versão final para interpretações filogenéticas e figuras.
 ```
 
+Para nossa execução vamos executar e Cteniza.
 
-
-
+<p align="center">
+  <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/species_tree.png" alt="Species Tree" width="500"/>
+</p>
 
 
 
