@@ -2000,7 +2000,7 @@ regara_transvaalensis:0.0291413365);
 (Ctenolophus_sp:0.0091187715,((Idiops_clarus:0.5278280319,(Idiops_fryi:0.1929155
 ```
 
-3) Vamos o map file
+3) Vamos ao **map file**
 
 Aqui vai uma explicação curta + exemplo para 4 espécies hipotéticas:
 
@@ -2036,6 +2036,63 @@ Nesse exemplo:
 Esse arquivo de texto simples (salvo como `map.txt`) será passado ao ASTRAL com a opção `-a map.txt`.
 
 ---
+
+Vamos usar um script personalizado para gerar o map file
+
+Vamos acessar o repositorio de desenvolvedor e baixar o script
+
+```bash
+git clone https://github.com/TiagoBelintani/make_astral_map.git
+
+
+Cloning into 'make_astral_map'...
+remote: Enumerating objects: 16, done.
+remote: Counting objects: 100% (16/16), done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 16 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (16/16), 11.04 KiB | 103.00 KiB/s, done.
+Resolving deltas: 100% (3/3), done.
+
+```
+A execucao com python 
+```bash
+python make_astral_map.py --input ./alignments --out-map astral.map
+```
+
+```bash
+python3 ~/uce-treinamento/taxon-set/all/species_tree/make_astral_map/make_astral_map.py \
+--input ~/uce-treinamento/taxon-set/all/mafft-nexus-internal-trimmed-gblocks-clean-50p/ \
+--out-map astral.map
+```
+
+O resultado bai ser *astral.map*
+
+```bash
+Cteniza_sp	Cteniza_sp
+Ctenolophus_sp	Ctenolophus_sp
+Gorgyrella_namaquensis	Gorgyrella_namaquensis
+Heligmomerus_sp	Heligmomerus_sp
+Idiops_camelus	Idiops_camelus
+Idiops_carajas	Idiops_carajas
+Idiops_clarus	Idiops_clarus
+Idiops_fryi	Idiops_fryi
+Idiops_germaini	Idiops_germaini
+Idiops_guri	Idiops_guri
+Idiops_kanonganus	Idiops_kanonganus
+Idiops_petiti	Idiops_petiti
+Idiops_pirassununguensis	Idiops_pirassununguensis
+Idiops_pretoriae	Idiops_pretoriae
+Idiops_rastratus	Idiops_rastratus
+Idiops_rohdei	Idiops_rohdei
+Idiops_sp2_RF2025	Idiops_sp2_RF2025
+Idiops_sp3_RF2025	Idiops_sp3_RF2025
+Moggridgea_crudeni	Moggridgea_crudeni
+Neocteniza_toba	Neocteniza_toba
+Segregara_transvaalensis	Segregara_transvaalensis
+Titanidiops_sp	Titanidiops_sp
+```
+
+
 
 
 
