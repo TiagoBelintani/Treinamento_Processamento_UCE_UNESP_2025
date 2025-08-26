@@ -2039,12 +2039,12 @@ Esse arquivo de texto simples (salvo como `map.txt`) será passado ao ASTRAL com
 
 Vamos usar um script personalizado para gerar o map file
 
-Vamos acessar o repositorio de desenvolvedor e baixar o script
+Vamos acessar o repositorio do desenvolvedor e baixar o repositorio com o script
 
 ```bash
 git clone https://github.com/TiagoBelintani/make_astral_map.git
 
-
+*execução*
 Cloning into 'make_astral_map'...
 remote: Enumerating objects: 16, done.
 remote: Counting objects: 100% (16/16), done.
@@ -2054,7 +2054,8 @@ Receiving objects: 100% (16/16), 11.04 KiB | 103.00 KiB/s, done.
 Resolving deltas: 100% (3/3), done.
 
 ```
-A execucao com python 
+O processamento com python3
+
 ```bash
 python make_astral_map.py --input ./alignments --out-map astral.map
 ```
@@ -2065,7 +2066,7 @@ python3 ~/uce-treinamento/taxon-set/all/species_tree/make_astral_map/make_astral
 --out-map astral.map
 ```
 
-O resultado bai ser *astral.map*
+O resultado vai gerar um arquivo ser *astral.map* com esta carinha. 
 
 ```bash
 Cteniza_sp	Cteniza_sp
@@ -2092,47 +2093,68 @@ Segregara_transvaalensis	Segregara_transvaalensis
 Titanidiops_sp	Titanidiops_sp
 ```
 
+4) Preparar o .slurm e executar o Astral IV
+
+Algo **importante** do execução do Astral sugerido pelos seus devolvedores é remover arvores com suportes abaixo (ruidos desnecessários), pra isso iremos usar o Newick Utils e limpar nosso arquivo com as arvores compiladas *genes.tree*
+
+Instalar o newick utils
+
+```bash
+conda install bioconda::newick_utils
+```
+
+Remover suportes muito baixo:
+```bash
+
+nw_ed genes.tree 'i & b<=10' o > pruned.tree
+```
+
+Slurm file
+
+```bash
+nano astral_job.slurm
+```
+Copiar e colar os dados abaixos e *editar para seu ambiente*
+
+```bash
+#!/bin/bash
+
+module load miniconda/3-2023-09
+source activate ~/miniconda3/envs/programas_filo
+
+astral4 -i pruned.tree -a astral.map -o arvore_especies.tre
+```
+A execução deve se parecer com algo:
+
+```bash
+========================================================================================
+Accurate Species TRee ALgorithm IV (ASTRAL-IV)
+*** NOW with integrated CASTLES-2 ***
+Version: v1.23.4.6
+#Genetrees: 855
+#Species: 22
+#Rounds: 4
+#Samples: 4
+#Threads: 1
+```
+
+5) **Agora podemos vizualizar nossa arvore de especies**.
+
+Uma sugestao seria ultizar algumas dessas ferramentas:
+
+(Figtree)[https://tree.bio.ed.ac.uk/software/figtree/]
+
+(ITOL)[https://itol.embl.de/]
+
+7) Vamos enrraizar vizualizar e enrraizar a arvore.
+
+Use o WinSCP ou equivalente para baixar o arquivo em seu computador
+
+```bash
+scp tiagobelintani@access.grid.unesp.br:/home/tiagobelintani/uce-treinamento/taxon-set/all/species_tree/arvore_especies.tre ./
+```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3) 
 
 
 
