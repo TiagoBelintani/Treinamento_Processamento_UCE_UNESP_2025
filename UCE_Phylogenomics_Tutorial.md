@@ -1905,7 +1905,7 @@ Agora o ambiente
 conda activate ~/miniconda3/envs/programas_filo
 ```
 
-Agora vamos instalar utilizando o conda o compilado do ASTER **ASTER Accurate Species Tree EstimatoR**
+Agora vamos instalar o compilado utilizando o conda o compilado do ASTER **ASTER Accurate Species Tree EstimatoR**
 
 ```bash
 conda install aster
@@ -1924,12 +1924,13 @@ Vamos precisar gerar um novo diretório, compilar todas as arvores em unico arqu
 Criando o diretório
 
 ```bash
-~/uce-treinamento/taxon-set/all/
+cd ~/uce-treinamento/taxon-set/all/
 ```
-
+---
 ```bash
 mkdir ~/uce-treinamento/taxon-set/all/species_tree
 ```
+---
 Compilando todas arvores e transferir o arquivo para o novo "dir"
 
 ```bash
@@ -2000,7 +2001,43 @@ regara_transvaalensis:0.0291413365);
 ```
 
 3) Vamos o map file
-  
+
+Aqui vai uma explicação curta + exemplo para 4 espécies hipotéticas:
+
+**O map file no ASTRAL**
+
+O **map file** (às vezes chamado de *population/species map*) informa ao ASTRAL como agrupar as amostras em espécies.  
+Cada linha tem o formato:
+
+
+- O primeiro campo é o **nome da espécie** (ou grupo).  
+- Os demais são os **identificadores das amostras** correspondentes, que devem **bater exatamente com os nomes nos gene trees**.  
+- Uma espécie pode ter **uma ou várias amostras**.  
+
+---
+
+### Exemplo: quatro espécies hipotéticas
+
+Suponha que você tem 7 indivíduos pertencentes a 4 espécies diferentes:
+
+
+species1 sp1_ind1 sp1_ind2
+species2 sp2_ind1
+species3 sp3_ind1 sp3_ind2 sp3_ind3
+species4 sp4_ind1
+
+
+Nesse exemplo:
+- `species1` tem 2 amostras.  
+- `species2` tem apenas 1 amostra.  
+- `species3` tem 3 amostras.  
+- `species4` tem 1 amostra.  
+
+Esse arquivo de texto simples (salvo como `map.txt`) será passado ao ASTRAL com a opção `-a map.txt`.
+
+---
+
+
 
 
 
