@@ -2257,6 +2257,27 @@ mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.phylip
 
 ## IQTREE3 com dados concatenados 
 
+``bash
+with open("mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.charsets") as f, \
+     open("iqtree.partitions.txt", "w") as out:
+    
+    part_number = 1
+    for line in f:
+        line = line.strip()
+        # ignora linhas vazias ou que não têm '='
+        if not line or "=" not in line:
+            continue
+        
+        # remove "charset" e ponto e vírgula
+        line = line.replace("charset", "").replace(";", "").strip()
+        # pega o nome do locus e intervalo
+        if "'" in line:
+            # linha do tipo 'locus.nexus' = 1-365
+            locus, interval = line.split("=")
+            interval = interval.strip()
+            out.write(f"DNA, part{part_number} = {interval}\n")
+            part_number += 1
+```
 
 
 
