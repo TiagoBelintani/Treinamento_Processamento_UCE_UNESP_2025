@@ -1813,6 +1813,52 @@ parallel -j $SLURM_CPUS_PER_TASK run_iqtree :::: loci_list.txt
 ```bash
 sbatch iqtree3_job.slurm
 ```
+## Saídas do IQ-TREE 3 por locus
+
+Agora que você executou em *loop* uma análise filogenética focada nas árvores independentes (gene trees ou locus trees), é esperado que você tenha no seu diretório **centenas ou milhares de arquivos de saída**.  
+
+Vamos dar uma olhada em um exemplo típico.  
+
+```bash
+cd mafft-nexus-internal-trimmed-gblocks-clean-50p/
+```
+
+Dentro do diretório, para cada locus teremos algo parecido com:
+
+Vamos analiser o loci  uce-2007287.nexus
+
+```bash
+uce-2007287.bionj
+uce-2007287.contree
+uce-2007287.log
+uce-2007287.model.gz
+uce-2007287.splits.nex
+uce-2007287.ckp.gz
+uce-2007287.iqtree
+uce-2007287.mldist
+uce-2007287.nexus
+uce-2007287.treefile
+```
+
+Para mais informações, consulte também o (IQ-TREE Tutorial)[https://iqtree.github.io/]
+
+## 📑 Referência rápida dos arquivos de saída do IQ-TREE 3
+
+| Arquivo               | Descrição                                                                 | Uso prático                                   |
+|------------------------|---------------------------------------------------------------------------|-----------------------------------------------|
+| `*.bionj`             | Árvore inicial gerada pelo método **BIONJ**                               | Diagnóstico; ponto de partida, raramente usado |
+| `*.contree`           | Árvore de **consenso** das réplicas de bootstrap                          | Publicação; mostra suporte dos clados          |
+| `*.log`               | Registro detalhado da análise (parâmetros, progresso, likelihoods)        | Verificar erros ou confirmar execução          |
+| `*.model.gz`          | Modelos de substituição testados/ajustados (comprimido)                   | Revisar escolha de modelos                     |
+| `*.splits.nex`        | Arquivo NEXUS com bipartições (*splits*)                                 | Visualizar em SplitsTree / FigTree             |
+| `*.ckp.gz`            | Arquivo de **checkpoint**                                                | Retomar análises interrompidas                 |
+| `*.iqtree`            | Relatório principal (resumo dos resultados, parâmetros, suportes)         | Documento central da análise                   |
+| `*.mldist`            | Matriz de distâncias de Máxima Verossimilhança                           | Clustering, diagnósticos extras                |
+| `*.nexus`             | Árvore(s) em formato **NEXUS**                                           | Alternativa ao `.treefile` para visualização   |
+| `*.treefile`          | Árvore final de **Máxima Verossimilhança** em formato Newick              | Principal resultado para downstream/publicação |
+
+---
+
 
 ## Species Tree (ASTRAL a partir das gene trees)
 
