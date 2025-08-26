@@ -20,7 +20,8 @@ Este guia prático conduz do download dos dados  à inferência filogenética us
 - [Species Tree (ASTRAL a partir das gene trees)](#species-tree-astral-a-partir-das-gene-trees)
 - [Analise com loci concatenados **concatenated_based**](#Analise-com-loci-concatenados)
 - [Analise com loci concatenados](#analise-com-loci-concatenados-concatenatedbased)
-- [Analise com loci concatenados (concatenated_based)](#Analise-com-loci-concatenados-concatenated_based)]
+- [Analise com loci concatenados (concatenated_based)](#Analise-com-loci-concatenados-concatenated_based))
+- [IQTREE3 com dados concatenados](#IQTREE3-com-dados-concatenados)
 
 
 ---
@@ -2217,6 +2218,46 @@ Análise filogenética ou de ML: a matriz concatenada é então submetida a algo
 
 **Embora poderosa, essa abordagem exige cautela**: a concatenação assume que todos os loci compartilham um mesmo histórico evolutivo, o que nem sempre é verdade. Recomenda-se sempre combinar essa estratégia com análises de congruência entre genes (gene tree vs species tree) e ferramentas de validação estatística para evitar conclusões enviesadas.
 ---
+
+**Vamos voltar para o Phyluce para gerar as arvore concatenadas e executar no IQTREE3
+
+cd ~/uce-tutorial/taxon-sets/all
+
+## Construção da matriz concatenada
+
+phyluce_align_concatenate_alignments \
+    --alignments mafft-nexus-internal-trimmed-gblocks-clean-50p \
+    --output mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml \
+    --phylip \
+    --log-path log
+
+Agora vamos gerar a .slurm
+
+```bash
+nano phyluce_align_concatenate_alignments.slurm
+```
+
+```bash
+#!/bin/bash
+
+module load miniconda/3-2023-09
+source activate ~/miniconda3/envs/phyluce-1.7.3
+
+phyluce_align_concatenate_alignments \
+    --alignments mafft-nexus-internal-trimmed-gblocks-clean-50p \
+    --output mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml \
+    --phylip \
+    --log-path log
+```
+
+```bash
+cd mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml]$ ls
+mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.charsets
+mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.phylip
+```
+
+## IQTREE3 com dados concatenados 
+
 
 
 
