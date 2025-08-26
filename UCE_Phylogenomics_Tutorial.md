@@ -2153,9 +2153,34 @@ Use o WinSCP ou equivalente para baixar o arquivo em seu computador
 ```bash
 scp tiagobelintani@access.grid.unesp.br:/home/tiagobelintani/uce-treinamento/taxon-set/all/species_tree/arvore_especies.tre ./
 ```
+**Breve considerações
 
+Rodando o **ASTRAL**, obtemos como saída principal um arquivo de árvore em formato **Newick**. 
+Essa árvore representa a **species tree** inferida a partir de todas as gene trees fornecidas.
 
+```bash
+- Cada nó interno traz valores de suporte local (quartet support), uma medida da confiabilidade daquela bipartição.
+- Quanto mais próximo de **1.0** (ou 100%), maior a confiança na resolução do clado.
+- Além disso, o log do ASTRAL resume estatísticas gerais sobre a análise e pode ser útil para diagnóstico.
+```
 
+---
+
+### Visualização e enraizamento
+
+A árvore gerada pelo ASTRAL é **não enraizada** por padrão. Para análise biológica, precisamos:
+
+```bash
+ **Escolher um outgroup**  
+   Identifique uma linhagem basal (fora do grupo focal) e use-a para **enraizar** a árvore.  
+   - No FigTree, isso pode ser feito interativamente.  
+```
+---
+
+```bash
+ **Salvar a árvore enraizada**  
+   O arquivo resultante (por exemplo, `astral_rooted.tree`) será a versão final para interpretações filogenéticas e figuras.
+```
 
 
 
