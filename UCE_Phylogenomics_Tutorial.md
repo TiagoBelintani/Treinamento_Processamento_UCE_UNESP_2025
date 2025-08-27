@@ -2188,7 +2188,7 @@ A árvore gerada pelo ASTRAL é **não enraizada** por padrão. Para análise bi
 Para nossa execução vamos executar e Cteniza.
 
 <p align="center">
-  <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/species_tree.png" alt="Species Tree" width="500"/>
+  <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/species.png" alt="Species Tree" width="500"/>
 </p>
 
 Comentários 
@@ -2330,7 +2330,7 @@ Agora temos nossa arvore concatenada e a partir daqui o processo para vizualizar
 Nossa arvore devera se parecer com a arvore abaixo 
 
 <p align="center">
-  <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/concatenado.png" alt="Species Tree" width="500"/>
+  <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/conca.png" alt="Species Tree" width="500"/>
 </p>
 
 
