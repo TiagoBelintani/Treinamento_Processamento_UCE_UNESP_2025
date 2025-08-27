@@ -2185,7 +2185,7 @@ A árvore gerada pelo ASTRAL é **não enraizada** por padrão. Para análise bi
    O arquivo resultante (por exemplo, `astral_rooted.tree`) será a versão final para interpretações filogenéticas e figuras.
 ```
 
-Para nossa execução vamos executar e Cteniza.
+Para nossa execução vamos executar enraizar em *Neocteniza*
 
 <p align="center">
   <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/species.png" alt="Species Tree" width="500"/>
@@ -2324,16 +2324,15 @@ Agora temos nossa arvore concatenada e a partir daqui o processo para vizualizar
 
 ---
 
-<a name="viz-arvore"></a>
-## 5) Agora podemos vizualizar nossa arvore de especies
-
 Nossa arvore devera se parecer com a arvore abaixo 
 
 <p align="center">
   <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/conca.png" alt="Species Tree" width="500"/>
 </p>
 
+---
 
+##Analise Bayesiana
 
 
 
