@@ -2214,10 +2214,12 @@ Concatenação: todos os loci alinhados são unidos em uma única matriz, manten
 
 Análise filogenética ou de ML: a matriz concatenada é então submetida a algoritmos de inferência, que podem incluir métodos clássicos como Máxima Verossimilhança ou Bayesianos, ou métodos de Machine Learning, dependendo da pergunta biológica.
 
-**Embora poderosa, essa abordagem exige cautela**: a concatenação assume que todos os loci compartilham um mesmo histórico evolutivo, o que nem sempre é verdade. Recomenda-se sempre combinar essa estratégia com análises de congruência entre genes (gene tree vs species tree) e ferramentas de validação estatística para evitar conclusões enviesadas.
+```bash
+*Embora poderosa, essa abordagem exige cautela**: a concatenação assume que todos os loci compartilham um mesmo histórico evolutivo, o que nem sempre é verdade. Recomenda-se sempre combinar essa estratégia com análises de congruência entre genes (gene tree vs species tree) e ferramentas de validação estatística para evitar conclusões enviesadas.*
+```
 ---
 
-**Vamos voltar para o Phyluce para gerar as arvore concatenadas e executar no IQTREE3
+## Vamos voltar para o Phyluce para gerar as arvore concatenadas e executar no IQTREE3
 
 cd ~/uce-tutorial/taxon-sets/all
 
@@ -2318,10 +2320,18 @@ iqtree3 -s mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.phylip \
   -nt AUTO \
   -pre iqtree_concatenated -redo
 ```
-Agora temos nossa arvore concatenada e a partir daqui o processo para vizualizar e editar a arvore e semelhante ao passo anterior ([acesse aqui](#5-agora-podemos-vizualizar-nossa-arvore-de-especies)).
+Agora temos nossa arvore concatenada e a partir daqui o processo para vizualizar e editar a arvore e semelhante ao passo anterior ([acesse aqui](#viz-arvore)).
 
+---
 
+<a name="viz-arvore"></a>
+## 5) Agora podemos vizualizar nossa arvore de especies
 
+Nossa arvore devera se parecer com a arvore abaixo 
+
+<p align="center">
+  <img src="https://github.com/TiagoBelintani/Treinamento_Processamento_UCE_UNESP_2025/blob/main/Imagens/concatenado.png" alt="Species Tree" width="500"/>
+</p>
 
 
 
