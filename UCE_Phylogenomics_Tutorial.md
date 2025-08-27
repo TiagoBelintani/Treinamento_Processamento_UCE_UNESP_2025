@@ -2109,7 +2109,6 @@ conda install bioconda::newick_utils
 
 Remover suportes muito baixo:
 ```bash
-
 nw_ed genes.tree 'i & b<=10' o > pruned.tree
 ```
 
@@ -2257,7 +2256,16 @@ mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.phylip
 
 ## IQTREE3 com dados concatenados 
 
-``bash
+Primeiro iremos editar o arquivo com as partições
+
+Vamos ultizar um script em pythom para isso:
+
+```bash
+nano convert.py
+```
+copie e cola
+
+```bash
 with open("mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.charsets") as f, \
      open("iqtree.partitions.txt", "w") as out:
     
@@ -2278,6 +2286,40 @@ with open("mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.charsets") as f,
             out.write(f"DNA, part{part_number} = {interval}\n")
             part_number += 1
 ```
+Processar os dados
+
+```bash
+python convert.py
+```
+
+Agora temos um arquivo de partição *iqtree.partitions.txt*
+
+Podemos preperar o .slurm e inicar o simulação com IQtree3
+
+```bash
+nano iqtree3_concatenate.slurm
+```
+*copie e cole*
+
+```bash
+#!/bin/bash
+#SBATCH --time=20:00:00
+#SBATCH --cpus-per-task=16
+
+module load miniconda/3-2023-09
+source activate ~/miniconda3/envs/phyluce-1.7.3
+
+iqtree3 -s mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml.phylip \
+  -p iqtree.partitions.txt \
+  -st DNA \
+  -m MFP+MERGE \
+  -bb 1000 \
+  -alrt 1000 \
+  -nt AUTO \
+  -pre iqtree_concatenated -redo
+```
+Agora temos nossa arvore concatenada e a partir daqui o processo para vizualizar e editar a arvore e semelhante ao passo anterior ([acesse aqui](#5-agora-podemos-vizualizar-nossa-arvore-de-especies)).
+
 
 
 
