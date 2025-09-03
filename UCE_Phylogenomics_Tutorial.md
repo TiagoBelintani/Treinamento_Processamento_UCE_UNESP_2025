@@ -2399,12 +2399,13 @@ nano mafft-nexus-internal-trimmed-gblocks-clean-50p-mb.nexus
 
 begin mrbayes;
     set autoclose=yes nowarn=yes;
-    charset all = 1-[NCHAR];
+    charset all = 1-315896;
     lset nst=6 rates=gamma;
     mcmc ngen=100000 samplefreq=100 printfreq=100 nchains=4;
     sump burnin=250;
     sumt burnin=250;
 end;
+
 ```
 
 
