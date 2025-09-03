@@ -2425,11 +2425,9 @@ module load miniconda/3-2023-09
 source activate ~/miniconda3/envs/programas_filo                        
 
 mpirun -np $SLURM_NTASKS mb mafft-nexus-internal-trimmed-gblocks-clean-50p-mb.$
+```
 
-
-
-
-
+```bash
 Como resultado teremos alguns arquivos gerados, sendo eles:
 
 Restultados gerais
