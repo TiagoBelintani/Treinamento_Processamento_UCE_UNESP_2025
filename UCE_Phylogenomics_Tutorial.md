@@ -2407,6 +2407,28 @@ begin mrbayes;
 end;
 
 ```
+Preparar o .slurm
+
+```bash
+#iniciar editor
+
+nano mb.slurm
+
+#copiar e colar
+
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --time=20:00:00
+#SBATCH --cpus-per-task=12
+
+module load miniconda/3-2023-09
+source activate ~/miniconda3/envs/programas_filo                        
+
+mpirun -np $SLURM_NTASKS mb mafft-nexus-internal-trimmed-gblocks-clean-50p-mb.$
+
+
+
+
 
 Como resultado teremos alguns arquivos gerados, sendo eles:
 
