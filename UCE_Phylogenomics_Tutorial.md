@@ -2363,8 +2363,7 @@ mafft-nexus-internal-trimmed-gblocks-clean-50p
 mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml
 species_tree
 ```
-Agora precisamos instalar o [MB](conda install bioconda::mrbayes
-) utilizando conda e preparar os inputs.
+Agora precisamos instalar o [MB]([conda install bioconda::mrbayes](https://anaconda.org/bioconda/mrbayes) utilizando conda e preparar os inputs.
 
 ```bash
 #ativar ambiente
