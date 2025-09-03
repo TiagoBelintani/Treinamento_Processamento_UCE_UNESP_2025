@@ -2341,9 +2341,41 @@ A análise bayesiana é um método estatístico que combina dados observados com
 O [MrBayes](https://nbisweden.github.io/MrBayes/) é um software amplamente usado para reconstruir árvores filogenéticas usando essa abordagem bayesiana. Ele permite modelar a evolução de sequências de DNA, RNA ou proteínas, incorporando incertezas e avaliando a credibilidade das relações evolutivas. Com ele, podemos obter não apenas a árvore mais provável, mas também medir a confiança em cada ramo, oferecendo uma visão mais robusta da história evolutiva das espécies analisadas.
 <div></div>
 
-#Vamos a pratica 
+# Vamos a pratica 
 
+Primeiro vamos acessar o diretório de trabalho
 
+```bash
+cd ~/uce-treinamento/taxon-set/all/
+```
+Verificamos a estrutura do dir.
+```bash
+ls
+all-taxa-incomplete.conf
+all-taxa-incomplete.fasta
+all-taxa-incomplete.incomplete
+exploded-fastas
+log
+mafft-nexus-internal-trimmed
+mafft-nexus-internal-trimmed-gblocks
+mafft-nexus-internal-trimmed-gblocks-clean
+mafft-nexus-internal-trimmed-gblocks-clean-50p
+mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml
+species_tree
+```
+Agora precisamos instalar o [MB](conda install bioconda::mrbayes
+) utilizando conda e preparar os inputs.
+
+```bash
+#ativar ambiente
+conda activate ~/miniconda3/envs/programas_filo
+
+#instalar
+conda install bioconda::mrbayes
+
+#testar
+mb --version
+```
 
 
 
