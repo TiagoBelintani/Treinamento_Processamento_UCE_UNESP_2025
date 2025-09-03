@@ -22,7 +22,7 @@ Este guia prático conduz do download dos dados  à inferência filogenética us
 - [Analise com loci concatenados](#analise-com-loci-concatenados-concatenatedbased)
 - [Analise com loci concatenados (concatenated_based)](#Analise-com-loci-concatenados-concatenated_based))
 - [IQTREE3 com dados concatenados](#IQTREE3-com-dados-concatenados)
-- [Analise Bayesiana](#Analise-Bayesiana)
+- [Análise Bayesiana](#Analise-Bayesiana)
 
 ---
 
@@ -2333,7 +2333,7 @@ Nossa arvore devera se parecer com a arvore abaixo
 
 ---
 
-## Analise Bayesiana
+## Análise Bayesiana
 
 <div align="justify">
 A análise bayesiana é um método estatístico que combina dados observados com informações prévias (conhecidas como priori) para estimar a probabilidade de diferentes hipóteses. Em vez de fornecer apenas um valor pontual ou um teste de significância, ela gera uma distribuição de probabilidade que reflete nossa confiança em cada hipótese, permitindo uma interpretação mais intuitiva e flexível, especialmente em contextos complexos como a inferência filogenética.
