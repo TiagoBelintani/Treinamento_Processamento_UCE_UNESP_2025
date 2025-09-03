@@ -2408,9 +2408,62 @@ end;
 
 ```
 
+Como resultado teremos alguns arquivos gerados, sendo eles:
 
+Restultados gerais
+```bash
+| Extensão / Arquivo | Conteúdo                               | Função principal                                      |
+| ------------------ | -------------------------------------- | ----------------------------------------------------- |
+| `.mcmc`            | Log da simulação MCMC                  | Acompanha progresso durante a execução                |
+| `.p`               | Parâmetros do modelo (run1, run2)      | Avaliar convergência e posterior dos parâmetros       |
+| `.t`               | Árvores amostradas (run1, run2)        | Base para árvore consensual e análise de topologias   |
+| `.lstat`           | Estatísticas de likelihood             | Diagnóstico de convergência                           |
+| `.pstat`           | Estatísticas dos parâmetros            | Diagnóstico de convergência                           |
+| `.tstat`           | Estatísticas das árvores               | Diagnóstico de convergência                           |
+| `.vstat`           | Variâncias e ESS                       | Diagnóstico da qualidade da amostragem                |
+| `.parts`           | Informações de partição do alinhamento | Documenta como as partições foram tratadas            |
+| `.ckp` / `.ckp~`   | Checkpoints da análise                 | Permite retomar a corrida se interrompida             |
+| `.con.tre`         | Árvore consensual posterior            | Resultado final mais usado (com suportes posteriores) |
+| `.trprobs`         | Topologias distintas com frequências   | Ranking de árvores mais prováveis                     |
+```
 
+Como usar o Tracer com MrBayes
 
+Quando rodamos o MrBayes, ele gera muitos arquivos, mas para o Tracer o que importa são os arquivos de parâmetros:
+```bash
+run1.p
+
+run2.p
+```
+Esses arquivos guardam, geração por geração, os valores numéricos dos parâmetros do modelo: likelihood, taxas de substituição, alfa da distribuição gama, proporção de sítios invariantes, etc.
+
+O Tracer não entende árvores (.t), só números. Por isso, você nunca carrega .t ou .con.tre no Tracer.
+
+Passo a passo básico
+```bash
+Abrir o Tracer → “File” → “Import Trace File”
+```
+Carregar os dois .p (run1.p e run2.p)
+
+O **Tracer** já reconhece que eles vêm de corridas independentes. Você pode analisá-los separados ou combinados.
+
+Definir o burn-in → normalmente removemos os primeiros 25–50% das amostras (as “fases iniciais” antes da convergência).
+
+Olhar os diagnósticos:
+
+Trace plots → se as cadeias estão misturando bem (sem grandes tendências).
+
+Posterior distribution → histogramas dos parâmetros.
+
+ESS (Effective Sample Size) → precisa ser >200 para considerar bem amostrado.
+
+Interpretação prática
+
+Se ESS < 200, a cadeia ainda não convergiu bem → talvez precise rodar mais gerações.
+
+Se os dois runs dão distribuições muito diferentes, é sinal de falta de convergência.
+
+Quando está tudo ok, você pode confiar na árvore consensual (.con.tre), porque os parâmetros mostram que a amostragem foi estável.
 
 
 
