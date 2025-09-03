@@ -2363,7 +2363,21 @@ mafft-nexus-internal-trimmed-gblocks-clean-50p
 mafft-nexus-internal-trimmed-gblocks-clean-50p-raxml
 species_tree
 ```
-Agora precisamos instalar o [MB]([conda install bioconda::mrbayes](https://anaconda.org/bioconda/mrbayes) utilizando conda e preparar os inputs.
+Agora precisamos instalar o [MB](https://anaconda.org/bioconda/mrbayes) utilizando conda e preparar os inputs.
+
+**Agora vamos gerar o nexus utilizando Phlyuce-1.7.3
+
+```bash
+conda activate ~/miniconda3/envs/phyluce-1.7.3
+
+phyluce_align_concatenate_alignments \
+    --alignments mafft-nexus-internal-trimmed-gblocks-clean-50p \
+    --output mafft-nexus-internal-trimmed-gblocks-clean-50p-mb \
+    --nexus \
+    --log-path log
+````
+
+Ativar o ambiente e instalar 
 
 ```bash
 #ativar ambiente
@@ -2373,14 +2387,25 @@ conda activate ~/miniconda3/envs/programas_filo
 conda install bioconda::mrbayes
 
 #testar
-mb --version
+mb -version
 ```
 
+**Preparar o nexus
 
+```bash
+nano mafft-nexus-internal-trimmed-gblocks-clean-50p-mb.nexus
 
+#rolar até o final e adicior o "bloco"
 
-
-
+begin mrbayes;
+    set autoclose=yes nowarn=yes;
+    charset all = 1-[NCHAR];
+    lset nst=6 rates=gamma;
+    mcmc ngen=100000 samplefreq=100 printfreq=100 nchains=4;
+    sump burnin=250;
+    sumt burnin=250;
+end;
+```
 
 
 
