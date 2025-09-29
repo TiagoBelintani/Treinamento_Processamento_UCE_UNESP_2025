@@ -273,6 +273,22 @@ Agora um comando utilizando "sed" para retirar espaços indesejáveis
 sed -E 's/[[:space:]]*:[[:space:]]*/:/g' tabela.txt > assembly.conf
 ```
 
+**uma outra opção
+```bash
+cd clean_fastq
+
+# Cria/limpa o arquivo de configuração
+echo "[samples]" > assembly.conf
+
+# Para cada diretório de sample
+for sample in */ ; do
+    # remove a barra final do nome do diretório
+    sample_name=${sample%/}
+    # adiciona a linha com o caminho completo para split-adapter-quality-trimmed/
+    echo "${sample_name}:${PWD}/${sample_name}/split-adapter-quality-trimmed/" >> assembly.conf
+done
+```
+
 ### Modelo de assembly.conf
 
 *Este arquivo é propenso a erros; verifique cuidadosamente para evitar problemas causados por espaços extras, caminhos inválidos ou erros de digitação.*
