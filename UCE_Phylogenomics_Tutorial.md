@@ -1636,7 +1636,7 @@ Vamos executar diretamente no terminal
 ```bash
 phyluce_align_get_only_loci_with_min_taxa \
     --alignments mafft-nexus-internal-trimmed-gblocks-clean \
-    --taxa 4 \
+    --taxa 4 \ #aqui é interessante estabelecer o num aproximado do --percent * adotado (100 spc = 75)
     --percent 0.75 \
     --output mafft-nexus-internal-trimmed-gblocks-clean-75p \
     --cores 2 \
@@ -1648,7 +1648,7 @@ Basta ajustar --percent 0.95:
 ```bash
 phyluce_align_get_only_loci_with_min_taxa \
     --alignments mafft-nexus-internal-trimmed-gblocks-clean \
-    --taxa 4 \
+    --taxa 4 \ #aqui é interessante estabelecer o num aproximado do --percent * adotado (100 spc = 95)
     --percent 0.95 \
     --output mafft-nexus-internal-trimmed-gblocks-clean-95p \
     --cores 2 \
