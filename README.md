@@ -1,6 +1,10 @@
 
 # Treinamento em Processamento de Dados de UCE
 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18621410.svg)](https://doi.org/10.5281/zenodo.18621410)
+
+
 **Autor:** Tiago Belintani  
 **Ano:** 2025  
 **Instituição:** Laboratório de Aracnologia de Rio Claro (LARC) - UNESP
@@ -58,7 +62,6 @@ Além disso, o curso contempla o uso de ferramentas fundamentais como:
 Este material pode ser adaptado por outros grupos interessados em bioinformática de UCEs. Sugestões e melhorias são bem-vindas via Pull Request ou Issues.
 
 ---
-
 ##  Licença
 
 Distribuído sob licença MIT.
