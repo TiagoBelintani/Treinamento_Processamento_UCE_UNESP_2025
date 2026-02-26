@@ -1,5 +1,5 @@
 site_name: Treinamento Processamento UCE UNESP 2025
-site_description: Pipeline e fundamentos para processamento de dados UCE
+site_description: Treinamento e pipeline para dados UCEs
 site_author: Tiago Belintani
 
 theme:
@@ -13,11 +13,11 @@ theme:
 
 nav:
   - Início: index.md
-  - Tutorial Completo: ../UCE_Phylogenomics_Tutorial.md
+  - Tutorial Completo: UCE_Phylogenomics_Tutorial.md
   - Ambiente:
-      - GRID-UNESP: ../Acessando_GRID_UNESP.md
-      - PuTTY e WinSCP: ../Utilizando_PuTTY_WinSCP.md
-      - Comandos Shell: ../Comandos_Shell.md
-      - Miniconda e PHYLUCE: ../Miniconda_and_PHYLUCE.md
-      - Acessando e Editando Códigos: ../Acessando_Editando_codigos
-  - Bibliografia: ../Bibliografia.md
+      - GRID-UNESP: Acessando_GRID_UNESP.md
+      - PuTTY e WinSCP: Utilizando_PuTTY_WinSCP.md
+      - Comandos Shell: Comandos_Shell.md
+      - Miniconda e PHYLUCE: Miniconda_and_PHYLUCE.md
+      - Editando Códigos: Acessando_Editando_codigos.md
+  - Bibliografia: Bibliografia.md
