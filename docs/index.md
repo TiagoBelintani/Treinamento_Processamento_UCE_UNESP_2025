@@ -1,17 +1,43 @@
-# Welcome to MkDocs
+Treinamento em Processamento de Dados de UCE
+DOI
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Autor: Tiago Belintani
+Ano: 2025
+Instituição: Laboratório de Aracnologia de Rio Claro (LARC) - UNESP
 
-## Commands
+Descrição
+Este repositório reúne os materiais, scripts e instruções utilizados no Treinamento em Processamento de Dados Genômicos de Elementos Ultraconservados (UCEs).
+O treinamento tem como objetivo introduzir os participantes aos fundamentos da bioinformática aplicada à sistemática molecular, com foco no uso do pipeline Phyluce.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+Além disso, o curso contempla o uso de ferramentas fundamentais como:
 
-## Project layout
+Terminal Linux (Bash)
+GitHub para controle de versões
+Acesso remoto via PuTTY
+Execução em ambiente de alto desempenho no GRID-UNESP
+Conteúdo Programático
+Introdução aos UCEs e sua aplicação em sistemática
+Organização e preparo dos dados no Linux
+Controle de versões com Git e GitHub
+Instalação e uso do Phyluce
+Submissão de jobs no GRID-UNESP
+Visualização e interpretação de árvores filogenéticas
+Estrutura do Repositório
+├── data/                 # Dados de exemplo para prática
+├── scripts/              # Scripts utilizados durante o treinamento
+├── notebooks/            # Anotações e walkthroughs (opcional)
+├── resultados/           # Árvore(s) e arquivos gerados
+└── README.md             # Você está aqui
+Requisitos
+Conta no GitHub
+Acesso ao GRID-UNESP
+Terminal Linux (WSL, VM, ou máquina nativa)
+Phyluce instalado em ambiente Conda
+Contribuição
+Este material pode ser adaptado por outros grupos interessados em bioinformática de UCEs. Sugestões e melhorias são bem-vindas via Pull Request ou Issues.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Licença
+Distribuído sob licença MIT.
+
+Tiago Belintani – 2025
+Laboratório de Aracnologia de Rio Claro – LARC | UNESP
