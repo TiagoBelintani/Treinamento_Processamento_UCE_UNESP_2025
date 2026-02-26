@@ -1,0 +1,25 @@
+site_name: Treinamento Processamento UCE UNESP 2025
+site_description: Pipeline e fundamentos para processamento de dados UCE
+site_author: Tiago Belintani
+
+theme:
+  name: material
+  language: pt
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+
+nav:
+  - Início: index.md
+  - Introdução:
+      - Conceitos UCE: introducao_uce.md
+  - Pipeline:
+      - Organização dos dados: organizacao.md
+      - Controle de qualidade: qc.md
+      - Montagem: montagem.md
+      - Extração UCE: extracao.md
+  - Ambiente:
+      - Instalação Conda: conda.md
+      - WSL/HPC: ambiente.md
